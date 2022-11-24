@@ -9,12 +9,6 @@ Make sure to install the dependencies:
 ```bash
 # yarn
 yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
 ```
 
 ## Development Server
@@ -22,7 +16,7 @@ pnpm install --shamefully-hoist
 Start the development server on http://localhost:3000
 
 ```bash
-npm run dev
+yarn dev
 ```
 
 ## Production
@@ -30,13 +24,13 @@ npm run dev
 Build the application for production:
 
 ```bash
-npm run build
+yarn build
 ```
 
 Locally preview production build:
 
 ```bash
-npm run preview
+yarn preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

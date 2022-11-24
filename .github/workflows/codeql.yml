@@ -20,6 +20,7 @@ on:
   schedule:
     - cron: '33 5 * * 5'
 
+
 jobs:
   analyze:
     name: Analyze
@@ -45,7 +46,7 @@ jobs:
         cache: 'yarn'
     - name: Install packages
       run: yarn
-    
+
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
