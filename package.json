@@ -41,7 +41,8 @@
     "stylelint-config-standard-scss": "^6.1.0"
   },
   "dependencies": {
-    "material-components-web": "^14.0.0",
-    "vue-material-adapter": "^6.1.1"
+    "@mdi/font": "^7.0.96",
+    "@pinia/nuxt": "^0.4.5",
+    "vuetify": "^3"
   }
 }
