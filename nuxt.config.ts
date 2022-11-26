@@ -11,6 +11,14 @@ export default defineNuxtConfig({
       noExternal: ['vuetify'],
     },
   },
+  runtimeConfig: {
+    public: {
+      GOOGLE_FIREBASE_API_KEY: process.env.GOOGLE_FIREBASE_API_KEY,
+      GOOGLE_FIREBASE_MESSAGING_ID: process.env.GOOGLE_FIREBASE_MESSAGING_ID,
+      GOOGLE_FIREBASE_APP_ID: process.env.GOOGLE_FIREBASE_APP_ID,
+      GOOGLE_FIREBASE_MEASUREMENT_ID: process.env.GOOGLE_FIREBASE_MEASUREMENT_ID,
+    },
+  },
   ssr: false,
   telemetry: false,
   app: {
