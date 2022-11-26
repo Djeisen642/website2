@@ -13,4 +13,14 @@ export default defineNuxtConfig({
   },
   ssr: false,
   telemetry: false,
+  app: {
+    head: {
+      meta: [
+        {
+          property: 'description',
+          content: "Jason Suttles's website describing himself and showing some stuff",
+        },
+      ],
+    },
+  },
 });

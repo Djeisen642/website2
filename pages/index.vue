@@ -53,10 +53,13 @@
 </template>
 
 <script setup lang="ts">
-import { definePageMeta } from '#imports';
+import { definePageMeta, useHead } from '#imports';
 
 definePageMeta({
   layout: 'homepage',
+});
+useHead({
+  title: "Jason's home page",
 });
 </script>
 <style lang="scss" scoped>
