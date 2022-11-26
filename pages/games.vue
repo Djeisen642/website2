@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container fluid>
     <h1>Games!</h1>
-  </div>
+  </v-container>
 </template>
