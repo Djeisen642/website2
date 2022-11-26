@@ -28,7 +28,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vuejs-accessibility": "^2.0.0",
-    "husky": "^8.0.0",
+    "husky": "^8.0.2",
     "nuxt": "3.0.0",
     "pinst": "^3.0.0",
     "postcss-html": "^1.5.0",
@@ -43,6 +43,6 @@
   "dependencies": {
     "@mdi/font": "^7.0.96",
     "@pinia/nuxt": "^0.4.5",
-    "vuetify": "^3"
+    "vuetify": "^3.0.2"
   }
 }

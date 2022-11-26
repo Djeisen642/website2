@@ -28,6 +28,11 @@ export default defineNuxtPlugin(nuxtApp => {
     blueprint: md3,
     theme: {
       defaultTheme: 'light',
+      variations: {
+        colors: ['primary', 'secondary'],
+        lighten: 3,
+        darken: 0,
+      },
       themes: {
         light,
         dark,
