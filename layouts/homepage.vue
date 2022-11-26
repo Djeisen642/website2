@@ -1,28 +1,24 @@
 <template>
   <v-app :theme="mainStore.theme">
+    <v-banner icon="mdi-wrench" color="warning" class="banner">
+      <v-banner-text class="text-lg-h5">
+        Website under construction. Excuse the mess!
+      </v-banner-text>
+    </v-banner>
     <v-main>
       <slot />
     </v-main>
-    <v-footer class="px-10">
-      <p>2022 - Jason Suttles</p>
-      <v-spacer />
-      <v-btn icon="mdi-github" target="_blank" href="https://github.com/Djeisen642" />
-      <v-btn
-        icon="mdi-linkedin"
-        class="ml-2"
-        target="_blank"
-        href="https://www.linkedin.com/in/jssuttles/"
-      />
-      <v-btn icon="mdi-brightness-4" class="ml-2" @click="toggleTheme" />
-    </v-footer>
+    <default-footer />
   </v-app>
 </template>
 <script setup lang="ts">
-import { Theme, useStore } from '~/store/mainStore';
+import { useStore } from '~/store/mainStore';
+import DefaultFooter from '~/components/DefaultFooter.vue';
 
 const mainStore = useStore();
-
-function toggleTheme() {
-  mainStore.setTheme(mainStore.theme === Theme.LIGHT, true);
-}
 </script>
+<style lang="scss" scoped>
+.banner {
+  min-height: 70px;
+}
+</style>
