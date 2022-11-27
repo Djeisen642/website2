@@ -1,6 +1,10 @@
 <template>
   <div>
-    <v-parallax src="/images/reflection.jpg" height="100vh" lazy-src="/images/reflection_small.jpg">
+    <v-parallax
+      src="/images/reflection.webp"
+      height="100vh"
+      lazy-src="/images/reflection_small.webp"
+    >
       <div class="d-flex flex-column fill-height justify-center">
         <v-sheet color="transparent-card pa-4" flat theme="dark">
           <v-card-title>
@@ -15,12 +19,18 @@
     </v-parallax>
     <v-container class="mb-10">
       <h1 class="text-h3 my-8">My name is Jason Suttles.</h1>
-      <p class="text-h5 mb-4">Umm... Here's my resumé.</p>
-      <p class="text-h5 mb-4">My LinkedIn</p>
-      <p class="text-h5 mb-4">My Github account...</p>
-      <p class="text-h5 mb-4">The projects I've been working on...</p>
-      <p class="text-h5 mb-4">Some things I find interesting...</p>
-      <p class="text-h5 mb-4">I mentioned games, right?</p>
+      <!--      <p class="text-h5 mb-4">Umm... Here's my resumé.</p>-->
+      <p class="text-h5 mb-4">
+        <a href="https://www.linkedin.com/in/jssuttles/" target="_blank">
+          Umm... Here's my LinkedIn
+        </a>
+      </p>
+      <p class="text-h5 mb-4">
+        <a href="https://github.com/Djeisen642" target="_blank">My Github account...</a>
+      </p>
+      <!--      <p class="text-h5 mb-4">The projects I've been working on...</p>-->
+      <!--      <p class="text-h5 mb-4">Some things I find interesting...</p>-->
+      <p class="text-h5 mb-4"><a href="/games" target="_blank">I mentioned games, right?</a></p>
       <p class="text-body mb-4">
         Oh... Introductions? Umm... Hi! My name is Jason Suttles. I currently work at Medicom
         Technologies building healthcare software transferring medical images and facilitating
@@ -59,7 +69,7 @@ definePageMeta({
   layout: 'homepage',
 });
 useHead({
-  title: "Jason's home page",
+  title: 'Home',
 });
 </script>
 <style lang="scss" scoped>

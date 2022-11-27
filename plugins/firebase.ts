@@ -21,7 +21,7 @@ export default defineNuxtPlugin(() => {
     storageBucket: runtimeConfig.GOOGLE_FIREBASE_STORAGE_BUCKET,
     messagingSenderId: runtimeConfig.GOOGLE_FIREBASE_MESSAGING_ID,
     appId: runtimeConfig.GOOGLE_FIREBASE_APP_ID,
-    measurementId: runtimeConfig.GOOGLE_FIREBASE_MESSAGING_ID,
+    measurementId: runtimeConfig.GOOGLE_FIREBASE_MEASUREMENT_ID,
   };
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);

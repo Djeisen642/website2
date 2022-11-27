@@ -1,18 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-const authDomain =
-  process.env.NODE_ENV === 'production'
-    ? 'jasonsuttles-website.firebaseapp.com'
-    : 'jason-website-local.firebaseapp.com';
-const projectId =
-  process.env.NODE_ENV === 'production' ? 'jasonsuttles-website' : 'jason-website-local';
-const storageBucket =
-  process.env.NODE_ENV === 'production'
-    ? 'jasonsuttles-website.appspot.com'
-    : 'jason-website-local.appspot.com';
+const isProduction = process.env.NODE_ENV === 'production';
+const authDomain = isProduction
+  ? 'jasonsuttles-website.firebaseapp.com'
+  : 'jason-website-local.firebaseapp.com';
+const projectId = isProduction ? 'jasonsuttles-website' : 'jason-website-local';
+const storageBucket = isProduction
+  ? 'jasonsuttles-website.appspot.com'
+  : 'jason-website-local.appspot.com';
 export default defineNuxtConfig({
   css: ['@/assets/styles/index.scss'],
-  debug: process.env.NODE_ENV !== 'production',
+  debug: !isProduction,
   typescript: {
     strict: true,
   },
@@ -37,6 +35,7 @@ export default defineNuxtConfig({
   telemetry: false,
   app: {
     head: {
+      titleTemplate: 'A Website - %s',
       meta: [
         {
           property: 'description',
