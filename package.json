@@ -45,6 +45,7 @@
     "@mdi/font": "^7.0.96",
     "@pinia/nuxt": "^0.4.5",
     "firebase": "^9.14.0",
-    "vuetify": "^3.0.2"
+    "vuetify": "^3.0.2",
+    "web-vitals": "^3.1.0"
   }
 }
