@@ -1,5 +1,5 @@
 <template>
-  <v-footer class="px-10 footer">
+  <v-footer class="px-md-10 footer">
     <p>2022 - Jason Suttles</p>
     <v-spacer />
     <v-btn icon="mdi-github" target="_blank" href="https://github.com/Djeisen642" />

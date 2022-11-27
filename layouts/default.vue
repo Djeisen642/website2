@@ -1,8 +1,8 @@
 <template>
   <v-app :theme="mainStore.theme">
-    <under-construction-banner />
-    <!--    <v-app-bar />-->
+    <v-app-bar />
     <v-main>
+      <under-construction-banner />
       <slot />
     </v-main>
     <default-footer />

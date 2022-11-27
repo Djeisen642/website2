@@ -1,7 +1,7 @@
 <template>
   <v-app :theme="mainStore.theme">
-    <under-construction-banner />
     <v-main>
+      <under-construction-banner />
       <slot />
     </v-main>
     <default-footer />
@@ -14,8 +14,3 @@ import UnderConstructionBanner from '~/components/UnderConstructionBanner.vue';
 
 const mainStore = useStore();
 </script>
-<style lang="scss" scoped>
-.banner {
-  min-height: 70px;
-}
-</style>
