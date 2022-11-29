@@ -37,6 +37,14 @@ const pages = ref([
     title: 'Games',
     to: '/games',
   },
+  {
+    title: 'Blog',
+    to: '/blog',
+  },
+  {
+    title: 'Interesting links',
+    to: '/links',
+  },
 ]);
 
 const route = useRoute();
