@@ -35,6 +35,9 @@ export default defineNuxtConfig({
   telemetry: false,
   app: {
     head: {
+      htmlAttrs: {
+        lang: 'en',
+      },
       titleTemplate: 'A Website - %s',
       meta: [
         {
