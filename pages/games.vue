@@ -67,7 +67,13 @@ type GameDetails = {
 };
 
 const dialog = ref(false);
-const selectedGame = ref<GameDetails>(null);
+const selectedGame = ref<GameDetails>({
+  description: '',
+  image: '',
+  link: '',
+  shortDescription: '',
+  title: '',
+});
 
 const onGameClick = (game: GameDetails) => {
   selectedGame.value = game;
