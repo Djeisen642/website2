@@ -5487,9 +5487,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.28.0":
-  version: 8.28.0
-  resolution: "eslint@npm:8.28.0"
+"eslint@npm:^8.29.0":
+  version: 8.29.0
+  resolution: "eslint@npm:8.29.0"
   dependencies:
     "@eslint/eslintrc": ^1.3.3
     "@humanwhocodes/config-array": ^0.11.6
@@ -5532,7 +5532,7 @@ __metadata:
     text-table: ^0.2.0
   bin:
     eslint: bin/eslint.js
-  checksum: 1b793486b2ec80f0602d75fff7116f7c39a3286f523608a999eead9bec4154a06841785d2b4fb87f8292a94cf85778c1dbfaec727772a09c4d604fdb9ff0809a
+  checksum: e05204b05907b82d910983995cb946e0ba62ca514eb2b6791c43f623333b143564a2eee0139909d31c10935c21877d815b1f76dd674a59cb91c471064325c4ab
   languageName: node
   linkType: hard
 
@@ -13565,9 +13565,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vuetify@npm:^3.0.2":
-  version: 3.0.2
-  resolution: "vuetify@npm:3.0.2"
+"vuetify@npm:^3.0.3":
+  version: 3.0.3
+  resolution: "vuetify@npm:3.0.3"
   peerDependencies:
     vite-plugin-vuetify: ^1.0.0-alpha.12
     vue: ^3.2.0
@@ -13580,7 +13580,7 @@ __metadata:
       optional: true
     webpack-plugin-vuetify:
       optional: true
-  checksum: 600d7fa8e146cc8be158351ccf68ae893fa7ae166bf61409c396199ef2e8585dce529ae371f3d236019937d2a2ae64a7777cbb5d77b8e5e1a3d526f65b8f4c24
+  checksum: 0884751357d96dd811ad565414537101268739c8c6f0c138a9ca3de7b55da215f1924375ce18cbaeb02658200f40846a502ea95213858d1e0437b584fdaf798e
   languageName: node
   linkType: hard
 
@@ -13639,7 +13639,7 @@ __metadata:
     "@nuxtjs/robots": ^3.0.0
     "@pinia/nuxt": ^0.4.6
     "@rushstack/eslint-patch": ^1.2.0
-    eslint: ^8.28.0
+    eslint: ^8.29.0
     eslint-config-prettier: ^8.5.0
     eslint-plugin-prettier: ^4.2.1
     eslint-plugin-vuejs-accessibility: ^2.0.0
@@ -13656,7 +13656,7 @@ __metadata:
     stylelint-config-recommended-scss: ^8.0.0
     stylelint-config-recommended-vue: ^1.4.0
     stylelint-config-standard-scss: ^6.1.0
-    vuetify: ^3.0.2
+    vuetify: ^3.0.3
     web-vitals: ^3.1.0
   languageName: unknown
   linkType: soft
