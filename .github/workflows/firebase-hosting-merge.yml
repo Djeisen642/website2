@@ -29,6 +29,7 @@ jobs:
           GOOGLE_FIREBASE_APP_ID: '${{ secrets.GOOGLE_FIREBASE_APP_ID }}'
           GOOGLE_FIREBASE_MESSAGING_ID: '${ secrets.GOOGLE_FIREBASE_MESSAGING_ID }}'
           GOOGLE_FIREBASE_MEASUREMENT_ID: '${{ secrets.GOOGLE_FIREBASE_MEASUREMENT_ID }}'
+          GOOGLE_FIREBASE_APP_CHECK_SITE_KEY: '${{ secrets.GOOGLE_FIREBASE_APP_CHECK_SITE_KEY }}'
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
