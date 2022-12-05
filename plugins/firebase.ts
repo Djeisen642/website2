@@ -1,10 +1,17 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from 'firebase/app';
-import { getAnalytics, logEvent } from 'firebase/analytics';
+import { ReCaptchaV3Provider, initializeAppCheck } from '@firebase/app-check';
+import { collection } from '@firebase/firestore';
 import { getPerformance } from '@firebase/performance';
+import { getAnalytics, logEvent } from 'firebase/analytics';
+import { initializeApp } from 'firebase/app';
+import { CollectionReference, DocumentData, getFirestore } from 'firebase/firestore';
 import { onCLS, onFID, onLCP } from 'web-vitals';
 import { ReportCallback } from 'web-vitals/src/types/base';
+
 import { defineNuxtPlugin, useRuntimeConfig } from '#imports';
+
+import { GameDetails, LinkDetails } from '~/utils/types';
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -53,7 +60,39 @@ export default defineNuxtPlugin(() => {
     });
   };
 
+  const logError = (error: Error) => {
+    logEvent(analytics, 'error', {
+      message: error.message,
+      stack: error.stack,
+    });
+  };
+
   onCLS(sendToGoogleAnalytics);
   onFID(sendToGoogleAnalytics);
   onLCP(sendToGoogleAnalytics);
+
+  initializeAppCheck(app, {
+    provider: new ReCaptchaV3Provider(runtimeConfig.GOOGLE_FIREBASE_APP_CHECK_SITE_KEY),
+
+    // Optional argument. If true, the SDK automatically refreshes App Check
+    // tokens as needed.
+    isTokenAutoRefreshEnabled: true,
+  });
+
+  const firestore = getFirestore(app);
+  const createCollection = <T = DocumentData>(collectionName: string) => {
+    return collection(firestore, collectionName) as CollectionReference<T>;
+  };
+
+  return {
+    provide: {
+      db: firestore,
+      collections: {
+        games: createCollection<GameDetails>('games'),
+        links: createCollection<LinkDetails>('links'),
+      },
+      analytics,
+      logError,
+    },
+  };
 });

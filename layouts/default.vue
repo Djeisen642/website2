@@ -20,10 +20,11 @@
   </v-app>
 </template>
 <script setup lang="ts">
-import { useStore } from '~/store/mainStore';
+import { ref, useRoute } from '#imports';
+
 import DefaultFooter from '~/components/DefaultFooter.vue';
 import UnderConstructionBanner from '~/components/UnderConstructionBanner.vue';
-import { ref, useRoute } from '#imports';
+import { useStore } from '~/store/mainStore';
 
 const mainStore = useStore();
 

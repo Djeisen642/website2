@@ -2,3 +2,7 @@
 **/build
 **/buildServer
 **/buildClient
+
+## not sure but these aren't currently being parsed correctly by prettier
+app.vue
+components/UnderConstructionBanner.vue

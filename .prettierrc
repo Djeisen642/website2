@@ -4,5 +4,17 @@
   "singleQuote": true,
   "semi": true,
   "trailingComma": "all",
-  "tabWidth": 2
+  "tabWidth": 2,
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "^#",
+    "^(../|./|@/)"
+  ],
+  "importOrderParserPlugins": [
+    "typescript",
+    "classProperties",
+    "[\"decorators\", { \"decoratorsBeforeExport\": true }]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }

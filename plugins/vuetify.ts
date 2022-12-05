@@ -1,8 +1,8 @@
 import { defineNuxtPlugin } from 'nuxt/app';
-import { createVuetify, ThemeDefinition, VuetifyOptions } from 'vuetify';
+import { ThemeDefinition, VuetifyOptions, createVuetify } from 'vuetify';
+import { md3 } from 'vuetify/blueprints';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
-import { md3 } from 'vuetify/blueprints';
 import colors from 'vuetify/lib/util/colors';
 
 export default defineNuxtPlugin(nuxtApp => {

@@ -7,6 +7,11 @@
     <v-list lines="three">
       <div v-for="link in links" :key="link.title">
         <v-list-item class="display-large-link-list-item">
+          <template #prepend>
+            <v-avatar>
+              <v-img cover :src="link.link + '/favicon.ico'" />
+            </v-avatar>
+          </template>
           <v-list-item-title>{{ link.title }}</v-list-item-title>
           <v-list-item-subtitle>
             <span v-html="link.description"></span>
@@ -14,7 +19,7 @@
 
           <template #append>
             <v-list-item-action>
-              <v-btn :href="link.link" target="_blank"> Go see it! </v-btn>
+              <v-btn :href="link.link" target="_blank"> Go see it!</v-btn>
             </v-list-item-action>
           </template>
         </v-list-item>
@@ -22,7 +27,8 @@
           <v-list-item-title>{{ link.title }}</v-list-item-title>
           <v-list-item-subtitle>{{ link.shortDescription }}</v-list-item-subtitle>
         </v-list-item>
-        <v-divider inset />
+        <v-divider inset class="display-large-link-list-item" />
+        <v-divider class="d-md-none" />
       </div>
     </v-list>
     <v-dialog v-model="dialog">
@@ -45,14 +51,14 @@
   </v-container>
 </template>
 <script setup lang="ts">
+import { getDocs } from '@firebase/firestore';
+
+import { useNuxtApp } from '#app';
 import { ref, useHead } from '#imports';
 
-type LinkDetails = {
-  title: string;
-  description: string;
-  shortDescription: string;
-  link: string;
-};
+import { LinkDetails } from '~/utils/types';
+
+const { $collections, $logError } = useNuxtApp();
 
 const dialog = ref(false);
 const selectedLink = ref<LinkDetails>({
@@ -67,22 +73,34 @@ const onLinkClick = (link: LinkDetails) => {
   dialog.value = true;
 };
 
-const links = ref<LinkDetails[]>([
-  {
-    title: 'Advent of Code',
-    shortDescription: 'Daily code challenges created yearly in December',
-    description:
-      'Daily code challenges created yearly in the month of December. I\'ve attempted to solve them for many years since I was introduced to the challenges by <a href="https://github.com/vasekstebra">Vaclav Stebra</a>. Here are my solution attempts in <a href="https://github.com/Djeisen642/adventofcode2022">2022</a>, <a href="https://github.com/Djeisen642/adventofcode2021">2021</a>, and <a href="https://github.com/Djeisen642/AdventOfCode2018">2018</a>.',
-    link: 'https://adventofcode.com/',
-  },
-  {
-    title: 'Regex 101',
-    shortDescription: 'How do you test regex? Probably with Regex 101.',
-    description:
-      'Regex is short for Regular Expression. It can be used to test that a string contains a certain set of characters in a particular order, maybe starting with or ending with that set of characters. Regex 101 allows you to test one regular expression against several strings and explains why it may or may not match.',
-    link: 'https://regex101.com/',
-  },
-]);
+const links = ref<LinkDetails[]>([]);
+
+onBeforeMount(async () => {
+  try {
+    const querySnapshot = await getDocs($collections.links);
+    querySnapshot.forEach(doc => {
+      links.value.push(doc.data());
+    });
+    // if (!links.value.length) { // TODO how to seed data???
+    //   await setDoc(doc($collections.links), {
+    //     title: 'Advent of Code',
+    //     shortDescription: 'Daily code challenges created yearly in December',
+    //     description:
+    //       'Daily code challenges created yearly in the month of December. I\'ve attempted to solve them for many years since I was introduced to the challenges by <a href="https://github.com/vasekstebra">Vaclav Stebra</a>. Here are my solution attempts in <a href="https://github.com/Djeisen642/adventofcode2022">2022</a>, <a href="https://github.com/Djeisen642/adventofcode2021">2021</a>, and <a href="https://github.com/Djeisen642/AdventOfCode2018">2018</a>.',
+    //     link: 'https://adventofcode.com/',
+    //   });
+    //   await setDoc(doc($collections.links), {
+    //     title: 'Regex 101',
+    //     shortDescription: 'How do you test regex? Probably with Regex 101.',
+    //     description:
+    //       'Regex is short for Regular Expression. It can be used to test that a string contains a certain set of characters in a particular order, maybe starting with or ending with that set of characters. Regex 101 allows you to test one regular expression against several strings and explains why it may or may not match.',
+    //     link: 'https://regex101.com/',
+    //   });
+    // }
+  } catch (error) {
+    $logError(error instanceof Error ? error : new Error('Unexpected error'));
+  }
+});
 
 useHead({
   title: 'Interesting links!',

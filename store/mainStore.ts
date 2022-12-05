@@ -1,11 +1,14 @@
 import { defineStore } from 'pinia';
+
 import { isDarkSystemPreference, setupWatchForSystemPreference } from '#imports';
+
 import { disableWatchForSystemPreference } from '~/composables/themeSystemPreference';
 
 export enum Theme {
   LIGHT = 'light',
   DARK = 'dark',
 }
+
 type State = {
   theme: Theme;
 };
