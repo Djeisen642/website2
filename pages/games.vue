@@ -80,63 +80,61 @@ const onGameClick = (game: GameDetails) => {
 
 const games = ref<GameDetails[]>([]);
 
-onBeforeMount(async () => {
-  try {
-    const querySnapshot = await getDocs($collections.games);
-    querySnapshot.forEach(doc => {
-      games.value.push(doc.data());
-    });
-    games.value.sort((a, b) => a.year - b.year);
-    // if (!games.value.length) { // TODO how to seed data???
-    //   const gamesToAdd = [
-    //     {
-    //       name: 'Plonk',
-    //       year: 2019,
-    //       shortDescription: 'A game of spinning wheels and death!!! No two games are the same.',
-    //       description:
-    //         'A game of spinning wheels and death!!! No two games are the same. It gets more difficult as you play. <br/>Made in collaboration with <a href="https://www.linkedin.com/in/thomas-huneycutt-164842133/">Thomas Huneycutt</a> and <a href="https://www.linkedin.com/in/jason-punch-07317aab/">Jason Punch</a>',
-    //       image: '/images/plonk.webp',
-    //       imageSrcSet: '/images/plonk.webp 1x, /images/plonk2x.webp 2x',
-    //       link: 'https://djeisen642.itch.io/plonk',
-    //     },
-    //     {
-    //       name: 'SpaceBattlez',
-    //       year: 2020,
-    //       shortDescription: 'A competitive space battle!',
-    //       description:
-    //         'A competitive space battle! Game is based on Asteroids game play. <br/>Made in collaboration with  <a href="https://www.linkedin.com/in/thomas-huneycutt-164842133/">Thomas Huneycutt</a> and <a href="https://www.linkedin.com/in/jason-punch-07317aab/">Jason Punch</a>',
-    //       image: '/images/spacebattlez.webp',
-    //       imageSrcSet: '/images/spacebattlez.webp 1x, /images/spacebattlez2x.webp 2x',
-    //       link: 'https://djeisen642.itch.io/spacebattlez',
-    //     },
-    //     {
-    //       name: 'The Passing',
-    //       year: 2019,
-    //       shortDescription: 'A horror mystery thriller on a train about a cat.',
-    //       description:
-    //         'A tale unlike any you\'ve seen before. Travel with Zoey the Cat through this mystery thriller. <br/>Made in collaboration with  <a href="https://www.linkedin.com/in/thomas-huneycutt-164842133/">Thomas Huneycutt</a>',
-    //       image: '/images/thepassing.webp',
-    //       imageSrcSet: '/images/thepassing.webp 1x, /images/thepassing2x.webp 2x',
-    //       link: 'https://djeisen642.itch.io/the-passing',
-    //     },
-    //     {
-    //       name: 'Network Nightmares',
-    //       year: 2017,
-    //       shortDescription: 'A VR game to find a virus in a network.',
-    //       description:
-    //         'A Google Cardbard VR game made in Unity in which the player attempts to find a virus in an interconnected network. Won an award in a game jam. <br/>Made in collaboration with  <a href="https://www.linkedin.com/in/thomas-huneycutt-164842133/">Thomas Huneycutt</a>, John Hutcherson and Zoe Liu',
-    //       image: '/images/networknightmares.webp',
-    //       link: 'https://github.com/Djeisen642/vrcruizers',
-    //     },
-    //   ];
-    //   for (const gamesToAddElement of gamesToAdd) {
-    //     await setDoc(doc($collections.games), gamesToAddElement);
-    //   }
-    // }
-  } catch (error) {
-    $logError(error instanceof Error ? error : new Error('Unexpected error'));
-  }
-});
+try {
+  const querySnapshot = await getDocs($collections.games);
+  querySnapshot.forEach(doc => {
+    games.value.push(doc.data());
+  });
+  games.value.sort((a, b) => a.year - b.year);
+  // if (!games.value.length) { // TODO how to seed data???
+  //   const gamesToAdd = [
+  //     {
+  //       name: 'Plonk',
+  //       year: 2019,
+  //       shortDescription: 'A game of spinning wheels and death!!! No two games are the same.',
+  //       description:
+  //         'A game of spinning wheels and death!!! No two games are the same. It gets more difficult as you play. <br/>Made in collaboration with <a href="https://www.linkedin.com/in/thomas-huneycutt-164842133/">Thomas Huneycutt</a> and <a href="https://www.linkedin.com/in/jason-punch-07317aab/">Jason Punch</a>',
+  //       image: '/images/plonk.webp',
+  //       imageSrcSet: '/images/plonk.webp 1x, /images/plonk2x.webp 2x',
+  //       link: 'https://djeisen642.itch.io/plonk',
+  //     },
+  //     {
+  //       name: 'SpaceBattlez',
+  //       year: 2020,
+  //       shortDescription: 'A competitive space battle!',
+  //       description:
+  //         'A competitive space battle! Game is based on Asteroids game play. <br/>Made in collaboration with  <a href="https://www.linkedin.com/in/thomas-huneycutt-164842133/">Thomas Huneycutt</a> and <a href="https://www.linkedin.com/in/jason-punch-07317aab/">Jason Punch</a>',
+  //       image: '/images/spacebattlez.webp',
+  //       imageSrcSet: '/images/spacebattlez.webp 1x, /images/spacebattlez2x.webp 2x',
+  //       link: 'https://djeisen642.itch.io/spacebattlez',
+  //     },
+  //     {
+  //       name: 'The Passing',
+  //       year: 2019,
+  //       shortDescription: 'A horror mystery thriller on a train about a cat.',
+  //       description:
+  //         'A tale unlike any you\'ve seen before. Travel with Zoey the Cat through this mystery thriller. <br/>Made in collaboration with  <a href="https://www.linkedin.com/in/thomas-huneycutt-164842133/">Thomas Huneycutt</a>',
+  //       image: '/images/thepassing.webp',
+  //       imageSrcSet: '/images/thepassing.webp 1x, /images/thepassing2x.webp 2x',
+  //       link: 'https://djeisen642.itch.io/the-passing',
+  //     },
+  //     {
+  //       name: 'Network Nightmares',
+  //       year: 2017,
+  //       shortDescription: 'A VR game to find a virus in a network.',
+  //       description:
+  //         'A Google Cardbard VR game made in Unity in which the player attempts to find a virus in an interconnected network. Won an award in a game jam. <br/>Made in collaboration with  <a href="https://www.linkedin.com/in/thomas-huneycutt-164842133/">Thomas Huneycutt</a>, John Hutcherson and Zoe Liu',
+  //       image: '/images/networknightmares.webp',
+  //       link: 'https://github.com/Djeisen642/vrcruizers',
+  //     },
+  //   ];
+  //   for (const gamesToAddElement of gamesToAdd) {
+  //     await setDoc(doc($collections.games), gamesToAddElement);
+  //   }
+  // }
+} catch (error) {
+  $logError(error instanceof Error ? error : new Error('Unexpected error'));
+}
 
 useHead({
   title: 'Games!',

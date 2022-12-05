@@ -29,7 +29,9 @@
         <a href="https://github.com/Djeisen642" target="_blank">My Github account...</a>
       </p>
       <!--      <p class="text-h5 mb-4">The projects I've been working on...</p>-->
-      <!--      <p class="text-h5 mb-4">Some things I find interesting...</p>-->
+      <p class="text-h5 mb-4">
+        <a href="/links" target="_blank">Some things I find interesting...</a>
+      </p>
       <p class="text-h5 mb-4"><a href="/games" target="_blank">I mentioned games, right?</a></p>
       <p class="text-body mb-4">
         Oh... Introductions? Umm... Hi! My name is Jason Suttles. I currently work at Medicom

@@ -75,32 +75,30 @@ const onLinkClick = (link: LinkDetails) => {
 
 const links = ref<LinkDetails[]>([]);
 
-onBeforeMount(async () => {
-  try {
-    const querySnapshot = await getDocs($collections.links);
-    querySnapshot.forEach(doc => {
-      links.value.push(doc.data());
-    });
-    // if (!links.value.length) { // TODO how to seed data???
-    //   await setDoc(doc($collections.links), {
-    //     title: 'Advent of Code',
-    //     shortDescription: 'Daily code challenges created yearly in December',
-    //     description:
-    //       'Daily code challenges created yearly in the month of December. I\'ve attempted to solve them for many years since I was introduced to the challenges by <a href="https://github.com/vasekstebra">Vaclav Stebra</a>. Here are my solution attempts in <a href="https://github.com/Djeisen642/adventofcode2022">2022</a>, <a href="https://github.com/Djeisen642/adventofcode2021">2021</a>, and <a href="https://github.com/Djeisen642/AdventOfCode2018">2018</a>.',
-    //     link: 'https://adventofcode.com/',
-    //   });
-    //   await setDoc(doc($collections.links), {
-    //     title: 'Regex 101',
-    //     shortDescription: 'How do you test regex? Probably with Regex 101.',
-    //     description:
-    //       'Regex is short for Regular Expression. It can be used to test that a string contains a certain set of characters in a particular order, maybe starting with or ending with that set of characters. Regex 101 allows you to test one regular expression against several strings and explains why it may or may not match.',
-    //     link: 'https://regex101.com/',
-    //   });
-    // }
-  } catch (error) {
-    $logError(error instanceof Error ? error : new Error('Unexpected error'));
-  }
-});
+try {
+  const querySnapshot = await getDocs($collections.links);
+  querySnapshot.forEach(doc => {
+    links.value.push(doc.data());
+  });
+  // if (!links.value.length) { // TODO how to seed data???
+  //   await setDoc(doc($collections.links), {
+  //     title: 'Advent of Code',
+  //     shortDescription: 'Daily code challenges created yearly in December',
+  //     description:
+  //       'Daily code challenges created yearly in the month of December. I\'ve attempted to solve them for many years since I was introduced to the challenges by <a href="https://github.com/vasekstebra">Vaclav Stebra</a>. Here are my solution attempts in <a href="https://github.com/Djeisen642/adventofcode2022">2022</a>, <a href="https://github.com/Djeisen642/adventofcode2021">2021</a>, and <a href="https://github.com/Djeisen642/AdventOfCode2018">2018</a>.',
+  //     link: 'https://adventofcode.com/',
+  //   });
+  //   await setDoc(doc($collections.links), {
+  //     title: 'Regex 101',
+  //     shortDescription: 'How do you test regex? Probably with Regex 101.',
+  //     description:
+  //       'Regex is short for Regular Expression. It can be used to test that a string contains a certain set of characters in a particular order, maybe starting with or ending with that set of characters. Regex 101 allows you to test one regular expression against several strings and explains why it may or may not match.',
+  //     link: 'https://regex101.com/',
+  //   });
+  // }
+} catch (error) {
+  $logError(error instanceof Error ? error : new Error('Unexpected error'));
+}
 
 useHead({
   title: 'Interesting links!',
