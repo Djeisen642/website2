@@ -13728,9 +13728,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vuetify@npm:^3.0.3":
-  version: 3.0.3
-  resolution: "vuetify@npm:3.0.3"
+"vuetify@npm:^3.1.3":
+  version: 3.1.3
+  resolution: "vuetify@npm:3.1.3"
   peerDependencies:
     vite-plugin-vuetify: ^1.0.0-alpha.12
     vue: ^3.2.0
@@ -13743,7 +13743,7 @@ __metadata:
       optional: true
     webpack-plugin-vuetify:
       optional: true
-  checksum: 0884751357d96dd811ad565414537101268739c8c6f0c138a9ca3de7b55da215f1924375ce18cbaeb02658200f40846a502ea95213858d1e0437b584fdaf798e
+  checksum: 036d7375207ffa77eef662349cdd0f28d3b2bd9324f8e68726d62695c83613a7c6607ca7794f2c8f09be03a3ba059db0c500285f22edcddd6c235ae26d29c569
   languageName: node
   linkType: hard
 
@@ -13820,7 +13820,7 @@ __metadata:
     stylelint-config-recommended-scss: ^8.0.0
     stylelint-config-recommended-vue: ^1.4.0
     stylelint-config-standard-scss: ^6.1.0
-    vuetify: ^3.0.3
+    vuetify: ^3.1.3
     web-vitals: ^3.1.0
   languageName: unknown
   linkType: soft
