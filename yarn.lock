@@ -1935,13 +1935,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pinia/nuxt@npm:^0.4.6":
-  version: 0.4.6
-  resolution: "@pinia/nuxt@npm:0.4.6"
+"@pinia/nuxt@npm:^0.4.7":
+  version: 0.4.7
+  resolution: "@pinia/nuxt@npm:0.4.7"
   dependencies:
     "@nuxt/kit": ^3.0.0
-    pinia: ">=2.0.27"
-  checksum: 570a918695922ee38b7ae741f0eac96a33917f251d112c83e4a2486cc768bf257825a6e497d7bd7852122a7afa42d4d8e3e79438497b8fa76f9cf50a89ecb73c
+    pinia: ">=2.0.31"
+  checksum: 6ff568fad66406898003ecc1703a0120d70f5413f71efedd69a0d45421df4092b9ccddbe77455ee2d57c543097163c83826259d7744825fc9063b703df136c60
   languageName: node
   linkType: hard
 
@@ -2659,6 +2659,13 @@ __metadata:
   version: 6.4.5
   resolution: "@vue/devtools-api@npm:6.4.5"
   checksum: 40c5adc8788cb283972ce09ba7ce105fa894f4decec9168829cc8e6211462763402442e6c31be76f9da62b0e74ae724971b924571367b4ac89b94dc6894e2d07
+  languageName: node
+  linkType: hard
+
+"@vue/devtools-api@npm:^6.5.0":
+  version: 6.5.0
+  resolution: "@vue/devtools-api@npm:6.5.0"
+  checksum: ec819ef3a426e91d09e9cfefd2827e9ed8ec9d62bb3b3e0674f3da8c7e92a4b879c3b777dc7329172ca6fe2670b62dd5580d23160339208f0f5ae038f2e504ad
   languageName: node
   linkType: hard
 
@@ -10326,11 +10333,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pinia@npm:>=2.0.27":
-  version: 2.0.27
-  resolution: "pinia@npm:2.0.27"
+"pinia@npm:>=2.0.31":
+  version: 2.0.31
+  resolution: "pinia@npm:2.0.31"
   dependencies:
-    "@vue/devtools-api": ^6.4.5
+    "@vue/devtools-api": ^6.5.0
     vue-demi: "*"
   peerDependencies:
     "@vue/composition-api": ^1.4.0
@@ -10341,7 +10348,7 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: 29c862ea4304cdfeae385cbd2ab08100809aa9a79c147c4cb4085215601c0323e0ca664cea6abcaa0298e7ea53865117b6950ebb59224347fbc1683dbe956ac8
+  checksum: 1391bb77767fb881fae634b16b522921e68b75fbe2beb80956b3c3719227eb740e91243eaca39d97fa3062df312594f993e5ddef51b58beb1b961629acd78f7b
   languageName: node
   linkType: hard
 
@@ -13669,7 +13676,7 @@ __metadata:
     "@mdi/js": ^7.1.96
     "@nuxtjs/eslint-config-typescript": ^12.0.0
     "@nuxtjs/robots": ^3.0.0
-    "@pinia/nuxt": ^0.4.6
+    "@pinia/nuxt": ^0.4.7
     "@rushstack/eslint-patch": ^1.2.0
     "@trivago/prettier-plugin-sort-imports": ^4.0.0
     eslint: ^8.34.0
