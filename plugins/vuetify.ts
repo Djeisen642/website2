@@ -1,8 +1,10 @@
+import { mdiBrightness4, mdiGithub, mdiLinkedin, mdiWrench } from '@mdi/js';
 import { defineNuxtPlugin } from 'nuxt/app';
 import { ThemeDefinition, VuetifyOptions, createVuetify } from 'vuetify';
 import { md3 } from 'vuetify/blueprints';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
+import { aliases, mdi } from 'vuetify/iconsets/mdi-svg';
 import colors from 'vuetify/lib/util/colors';
 
 export default defineNuxtPlugin(nuxtApp => {
@@ -26,6 +28,19 @@ export default defineNuxtPlugin(nuxtApp => {
     components,
     directives,
     blueprint: md3,
+    icons: {
+      defaultSet: 'mdi',
+      aliases: {
+        ...aliases,
+        github: mdiGithub,
+        brightness: mdiBrightness4,
+        wrench: mdiWrench,
+        linkedin: mdiLinkedin,
+      },
+      sets: {
+        mdi,
+      },
+    },
     theme: {
       defaultTheme: 'light',
       variations: {

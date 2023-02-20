@@ -2,14 +2,14 @@
   <v-footer class="px-md-10 footer">
     <p>2022 - Jason Suttles</p>
     <v-spacer />
-    <v-btn icon="mdi-github" target="_blank" href="https://github.com/Djeisen642" />
+    <v-btn icon="$github" target="_blank" href="https://github.com/Djeisen642" />
     <v-btn
-      icon="mdi-linkedin"
+      icon="$linkedin"
       class="ml-2"
       target="_blank"
       href="https://www.linkedin.com/in/jssuttles/"
     />
-    <v-btn icon="mdi-brightness-4" class="ml-2" @click="toggleTheme" />
+    <v-btn icon="$brightness" class="ml-2" @click="toggleTheme" />
   </v-footer>
 </template>
 <script setup lang="ts">

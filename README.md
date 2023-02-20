@@ -34,3 +34,7 @@ yarn preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+
+## NOTES
+Nuxt > 3.1 is currently incompatible with vuetify. Not sure where the problem is
