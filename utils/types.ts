@@ -3,6 +3,7 @@ export type LinkDetails = {
   description: string;
   shortDescription: string;
   link: string;
+  imageExists?: boolean;
 };
 
 export type GameDetails = {

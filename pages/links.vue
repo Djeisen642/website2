@@ -9,7 +9,8 @@
         <v-list-item class="display-large-link-list-item">
           <template #prepend>
             <v-avatar>
-              <v-img cover :src="link.link + '/favicon.ico'" />
+              <v-img v-if="link.imageExists" cover :src="link.link + '/favicon.ico'" />
+              <span v-else class="text-h5">{{ link.title.substring(0, 1).toUpperCase() }}</span>
             </v-avatar>
           </template>
           <v-list-item-title>{{ link.title }}</v-list-item-title>
@@ -57,6 +58,7 @@ import { useNuxtApp } from '#app';
 import { ref, useHead } from '#imports';
 
 import { LinkDetails } from '~/utils/types';
+import { checkIfImageExists } from '~~/utils/helpers';
 
 const { $collections, $logError } = useNuxtApp();
 
@@ -77,25 +79,11 @@ const links = ref<LinkDetails[]>([]);
 
 try {
   const querySnapshot = await getDocs($collections.links);
-  querySnapshot.forEach(doc => {
-    links.value.push(doc.data());
+  querySnapshot.forEach(async doc => {
+    const linkObject = doc.data();
+    linkObject.imageExists = await checkIfImageExists(`${linkObject.link}/favicon.ico`);
+    links.value.push(linkObject);
   });
-  // if (!links.value.length) { // TODO how to seed data???
-  //   await setDoc(doc($collections.links), {
-  //     title: 'Advent of Code',
-  //     shortDescription: 'Daily code challenges created yearly in December',
-  //     description:
-  //       'Daily code challenges created yearly in the month of December. I\'ve attempted to solve them for many years since I was introduced to the challenges by <a href="https://github.com/vasekstebra">Vaclav Stebra</a>. Here are my solution attempts in <a href="https://github.com/Djeisen642/adventofcode2022">2022</a>, <a href="https://github.com/Djeisen642/adventofcode2021">2021</a>, and <a href="https://github.com/Djeisen642/AdventOfCode2018">2018</a>.',
-  //     link: 'https://adventofcode.com/',
-  //   });
-  //   await setDoc(doc($collections.links), {
-  //     title: 'Regex 101',
-  //     shortDescription: 'How do you test regex? Probably with Regex 101.',
-  //     description:
-  //       'Regex is short for Regular Expression. It can be used to test that a string contains a certain set of characters in a particular order, maybe starting with or ending with that set of characters. Regex 101 allows you to test one regular expression against several strings and explains why it may or may not match.',
-  //     link: 'https://regex101.com/',
-  //   });
-  // }
 } catch (error) {
   $logError(error instanceof Error ? error : new Error('Unexpected error'));
 }
