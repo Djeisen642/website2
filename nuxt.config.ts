@@ -6,11 +6,13 @@ const envVars = isProduction
       domain: 'jasonsuttles-website.firebaseapp.com',
       projectId: 'jasonsuttles-website',
       bucket: 'jasonsuttles-website.appspot.com',
+      url: 'https://jasonsuttles.dev',
     }
   : {
       domain: 'jason-website-local.firebaseapp.com',
       projectId: 'jason-website-local',
       bucket: 'jason-website-local.appspot.com',
+      url: 'http://localhost:3000',
     };
 const authDomain = envVars.domain;
 const projectId = envVars.projectId;
@@ -21,7 +23,7 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
   },
-  modules: ['@pinia/nuxt', '@nuxtjs/robots'],
+  modules: ['@pinia/nuxt', '@nuxtjs/robots', 'nuxt-simple-sitemap'],
   vite: {
     ssr: {
       noExternal: ['vuetify'],
@@ -37,6 +39,7 @@ export default defineNuxtConfig({
       GOOGLE_FIREBASE_AUTH_DOMAIN: authDomain,
       GOOGLE_FIREBASE_PROJECT_ID: projectId,
       GOOGLE_FIREBASE_STORAGE_BUCKET: storageBucket,
+      siteUrl: envVars.url,
     },
   },
   ssr: false,
