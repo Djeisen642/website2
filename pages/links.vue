@@ -8,7 +8,7 @@
       <div v-for="link in links" :key="link.title">
         <v-list-item class="display-large-link-list-item">
           <template #prepend>
-            <v-avatar>
+            <v-avatar color="primary">
               <v-img v-if="link.imageExists" cover :src="link.link + '/favicon.ico'" />
               <span v-else class="text-h5">{{ link.title.substring(0, 1).toUpperCase() }}</span>
             </v-avatar>
