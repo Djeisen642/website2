@@ -188,3 +188,5 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 .idea/git_toolbox_prj.xml
+
+.DS_Store

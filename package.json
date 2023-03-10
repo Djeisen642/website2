@@ -25,12 +25,12 @@
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@nuxtjs/robots": "^3.0.0",
     "@rushstack/eslint-patch": "^1.2.0",
-    "@trivago/prettier-plugin-sort-imports": "^4.0.0",
-    "eslint": "^8.34.0",
-    "eslint-config-prettier": "^8.6.0",
+    "@trivago/prettier-plugin-sort-imports": "^4.1.1",
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vuejs-accessibility": "^2.1.0",
-    "firebase-tools": "^11.23.1",
+    "firebase-tools": "^11.24.1",
     "husky": "^8.0.3",
     "nuxt": "3.0.x",
     "pinst": "^3.0.0",
@@ -43,9 +43,9 @@
   },
   "dependencies": {
     "@mdi/js": "^7.1.96",
-    "@pinia/nuxt": "^0.4.6",
-    "firebase": "^9.17.1",
-    "vuetify": "3.1.5",
-    "web-vitals": "^3.1.1"
+    "@pinia/nuxt": "^0.4.7",
+    "firebase": "^9.17.2",
+    "vuetify": "3.1.8",
+    "web-vitals": "^3.3.0"
   }
 }
