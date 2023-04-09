@@ -1,13 +1,12 @@
-# Nuxt 3 Minimal Starter
+# Jason's Website
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Runs live at https://jasonsuttles.dev
 
 ## Setup
 
 Make sure to install the dependencies:
 
 ```bash
-# yarn
 yarn install
 ```
 
@@ -33,10 +32,10 @@ Locally preview production build:
 yarn preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-
 ## Notes:
 
+- uses Nuxt 3, Vue 3, Vuetify to build the frontend framework
 - uses Google Firebase for realtime store, hosting, metrics, authentication (just for admin)
 - uses vue-axe to check for accessibility
 - uses commitlint to ensure commit messages follow a standard
+- uses GitHub Actions to lint, SAST, build, and publish to Google Firebase
