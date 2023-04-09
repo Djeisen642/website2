@@ -35,6 +35,7 @@ yarn preview
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
 
-
-## NOTES
-Nuxt > 3.1 is currently incompatible with vuetify. Not sure where the problem is
+Notes:
+* uses Google Firebase for realtime store, hosting, metrics, authentication (just for admin)
+* uses vue-axe to check for accessibility
+* uses commitlint to ensure commit messages follow a standard
