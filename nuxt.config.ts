@@ -14,6 +14,7 @@ const envVars = isProduction
       bucket: 'jason-website-local.appspot.com',
       url: 'http://localhost:3000',
     };
+
 const authDomain = envVars.domain;
 const projectId = envVars.projectId;
 const storageBucket = envVars.bucket;
@@ -23,17 +24,7 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
   },
-  modules: [
-    '@pinia/nuxt',
-    '@nuxtjs/robots',
-    'nuxt-simple-sitemap',
-    [
-      '@nuxtjs/google-adsense',
-      {
-        id: 'ca-pub-2823127351843622',
-      },
-    ],
-  ],
+  modules: ['@pinia/nuxt', '@nuxtjs/robots', 'nuxt-simple-sitemap'],
   vite: {
     ssr: {
       noExternal: ['vuetify'],
@@ -61,6 +52,15 @@ export default defineNuxtConfig({
       },
       title: 'Home',
       titleTemplate: 'A Website - %s',
+      script: isProduction
+        ? [
+            {
+              crossorigin: 'anonymous',
+              async: true,
+              src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2823127351843622',
+            },
+          ]
+        : [],
       meta: [
         {
           property: 'description',
