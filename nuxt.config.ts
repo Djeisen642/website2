@@ -93,7 +93,7 @@ export default defineNuxtConfig({
       titleTemplate: 'A Website - %s',
       meta: [
         {
-          property: 'description',
+          name: 'description',
           content: "Jason Suttles' website describing himself and showing some stuff",
         },
       ],
