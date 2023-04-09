@@ -6,7 +6,7 @@
   "repository": "git@github.com:Djeisen642/website2.git",
   "author": "Jason <jasonssuttles@gmail.com>",
   "license": "MIT",
-  "packageManager": "yarn@3.4.1",
+  "packageManager": "yarn@3.5.0",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
