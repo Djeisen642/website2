@@ -23,7 +23,17 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
   },
-  modules: ['@pinia/nuxt', '@nuxtjs/robots', 'nuxt-simple-sitemap'],
+  modules: [
+    '@pinia/nuxt',
+    '@nuxtjs/robots',
+    'nuxt-simple-sitemap',
+    [
+      '@nuxtjs/google-adsense',
+      {
+        id: 'ca-pub-2823127351843622',
+      },
+    ],
+  ],
   vite: {
     ssr: {
       noExternal: ['vuetify'],

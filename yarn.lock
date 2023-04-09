@@ -1956,7 +1956,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/kit@npm:3.3.3":
+"@nuxt/kit@npm:3.3.3, @nuxt/kit@npm:^3.0.0-rc.12":
   version: 3.3.3
   resolution: "@nuxt/kit@npm:3.3.3"
   dependencies:
@@ -2163,6 +2163,15 @@ __metadata:
   peerDependencies:
     eslint: ^8.23.0
   checksum: 25f65cd98ae87cb767d17dd85a57765c3181abb844b6b76084c99c39eafd302aa4b93c4b2e1ec4b1c7e67bd846a3cafcb725b4e7767df715e93fdd943ec997c0
+  languageName: node
+  linkType: hard
+
+"@nuxtjs/google-adsense@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@nuxtjs/google-adsense@npm:2.1.0"
+  dependencies:
+    "@nuxt/kit": ^3.0.0-rc.12
+  checksum: 06731681fbebdbd2ee5f0f8a45701eec558d8a5cf8cce04db1811a904f6a803384523663bbb4145c8f884bea4f0a5ec7ac904fe0a831feee66c32d09f41eae34
   languageName: node
   linkType: hard
 
@@ -9998,9 +10007,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nuxt-simple-sitemap@npm:^2.4.7":
-  version: 2.4.7
-  resolution: "nuxt-simple-sitemap@npm:2.4.7"
+"nuxt-simple-sitemap@npm:^2.4.8":
+  version: 2.4.8
+  resolution: "nuxt-simple-sitemap@npm:2.4.8"
   dependencies:
     "@nuxt/kit": 3.3.3
     chalk: ^5.2.0
@@ -10010,7 +10019,7 @@ __metadata:
     pathe: ^1.1.0
     radix3: ^1.0.1
     ufo: ^1.1.1
-  checksum: 338852ff565359617c4edfb6bc69da3d4a9342815ab0aa0502a5959aa59e88f7ea250e1b4d11125262c95539187adb5a683f073224a6d8270482ba8833cd786c
+  checksum: d2523259027454232072d888db59d31bbb16ca553e396dd8950f7c6cbb29f7c4b4e3784fb90336ab3c3b9381b9f844c51f26d591558ef8d16258b2917a7e18a6
   languageName: node
   linkType: hard
 
@@ -13947,6 +13956,7 @@ __metadata:
     "@commitlint/config-conventional": ^17.4.4
     "@mdi/js": ^7.2.96
     "@nuxtjs/eslint-config-typescript": ^12.0.0
+    "@nuxtjs/google-adsense": ^2.1.0
     "@nuxtjs/robots": ^3.0.0
     "@pinia/nuxt": ^0.4.8
     "@rushstack/eslint-patch": ^1.2.0
@@ -13960,7 +13970,7 @@ __metadata:
     firebase-tools: ^11.25.3
     husky: ^8.0.3
     nuxt: ^3.3.3
-    nuxt-simple-sitemap: ^2.4.7
+    nuxt-simple-sitemap: ^2.4.8
     pinst: ^3.0.0
     postcss-html: ^1.5.0
     prettier: ^2.8.7
