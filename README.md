@@ -39,3 +39,4 @@ yarn preview
 - uses vue-axe to check for accessibility
 - uses commitlint to ensure commit messages follow a standard
 - uses GitHub Actions to lint, SAST, build, and publish to Google Firebase
+- Adding the Content-Security-Policy is a non-trivial process
