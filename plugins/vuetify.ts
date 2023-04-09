@@ -1,4 +1,4 @@
-import { mdiBrightness4, mdiGithub, mdiLinkedin, mdiWrench } from '@mdi/js';
+import { mdiBrightness4, mdiGithub, mdiLinkedin, mdiLogin, mdiWrench } from '@mdi/js';
 import { defineNuxtPlugin } from 'nuxt/app';
 import { ThemeDefinition, VuetifyOptions, createVuetify } from 'vuetify';
 import { md3 } from 'vuetify/blueprints';
@@ -33,6 +33,7 @@ export default defineNuxtPlugin(nuxtApp => {
       aliases: {
         ...aliases,
         github: mdiGithub,
+        login: mdiLogin,
         brightness: mdiBrightness4,
         wrench: mdiWrench,
         linkedin: mdiLinkedin,

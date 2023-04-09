@@ -4,9 +4,9 @@ import { collection } from '@firebase/firestore';
 import { getPerformance } from '@firebase/performance';
 import { getAnalytics, logEvent } from 'firebase/analytics';
 import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
 import { CollectionReference, DocumentData, getFirestore } from 'firebase/firestore';
-import { onCLS, onFID, onLCP } from 'web-vitals';
-import { ReportCallback } from 'web-vitals/src/types/base';
+import { ReportCallback, onCLS, onFID, onLCP } from 'web-vitals';
 
 import { defineNuxtPlugin, useRuntimeConfig } from '#imports';
 
@@ -86,6 +86,7 @@ export default defineNuxtPlugin(() => {
 
   return {
     provide: {
+      auth: getAuth(app),
       db: firestore,
       collections: {
         games: createCollection<GameDetails>('games'),

@@ -4,15 +4,28 @@
   <v-container fluid>
     <h2>These games were built for various game jams over the years.</h2>
     <p class="d-md-none font-italic">Click on row for more details.</p>
+    <v-sheet v-if="!gameStore.loaded" class="d-flex justify-center align-center" height="300">
+      <v-progress-circular
+        indeterminate
+        size="100"
+        width="10"
+        color="primary"
+        bg-color="secondary"
+      />
+    </v-sheet>
+
     <v-list lines="three">
-      <div v-for="game in games" :key="game.title">
+      <div v-for="(game, index) in gameStore.games" :key="game.name">
         <v-list-item class="display-large-game-list-item">
           <template #prepend>
             <v-avatar>
               <v-img cover :src="game.image" :srcset="game.imageSrcSet" />
             </v-avatar>
           </template>
-          <v-list-item-title>{{ game.name }} - {{ game.year }}</v-list-item-title>
+          <v-list-item-title>
+            {{ game.name }} - {{ game.year }}
+            <a v-if="authStore.user" href="#" @click="deleteGame(game)"> Delete me </a>
+          </v-list-item-title>
           <v-list-item-subtitle>
             <span v-html="game.description"></span>
           </v-list-item-subtitle>
@@ -32,13 +45,18 @@
           <v-list-item-title>{{ game.name }} - {{ game.year }}</v-list-item-title>
           <v-list-item-subtitle>{{ game.shortDescription }}</v-list-item-subtitle>
         </v-list-item>
-        <v-divider inset class="display-large-link-list-item" />
-        <v-divider class="d-md-none" />
+        <v-divider
+          v-if="index !== gameStore.games.length - 1"
+          inset
+          class="display-large-link-list-item"
+        />
+        <v-divider v-if="index !== gameStore.games.length - 1" class="d-md-none" />
       </div>
     </v-list>
+    <add-game-section v-if="authStore.user" />
     <v-dialog v-model="dialog">
       <v-card>
-        <v-card-title> {{ selectedGame.name }} - {{ game.year }}</v-card-title>
+        <v-card-title> {{ selectedGame.name }} - {{ selectedGame.year }}</v-card-title>
         <v-card-text>
           <span v-html="selectedGame.description"></span>
         </v-card-text>
@@ -54,87 +72,46 @@
   </v-container>
 </template>
 <script setup lang="ts">
-import { getDocs } from '@firebase/firestore';
-
-import { useNuxtApp } from '#app';
 import { ref, useHead } from '#imports';
 
-import { GameDetails } from '~/utils/types';
+import { useAuthStore } from '~/store/authStore';
+import { useGameStore } from '~/store/gameStore';
+import { useStore } from '~/store/mainStore.js';
+import type { GameDetails } from '~/utils/types';
 
-const { $collections, $logError } = useNuxtApp();
+const mainStore = useStore();
+const authStore = useAuthStore();
+const gameStore = useGameStore();
+
+function getNewGame(): GameDetails {
+  return {
+    name: '',
+    shortDescription: '',
+    description: '',
+    image: '',
+    link: '',
+    year: new Date().getFullYear(),
+  };
+}
 
 const dialog = ref(false);
-const selectedGame = ref<GameDetails>({
-  description: '',
-  image: '',
-  link: '',
-  shortDescription: '',
-  name: '',
-  year: 0,
-});
+const selectedGame = ref<GameDetails>(getNewGame());
 
-const onGameClick = (game: GameDetails) => {
+function onGameClick(game: GameDetails) {
   selectedGame.value = game;
   dialog.value = true;
-};
-
-const games = ref<GameDetails[]>([]);
-
-try {
-  const querySnapshot = await getDocs($collections.games);
-  querySnapshot.forEach(doc => {
-    games.value.push(doc.data());
-  });
-  games.value.sort((a, b) => a.year - b.year);
-  // if (!games.value.length) { // TODO how to seed data???
-  //   const gamesToAdd = [
-  //     {
-  //       name: 'Plonk',
-  //       year: 2019,
-  //       shortDescription: 'A game of spinning wheels and death!!! No two games are the same.',
-  //       description:
-  //         'A game of spinning wheels and death!!! No two games are the same. It gets more difficult as you play. <br/>Made in collaboration with <a href="https://www.linkedin.com/in/thomas-huneycutt-164842133/">Thomas Huneycutt</a> and <a href="https://www.linkedin.com/in/jason-punch-07317aab/">Jason Punch</a>',
-  //       image: '/images/plonk.webp',
-  //       imageSrcSet: '/images/plonk.webp 1x, /images/plonk2x.webp 2x',
-  //       link: 'https://djeisen642.itch.io/plonk',
-  //     },
-  //     {
-  //       name: 'SpaceBattlez',
-  //       year: 2020,
-  //       shortDescription: 'A competitive space battle!',
-  //       description:
-  //         'A competitive space battle! Game is based on Asteroids game play. <br/>Made in collaboration with  <a href="https://www.linkedin.com/in/thomas-huneycutt-164842133/">Thomas Huneycutt</a> and <a href="https://www.linkedin.com/in/jason-punch-07317aab/">Jason Punch</a>',
-  //       image: '/images/spacebattlez.webp',
-  //       imageSrcSet: '/images/spacebattlez.webp 1x, /images/spacebattlez2x.webp 2x',
-  //       link: 'https://djeisen642.itch.io/spacebattlez',
-  //     },
-  //     {
-  //       name: 'The Passing',
-  //       year: 2019,
-  //       shortDescription: 'A horror mystery thriller on a train about a cat.',
-  //       description:
-  //         'A tale unlike any you\'ve seen before. Travel with Zoey the Cat through this mystery thriller. <br/>Made in collaboration with  <a href="https://www.linkedin.com/in/thomas-huneycutt-164842133/">Thomas Huneycutt</a>',
-  //       image: '/images/thepassing.webp',
-  //       imageSrcSet: '/images/thepassing.webp 1x, /images/thepassing2x.webp 2x',
-  //       link: 'https://djeisen642.itch.io/the-passing',
-  //     },
-  //     {
-  //       name: 'Network Nightmares',
-  //       year: 2017,
-  //       shortDescription: 'A VR game to find a virus in a network.',
-  //       description:
-  //         'A Google Cardbard VR game made in Unity in which the player attempts to find a virus in an interconnected network. Won an award in a game jam. <br/>Made in collaboration with  <a href="https://www.linkedin.com/in/thomas-huneycutt-164842133/">Thomas Huneycutt</a>, John Hutcherson and Zoe Liu',
-  //       image: '/images/networknightmares.webp',
-  //       link: 'https://github.com/Djeisen642/vrcruizers',
-  //     },
-  //   ];
-  //   for (const gamesToAddElement of gamesToAdd) {
-  //     await setDoc(doc($collections.games), gamesToAddElement);
-  //   }
-  // }
-} catch (error) {
-  $logError(error instanceof Error ? error : new Error('Unexpected error'));
 }
+
+async function deleteGame(game: GameDetails) {
+  try {
+    await gameStore.deleteGame(game);
+  } catch (error) {
+    const handledError = error instanceof Error ? error : new Error('Unexpected error');
+    mainStore.setSnackbar(handledError.message);
+  }
+}
+
+gameStore.init();
 
 useHead({
   title: 'Games!',

@@ -11,6 +11,10 @@ export enum Theme {
 
 type State = {
   theme: Theme;
+  snackbar: {
+    snackbar: boolean;
+    text: string;
+  };
 };
 
 let startingTheme = Theme.DARK;
@@ -23,6 +27,10 @@ if (localStorage.getItem('theme')) {
 export const useStore = defineStore('main', {
   state: (): State => ({
     theme: startingTheme,
+    snackbar: {
+      snackbar: false,
+      text: '',
+    },
   }),
   actions: {
     setTheme(toDark: boolean, persist?: boolean) {
@@ -31,6 +39,10 @@ export const useStore = defineStore('main', {
         localStorage.setItem('theme', this.theme);
         disableWatchForSystemPreference();
       }
+    },
+    setSnackbar(text: string) {
+      this.snackbar.text = text;
+      this.snackbar.snackbar = true;
     },
   },
 });

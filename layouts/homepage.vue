@@ -10,7 +10,7 @@
 <script setup lang="ts">
 import DefaultFooter from '~/components/DefaultFooter.vue';
 import UnderConstructionBanner from '~/components/UnderConstructionBanner.vue';
-import { useStore } from '~/store/mainStore';
+import { useStore } from '~/store/mainStore.js';
 
 const mainStore = useStore();
 </script>

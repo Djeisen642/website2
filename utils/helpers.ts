@@ -6,23 +6,21 @@
  * @see CodePen {@link https://codepen.io/kallil-belmonte/full/KKKRoyx}
  */
 
-const checkIfImageExists = (url: string): Promise<boolean> => {
+export function checkIfImageExists(url: string): Promise<boolean> {
   const img = new Image();
   img.src = url;
 
   return new Promise(resolve => {
     if (img.complete) {
       resolve(true);
-    } else {
-      img.onload = () => {
-        resolve(true);
-      };
-
-      img.onerror = () => {
-        resolve(false);
-      };
+      return;
     }
-  });
-};
+    img.onload = () => {
+      resolve(true);
+    };
 
-export { checkIfImageExists };
+    img.onerror = () => {
+      resolve(false);
+    };
+  });
+}
