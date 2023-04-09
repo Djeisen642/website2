@@ -52,15 +52,6 @@ export default defineNuxtConfig({
       },
       title: 'Home',
       titleTemplate: 'A Website - %s',
-      script: isProduction
-        ? [
-            {
-              crossorigin: 'anonymous',
-              async: true,
-              src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2823127351843622',
-            },
-          ]
-        : [],
       meta: [
         {
           property: 'description',
