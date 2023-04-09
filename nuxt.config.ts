@@ -1,5 +1,24 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import fetch from 'node-fetch';
 import vuetify from 'vite-plugin-vuetify';
+
+async function getFontStyles(): Promise<string[]> {
+  const fontUrls = [
+    'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap',
+    'https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500&display=swap',
+  ];
+  const userAgentsResponse = await fetch('https://jnrbsn.github.io/user-agents/user-agents.json');
+  const userAgentsJson = await userAgentsResponse.json();
+  if (!Array.isArray(userAgentsJson)) throw new Error('User agents in new format!');
+  const userAgent = userAgentsJson.find(userAgent => userAgent.toLowerCase().includes('chrome'));
+  if (!userAgent) throw new Error('No Chrome User agent!');
+  return Promise.all(
+    fontUrls.map(async url => {
+      const response = await fetch(url, { headers: { 'user-agent': userAgent } });
+      return response.text();
+    }),
+  );
+}
 
 const isProduction = process.env.NODE_ENV === 'production';
 const envVars = isProduction
@@ -25,20 +44,22 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
   },
+  hooks: {
+    async ready(nuxt) {
+      const styles = await getFontStyles();
+      if (!Array.isArray(nuxt.options.app.head.style)) throw new Error('What happened here?');
+      nuxt.options.app.head.style.push(...styles);
+    },
+  },
   modules: [
     '@pinia/nuxt',
     '@nuxtjs/robots',
     'nuxt-simple-sitemap',
     (_, nuxt) => {
-      // @ts-ignore - no idea why this is failing
+      // @ts-ignore - no idea why this is erroring
       nuxt.hooks.hook('vite:extendConfig', config => config.plugins?.push(vuetify()));
     },
   ],
-  vite: {
-    ssr: {
-      noExternal: ['vuetify'],
-    },
-  },
   runtimeConfig: {
     public: {
       IS_PRODUCTION: isProduction,
@@ -60,6 +81,14 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'en',
       },
+      style: [],
+      link: [
+        {
+          rel: 'preconnect',
+          href: 'https://fonts.gstatic.com',
+          crossorigin: '',
+        },
+      ],
       title: 'Home',
       titleTemplate: 'A Website - %s',
       meta: [
