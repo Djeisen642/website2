@@ -10,17 +10,29 @@
       ref="loginBtn"
       icon="$login"
       class="show-on-focus"
+      aria-label="Hidden admin login button"
       @click="login"
     />
-    <v-btn icon="$github" target="_blank" class="ml-2" href="https://github.com/Djeisen642" />
     <v-btn
+      aria-label="GitHub link"
+      icon="$github"
+      target="_blank"
+      class="ml-2"
+      href="https://github.com/Djeisen642"
+    />
+    <v-btn
+      aria-label="LinkedIn link"
       icon="$linkedin"
       class="ml-2"
       target="_blank"
       href="https://www.linkedin.com/in/jssuttles/"
     />
-    <v-btn icon="$brightness" class="ml-2" @click="toggleTheme" />
-    <error-snackbar :snackbar="mainStore.snackbar.snackbar" :text="mainStore.snackbar.text" />
+    <v-btn
+      aria-label="Toggle theme light/dark mode"
+      icon="$brightness"
+      class="ml-2"
+      @click="toggleTheme"
+    />
   </v-footer>
 </template>
 <script setup lang="ts">

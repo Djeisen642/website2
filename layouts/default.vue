@@ -1,29 +1,36 @@
 <template>
   <v-app :theme="mainStore.theme">
     <v-app-bar color="primary" prominent>
-      <v-app-bar-nav-icon color="secondary" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-app-bar-title>jason's website - {{ route.name }}</v-app-bar-title>
+      <v-app-bar-nav-icon
+        aria-label="Open navigation drawer"
+        color="secondary"
+        @click.stop="drawer = !drawer"
+      />
+      <v-app-bar-title>
+        <h1 class="text-h4">jason's website - {{ route.name }}</h1>
+      </v-app-bar-title>
     </v-app-bar>
+
     <v-navigation-drawer v-model="drawer" temporary>
-      <v-list>
-        <v-list-item v-for="page in pages" :key="page.title" :to="page.to">
+      <v-list aria-label="Pages to navigate to">
+        <v-list-item v-for="page in pages" :key="page.title" :to="page.to" role="option">
           <v-list-item-title>{{ page.title }}</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
     <v-main>
-      <under-construction-banner />
       <slot />
     </v-main>
     <default-footer />
+    <error-snackbar :snackbar="mainStore.snackbar.snackbar" :text="mainStore.snackbar.text" />
+    <vue-axe />
   </v-app>
 </template>
 <script setup lang="ts">
 import { ref, useRoute } from '#imports';
 
 import DefaultFooter from '~/components/DefaultFooter.vue';
-import UnderConstructionBanner from '~/components/UnderConstructionBanner.vue';
 import { useStore } from '~/store/mainStore.js';
 
 const mainStore = useStore();
@@ -50,3 +57,9 @@ const pages = ref([
 
 const route = useRoute();
 </script>
+
+<style lang="scss">
+a {
+  color: rgb(var(--v-theme-secondary-lighten-3));
+}
+</style>

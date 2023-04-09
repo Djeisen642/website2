@@ -13,12 +13,17 @@
         bg-color="secondary"
       />
     </v-sheet>
-    <v-list lines="three">
-      <div v-for="(link, index) in linkStore.links" :key="link.title">
+    <v-list lines="three" role="list">
+      <div v-for="(link, index) in linkStore.links" :key="link.title" role="listitem">
         <v-list-item class="display-large-link-list-item">
           <template #prepend>
             <v-avatar color="primary">
-              <v-img v-if="link.imageExists" cover :src="link.link + '/favicon.ico'" />
+              <v-img
+                v-if="link.imageExists"
+                cover
+                :src="link.link + '/favicon.ico'"
+                aria-hidden="true"
+              />
               <span v-else class="text-h5">{{ link.title.substring(0, 1).toUpperCase() }}</span>
             </v-avatar>
           </template>
@@ -31,11 +36,13 @@
           </v-list-item-subtitle>
           <template #append>
             <v-list-item-action>
-              <v-btn :href="link.link" target="_blank"> Go see it!</v-btn>
+              <v-btn :href="link.link" target="_blank" :aria-label="`Go to ${link.title}`">
+                Go see it!
+              </v-btn>
             </v-list-item-action>
           </template>
         </v-list-item>
-        <v-list-item class="d-md-none" @click="onLinkClick(link)">
+        <v-list-item class="d-md-none" role="listitem" @click="onLinkClick(link)">
           <template #prepend>
             <v-avatar color="primary">
               <v-img v-if="link.imageExists" cover :src="link.link + '/favicon.ico'" />

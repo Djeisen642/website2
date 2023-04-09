@@ -4,6 +4,7 @@
       src="/images/reflection.webp"
       height="100vh"
       lazy-src="/images/reflection_small.webp"
+      alt="Background image of clouds, mountains, and reflection"
     >
       <div class="d-flex flex-column fill-height justify-center">
         <v-sheet color="transparent-card pa-4" flat theme="dark">

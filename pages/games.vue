@@ -14,12 +14,12 @@
       />
     </v-sheet>
 
-    <v-list lines="three">
-      <div v-for="(game, index) in gameStore.games" :key="game.name">
+    <v-list lines="three" role="list">
+      <div v-for="(game, index) in gameStore.games" :key="game.name" role="listitem">
         <v-list-item class="display-large-game-list-item">
           <template #prepend>
             <v-avatar>
-              <v-img cover :src="game.image" :srcset="game.imageSrcSet" />
+              <v-img cover :src="game.image" :srcset="game.imageSrcSet" aria-hidden="true" />
             </v-avatar>
           </template>
           <v-list-item-title>
@@ -32,7 +32,9 @@
 
           <template #append>
             <v-list-item-action>
-              <v-btn :href="game.link" target="_blank">Go to Game!</v-btn>
+              <v-btn :href="game.link" target="_blank" :aria-label="`Go to ${game.name}`">
+                Go to Game!
+              </v-btn>
             </v-list-item-action>
           </template>
         </v-list-item>

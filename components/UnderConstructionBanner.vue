@@ -3,3 +3,8 @@
     <v-banner-text class="text-lg-h5"> Website under construction. Excuse the mess!</v-banner-text>
   </v-banner>
 </template>
+<style scoped lang="scss">
+.banner {
+  min-height: 60px;
+}
+</style>

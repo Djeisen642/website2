@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import vuetify from 'vite-plugin-vuetify';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const envVars = isProduction
@@ -24,7 +25,15 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
   },
-  modules: ['@pinia/nuxt', '@nuxtjs/robots', 'nuxt-simple-sitemap'],
+  modules: [
+    '@pinia/nuxt',
+    '@nuxtjs/robots',
+    'nuxt-simple-sitemap',
+    (_, nuxt) => {
+      // @ts-ignore - no idea why this is failing
+      nuxt.hooks.hook('vite:extendConfig', config => config.plugins?.push(vuetify()));
+    },
+  ],
   vite: {
     ssr: {
       noExternal: ['vuetify'],
@@ -32,6 +41,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
+      IS_PRODUCTION: isProduction,
       GOOGLE_FIREBASE_API_KEY: process.env.GOOGLE_FIREBASE_API_KEY,
       GOOGLE_FIREBASE_MESSAGING_ID: process.env.GOOGLE_FIREBASE_MESSAGING_ID,
       GOOGLE_FIREBASE_APP_ID: process.env.GOOGLE_FIREBASE_APP_ID,

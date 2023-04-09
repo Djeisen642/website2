@@ -1,10 +1,12 @@
 <template>
   <v-app :theme="mainStore.theme">
+    <under-construction-banner />
     <v-main>
-      <under-construction-banner />
       <slot />
     </v-main>
     <default-footer />
+    <error-snackbar :snackbar="mainStore.snackbar.snackbar" :text="mainStore.snackbar.text" />
+    <vue-axe />
   </v-app>
 </template>
 <script setup lang="ts">
