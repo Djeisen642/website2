@@ -52,7 +52,7 @@
     "@pinia/nuxt": "^0.4.8",
     "firebase": "^9.19.1",
     "uuid": "^9.0.0",
-    "vuetify": "3.1.13",
+    "vuetify": "3.1.14",
     "web-vitals": "^3.3.1"
   }
 }
