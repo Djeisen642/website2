@@ -1,5 +1,12 @@
 <template>
   <v-container fluid class="full-height no-cursor" @mousemove="logEvent">
+    <p style="position: absolute">
+      Very much a work in progress
+      <br />
+      Mouse x: {{ mousePosition.x }} y: {{ mousePosition.y }}
+      <br />
+      Cat x: {{ catPosition.x }} y: {{ catPosition.y }}
+    </p>
     <div class="mouse">
       <v-icon icon="$mouse" class="mouse-icon" aria-label="The mouse" />
     </div>
@@ -25,6 +32,7 @@ const boundaries = ref({
   right: 0,
 });
 onMounted(() => {
+  // on mount, interestingly, the container's bounding rectangle is not properly known. So, wait a bit
   setTimeout(() => resetCatBoundaries(), 100);
 });
 window.addEventListener('resize', () => resetCatBoundaries());
