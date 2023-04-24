@@ -1,4 +1,12 @@
-import { mdiBrightness4, mdiGithub, mdiLinkedin, mdiLogin, mdiWrench } from '@mdi/js';
+import {
+  mdiBrightness4,
+  mdiCat,
+  mdiGithub,
+  mdiLinkedin,
+  mdiLogin,
+  mdiMouseVariant,
+  mdiWrench,
+} from '@mdi/js';
 import { defineNuxtPlugin } from 'nuxt/app';
 import { ThemeDefinition, VuetifyOptions, createVuetify } from 'vuetify';
 import { md3 } from 'vuetify/blueprints';
@@ -37,6 +45,8 @@ export default defineNuxtPlugin(nuxtApp => {
         brightness: mdiBrightness4,
         wrench: mdiWrench,
         linkedin: mdiLinkedin,
+        mouse: mdiMouseVariant,
+        cat: mdiCat,
       },
       sets: {
         mdi,

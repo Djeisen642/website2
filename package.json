@@ -10,6 +10,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "start": "yarn dev",
     "generate": "nuxt generate",
     "lint": "yarn lint:js && yarn lint:style",
     "lint:js": "echo \"ESLINT --\" && eslint --ext \".ts,.js,.vue\" --ignore-path .gitignore .",

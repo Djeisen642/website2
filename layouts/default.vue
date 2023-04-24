@@ -53,6 +53,10 @@ const pages = ref([
     title: 'Interesting links',
     to: '/links',
   },
+  {
+    title: 'Cat and Mouse game',
+    to: '/catandmouse',
+  },
 ]);
 
 const route = useRoute();
