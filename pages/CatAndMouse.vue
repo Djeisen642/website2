@@ -1,11 +1,12 @@
 <template>
-  <v-container fluid class="full-height no-cursor" @mousemove="logEvent">
+  <v-container fluid class="full-height no-cursor" @mousemove="onMouseMove">
     <p style="position: absolute">
       Very much a work in progress
       <br />
-      Mouse x: {{ mousePosition.x }} y: {{ mousePosition.y }}
+      Mouse x: {{ mouse.getPixelPosition().x }} y: {{ mouse.getPixelPosition().y }}
       <br />
-      Cat x: {{ catPosition.x }} y: {{ catPosition.y }}
+      Cat x: {{ cat.getPixelPosition().x }} y: {{ cat.getPixelPosition().y }} speed:
+      {{ `${cat.speed.toString()}px/${catRefreshInterval}ms` }}
     </p>
     <div class="mouse">
       <v-icon icon="$mouse" class="mouse-icon" aria-label="The mouse" />
@@ -17,42 +18,42 @@
   </v-container>
 </template>
 <script setup lang="ts">
-const mousePosition = ref({ x: '0px', y: '0px' });
-const catPosition = ref({ x: '200px', y: '300px' });
-const follow = ref(true);
-const container = ref();
+import { useResizeObserver, useWindowFocus } from '@vueuse/core';
+
+import { Boundary, Position } from '@/objects/abstract';
+import { Cat, Mouse } from '@/objects/animals';
+
+const windowFocused = useWindowFocus();
+
+const mouse = reactive(new Mouse(new Position(0, 0)));
+const container = ref<HTMLDivElement>();
 const iconSize = 50;
 const catMargins = 60;
-const catBorderMargins = computed(() => `${catMargins}px`);
-const iconMargin = iconSize / 2 - 2;
-const boundaries = ref({
-  top: 0,
-  bottom: 0,
-  left: 0,
-  right: 0,
-});
+const catRefreshInterval = ref(50);
+const catBorderMargins = ref(`${catMargins}px`);
+const cat = reactive(new Cat(new Position(0, 0), new Boundary(0, 0, 0, 0), 10));
+const iconMargin = iconSize / 2 - 1;
 onMounted(() => {
   // on mount, interestingly, the container's bounding rectangle is not properly known. So, wait a bit
   setTimeout(() => resetCatBoundaries(), 100);
 });
-window.addEventListener('resize', () => resetCatBoundaries());
+const { pause, resume } = useIntervalFn(() => {
+  cat.updateVelocity(mouse.position);
+}, catRefreshInterval);
+watch(windowFocused, isFocused => {
+  if (isFocused) resume();
+  else pause();
+});
+
+useResizeObserver(container, () => resetCatBoundaries());
 function resetCatBoundaries() {
+  if (!container.value) return;
   const rect = container.value.getBoundingClientRect();
-  boundaries.value = {
-    top: rect.y + iconMargin,
-    bottom: rect.y + rect.height - iconMargin,
-    left: rect.x + iconMargin,
-    right: rect.x + rect.width - iconMargin,
-  };
+  cat.boundary = Boundary.createBoundary(rect, iconMargin);
 }
-function logEvent(event: MouseEvent) {
-  if (!follow.value) return;
-  mousePosition.value.x = `${event.x}px`;
-  mousePosition.value.y = `${event.y}px`;
-  const catX = Math.min(Math.max(boundaries.value.left, event.x), boundaries.value.right);
-  const catY = Math.min(Math.max(boundaries.value.top, event.y), boundaries.value.bottom);
-  catPosition.value.x = `${catX}px`;
-  catPosition.value.y = `${catY}px`;
+function onMouseMove(event: MouseEvent) {
+  if (!windowFocused) return;
+  mouse.position = new Position(event.x, event.y);
 }
 </script>
 <style lang="scss" scoped>
@@ -67,6 +68,10 @@ $icon-size: 50px;
   cursor: none;
 }
 
+.add-cursor {
+  cursor: pointer;
+}
+
 .cat-border {
   margin: v-bind('catBorderMargins');
   border: 2px solid rgba(var(--v-border-color), var(--v-border-opacity));
@@ -75,8 +80,8 @@ $icon-size: 50px;
 
 .mouse {
   position: absolute;
-  top: v-bind('mousePosition.y');
-  left: v-bind('mousePosition.x');
+  left: v-bind('mouse.getPixelPosition().x');
+  top: v-bind('mouse.getPixelPosition().y');
 
   .mouse-icon {
     height: $icon-size;
@@ -91,12 +96,12 @@ $icon-size: 50px;
 
 .cat {
   position: absolute;
-  top: v-bind('catPosition.y');
-  left: v-bind('catPosition.x');
+  left: v-bind('cat.getPixelPosition().x');
+  top: v-bind('cat.getPixelPosition().y');
 
   .cat-icon {
-    height: $icon-size;
-    width: $icon-size;
+    height: calc($icon-size * 1.2);
+    width: calc($icon-size * 1.2);
     position: absolute;
     left: 50%;
     margin-left: calc(-1 * $icon-size / 2);

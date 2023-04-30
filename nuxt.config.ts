@@ -52,6 +52,7 @@ export default defineNuxtConfig({
     },
   },
   modules: [
+    '@vueuse/nuxt',
     '@pinia/nuxt',
     '@nuxtjs/robots',
     'nuxt-simple-sitemap',
