@@ -8,7 +8,7 @@
       Cat x: {{ cat.getPixelPosition().x }} y: {{ cat.getPixelPosition().y }} speed:
       {{ `${cat.speed.toString()}px/${catRefreshInterval}ms` }}
     </p>
-    <v-dialog v-model="paused" width="auto">
+    <v-dialog v-model="paused" width="auto" persistent>
       <v-card>
         <v-card-title>Cat And Mouse Game</v-card-title>
         <v-card-subtitle v-if="score > 0" class="mx-auto">
