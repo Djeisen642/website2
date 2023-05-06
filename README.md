@@ -12,10 +12,12 @@ yarn install
 
 ## Development Server
 
-Start the development server on http://localhost:3000
+Start the development server at http://localhost:3000
 
 ```bash
 yarn dev
+# OR
+yarn start
 ```
 
 ## Production
@@ -39,4 +41,8 @@ yarn preview
 - uses vue-axe to check for accessibility
 - uses commitlint to ensure commit messages follow a standard
 - uses GitHub Actions to lint, SAST, build, and publish to Google Firebase
+- No tests... 😅
+
+## Reminders:
+
 - Adding the Content-Security-Policy is a non-trivial process

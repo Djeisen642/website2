@@ -5,6 +5,7 @@ import {
   mdiLinkedin,
   mdiLogin,
   mdiMouseVariant,
+  mdiSkull,
   mdiWrench,
 } from '@mdi/js';
 import { defineNuxtPlugin } from 'nuxt/app';
@@ -47,6 +48,7 @@ export default defineNuxtPlugin(nuxtApp => {
         linkedin: mdiLinkedin,
         mouse: mdiMouseVariant,
         cat: mdiCat,
+        skull: mdiSkull,
       },
       sets: {
         mdi,

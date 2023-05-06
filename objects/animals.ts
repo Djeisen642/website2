@@ -1,5 +1,9 @@
 import { Boundary, Position, Velocity } from './abstract';
 
+function getRandomArbitrary(min: number, max: number) {
+  return Math.random() * (max - min) + min;
+}
+
 export class Animal {
   protected _position: Position;
 
@@ -19,7 +23,21 @@ export class Animal {
     return this._position.getPixelStrings();
   }
 }
-export class Mouse extends Animal {}
+
+export class Mouse extends Animal {
+  private _hitDistance: number;
+
+  constructor(startingPosition: Position, hitDistance: number) {
+    super(startingPosition);
+    this._hitDistance = hitDistance;
+  }
+
+  caughtBy(position: Position) {
+    const direction = this._position.subtract(position);
+    const distance = direction.getMagnitude();
+    return this._hitDistance >= distance;
+  }
+}
 
 export class Cat extends Animal {
   private _boundary: Boundary;
@@ -44,9 +62,19 @@ export class Cat extends Animal {
     this.position = this._position; // readjust position based on new boundary
   }
 
-  // eslint-disable-next-line accessor-pairs
+  get position() {
+    return this._position;
+  }
+
   set position(newPosition: Position) {
     this._position = this.boundary.ensurePositionIsInside(newPosition);
+  }
+
+  randomizePosition() {
+    this.position = new Position(
+      getRandomArbitrary(this._boundary.left, this._boundary.right),
+      getRandomArbitrary(this._boundary.top, this._boundary.bottom),
+    );
   }
 
   updateVelocity(newDestination: Position) {
