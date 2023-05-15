@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "@mdi/js": "^7.2.96",
-    "@pinia/nuxt": "^0.4.9",
+    "@pinia/nuxt": "^0.4.10",
     "firebase": "^9.21.0",
     "uuid": "^9.0.0",
     "vuetify": "3.2.2",
