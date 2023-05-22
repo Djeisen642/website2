@@ -2162,6 +2162,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nuxt/kit@npm:^3.5.0":
+  version: 3.5.1
+  resolution: "@nuxt/kit@npm:3.5.1"
+  dependencies:
+    "@nuxt/schema": 3.5.1
+    c12: ^1.4.1
+    consola: ^3.1.0
+    defu: ^6.1.2
+    globby: ^13.1.4
+    hash-sum: ^2.0.0
+    ignore: ^5.2.4
+    jiti: ^1.18.2
+    knitwork: ^1.0.0
+    lodash.template: ^4.5.0
+    mlly: ^1.2.1
+    pathe: ^1.1.0
+    pkg-types: ^1.0.3
+    scule: ^1.0.0
+    semver: ^7.5.1
+    unctx: ^2.3.0
+    unimport: ^3.0.7
+    untyped: ^1.3.2
+  checksum: 73b71a6d01e51c29618528dfc7a5ed73840a73ecbd37a54036ec4488e0ef227c8fba70e476a1ba89454070114686c95f19ec1ee1b270796374ce0b03b13784a9
+  languageName: node
+  linkType: hard
+
 "@nuxt/schema@npm:3.2.2":
   version: 3.2.2
   resolution: "@nuxt/schema@npm:3.2.2"
@@ -2197,6 +2223,23 @@ __metadata:
     unimport: ^3.0.6
     untyped: ^1.3.2
   checksum: 6d249a4cfb7dcdd36d3fd2fb72761f7103a1d769f776acf691f7f848050b23459325f94b2a5ea97b7d1be32175bb522e903aef233fc7c8674a5865fec2d34092
+  languageName: node
+  linkType: hard
+
+"@nuxt/schema@npm:3.5.1":
+  version: 3.5.1
+  resolution: "@nuxt/schema@npm:3.5.1"
+  dependencies:
+    defu: ^6.1.2
+    hookable: ^5.5.3
+    pathe: ^1.1.0
+    pkg-types: ^1.0.3
+    postcss-import-resolver: ^2.0.0
+    std-env: ^3.3.3
+    ufo: ^1.1.2
+    unimport: ^3.0.7
+    untyped: ^1.3.2
+  checksum: 3d039d27e2623ed934cbd9df94872ea2d816e97f51874880a1d6dfec258e3403b61efb58966ab24eae2876101232ec941e4034c9a137d678d7cea8aaa7b08338
   languageName: node
   linkType: hard
 
@@ -2339,13 +2382,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pinia/nuxt@npm:^0.4.9":
-  version: 0.4.9
-  resolution: "@pinia/nuxt@npm:0.4.9"
+"@pinia/nuxt@npm:^0.4.11":
+  version: 0.4.11
+  resolution: "@pinia/nuxt@npm:0.4.11"
   dependencies:
-    "@nuxt/kit": ^3.0.0
-    pinia: ">=2.0.35"
-  checksum: 05e9618db43776176669ad4dff765fe61f5f29d75fa80e95507d00ccbca851603dda17f06c6c5b453c3e8180ea690852e6dd4eadec3e75647f2fe5620770b106
+    "@nuxt/kit": ^3.5.0
+    pinia: ">=2.1.0"
+  checksum: 1a634ab7cbd1ecc3fd18d909e2ef6ef7d9cd161503d638f452e1dbd87233e9f05ccd0c11d50d40a66ceb37d569b02521dfdce895b39653b513d7be39cfb8af1e
   languageName: node
   linkType: hard
 
@@ -9959,6 +10002,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mlly@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "mlly@npm:1.2.1"
+  dependencies:
+    acorn: ^8.8.2
+    pathe: ^1.1.0
+    pkg-types: ^1.0.3
+    ufo: ^1.1.2
+  checksum: 82939436ec0e1c53e400d86fd571bd005090383b3fa49d5d8b9df4b388b24bae2b7b2f0369ef0c905d29fb35377cd4724d2bf5e5cd130d922849f74948bb81f0
+  languageName: node
+  linkType: hard
+
 "morgan@npm:^1.10.0, morgan@npm:^1.8.2":
   version: 1.10.0
   resolution: "morgan@npm:1.10.0"
@@ -10977,22 +11032,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pinia@npm:>=2.0.35":
-  version: 2.0.35
-  resolution: "pinia@npm:2.0.35"
+"pinia@npm:>=2.1.0":
+  version: 2.1.3
+  resolution: "pinia@npm:2.1.3"
   dependencies:
     "@vue/devtools-api": ^6.5.0
-    vue-demi: "*"
+    vue-demi: ">=0.14.5"
   peerDependencies:
     "@vue/composition-api": ^1.4.0
     typescript: ">=4.4.4"
-    vue: ^2.6.14 || ^3.2.0
+    vue: ^2.6.14 || ^3.3.0
   peerDependenciesMeta:
     "@vue/composition-api":
       optional: true
     typescript:
       optional: true
-  checksum: cecb1e1e97ed77f69166dc3815dfd05f712ac725763eb74059f5e4804b5902976c278a3d14ab5227892459e8d0b6d9645104e1d049e733228b696be98de450f0
+  checksum: 2872000a2e75e210e1ae7bf6227fbc8a51ecdfd7a4db34da0029ed74f1040aa74ddc64efc30b883a14af972ed910a5021e84ed31ee9f62daf329df12c29f59bf
   languageName: node
   linkType: hard
 
@@ -11022,6 +11077,17 @@ __metadata:
     mlly: ^1.1.1
     pathe: ^1.1.0
   checksum: 2d0a70c1721c2ebbe075b912531a4f43136e6658fdcc59dc76c39966201ab5ddf265868d1211943183406d4b70d373c17e3b176487bc2020ea737d030b0fd080
+  languageName: node
+  linkType: hard
+
+"pkg-types@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "pkg-types@npm:1.0.3"
+  dependencies:
+    jsonc-parser: ^3.2.0
+    mlly: ^1.2.0
+    pathe: ^1.1.0
+  checksum: 4b305c834b912ddcc8a0fe77530c0b0321fe340396f84cbb87aecdbc126606f47f2178f23b8639e71a4870f9631c7217aef52ffed0ae17ea2dbbe7e43d116a6e
   languageName: node
   linkType: hard
 
@@ -12416,6 +12482,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"semver@npm:^7.5.1":
+  version: 7.5.1
+  resolution: "semver@npm:7.5.1"
+  dependencies:
+    lru-cache: ^6.0.0
+  bin:
+    semver: bin/semver.js
+  checksum: d16dbedad53c65b086f79524b9ef766bf38670b2395bdad5c957f824dcc566b624988013564f4812bcace3f9d405355c3635e2007396a39d1bffc71cfec4a2fc
+  languageName: node
+  linkType: hard
+
 "send@npm:0.18.0":
   version: 0.18.0
   resolution: "send@npm:0.18.0"
@@ -12782,6 +12859,13 @@ __metadata:
   version: 3.3.2
   resolution: "std-env@npm:3.3.2"
   checksum: c02256bb041ba1870d23f8360bc7e47a9cf1fabcd02c8b7c4246d48f2c6bb47b4f45c70964348844e6d36521df84c4a9d09d468654b51e0eb5c600e3392b4570
+  languageName: node
+  linkType: hard
+
+"std-env@npm:^3.3.3":
+  version: 3.3.3
+  resolution: "std-env@npm:3.3.3"
+  checksum: 6665f6d8bd63aae432d3eb9abbd7322847ad0d902603e6dce1e8051b4f42ceeb4f7f96a4faf70bb05ce65ceee2dc982502b701575c8a58b1bfad29f3dbb19f81
   languageName: node
   linkType: hard
 
@@ -13676,6 +13760,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ufo@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "ufo@npm:1.1.2"
+  checksum: 83c940a6a23b6d4fc0cd116265bb5dcf88ab34a408ad9196e413270ca607a4781c09b547dc518f43caee128a096f20fe80b5a0e62b4bcc0a868619896106d048
+  languageName: node
+  linkType: hard
+
 "uglify-js@npm:^3.7.7":
   version: 3.17.4
   resolution: "uglify-js@npm:3.17.4"
@@ -13794,6 +13885,25 @@ __metadata:
     strip-literal: ^1.0.1
     unplugin: ^1.3.1
   checksum: 033bf11aa2c58281eee4ad952a7db3bfde4fd09dbc79c7f6d5d8e4e4f667c4a5bad80c3dd5fe23cb71653cae52ba3fb288690e3c81f08774805a622e1ad86c9c
+  languageName: node
+  linkType: hard
+
+"unimport@npm:^3.0.7":
+  version: 3.0.7
+  resolution: "unimport@npm:3.0.7"
+  dependencies:
+    "@rollup/pluginutils": ^5.0.2
+    escape-string-regexp: ^5.0.0
+    fast-glob: ^3.2.12
+    local-pkg: ^0.4.3
+    magic-string: ^0.30.0
+    mlly: ^1.2.1
+    pathe: ^1.1.0
+    pkg-types: ^1.0.3
+    scule: ^1.0.0
+    strip-literal: ^1.0.1
+    unplugin: ^1.3.1
+  checksum: 5b43ad27318e56955e53ba99329a3061badddd2fc5ee09f785536fe2d07b75b35a8e5e87651acc31a0605119ef68099581d0e3f90e027d9e3636c8c341b8824a
   languageName: node
   linkType: hard
 
@@ -14350,22 +14460,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-demi@npm:*":
-  version: 0.13.11
-  resolution: "vue-demi@npm:0.13.11"
-  peerDependencies:
-    "@vue/composition-api": ^1.0.0-rc.1
-    vue: ^3.0.0-0 || ^2.6.0
-  peerDependenciesMeta:
-    "@vue/composition-api":
-      optional: true
-  bin:
-    vue-demi-fix: bin/vue-demi-fix.js
-    vue-demi-switch: bin/vue-demi-switch.js
-  checksum: 0fbe9bf8ab7fe498ffa2bbd0cfc8f6f43a6bbaa5eda3e20ef1b70dca7c8b0ddb216a7ff2f632b694fe0735805638975abb441c621ec0bd2e6d4656353f316c15
-  languageName: node
-  linkType: hard
-
 "vue-demi@npm:>=0.14.0":
   version: 0.14.0
   resolution: "vue-demi@npm:0.14.0"
@@ -14379,6 +14473,22 @@ __metadata:
     vue-demi-fix: bin/vue-demi-fix.js
     vue-demi-switch: bin/vue-demi-switch.js
   checksum: 247779612676f1f227943c3a7ba40e374c4a6a341da93d42395a626e164078b275084b33ebb3ddac0e6e088ef2118349a44011e5e58b9f64c39dff5e5b6be80c
+  languageName: node
+  linkType: hard
+
+"vue-demi@npm:>=0.14.5":
+  version: 0.14.5
+  resolution: "vue-demi@npm:0.14.5"
+  peerDependencies:
+    "@vue/composition-api": ^1.0.0-rc.1
+    vue: ^3.0.0-0 || ^2.6.0
+  peerDependenciesMeta:
+    "@vue/composition-api":
+      optional: true
+  bin:
+    vue-demi-fix: bin/vue-demi-fix.js
+    vue-demi-switch: bin/vue-demi-switch.js
+  checksum: ff44b9372b8224590514252a2f73363cced6062205f9628a6b130dccb80e2023d55cd9d1da94aeb68d5539b7ea9eedcecf88ab281a3a9ff48b8db4c5366b9643
   languageName: node
   linkType: hard
 
@@ -14502,7 +14612,7 @@ __metadata:
     "@mdi/js": ^7.2.96
     "@nuxtjs/eslint-config-typescript": ^12.0.0
     "@nuxtjs/robots": ^3.0.0
-    "@pinia/nuxt": ^0.4.9
+    "@pinia/nuxt": ^0.4.11
     "@rushstack/eslint-patch": ^1.2.0
     "@trivago/prettier-plugin-sort-imports": ^4.1.1
     "@types/uuid": ^9.0.1
