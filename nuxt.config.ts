@@ -55,7 +55,6 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@pinia/nuxt',
     '@nuxtjs/robots',
-    'nuxt-simple-sitemap',
     (_, nuxt) => {
       // @ts-ignore - no idea why this is erroring
       nuxt.hooks.hook('vite:extendConfig', config => config.plugins?.push(vuetify()));

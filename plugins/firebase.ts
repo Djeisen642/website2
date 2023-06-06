@@ -18,17 +18,17 @@ import { GameDetails, LinkDetails } from '~/utils/types';
 // Initialize Firebase
 
 export default defineNuxtPlugin(() => {
-  const runtimeConfig = useRuntimeConfig();
+  const { public: publicConfig } = useRuntimeConfig();
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
-    apiKey: runtimeConfig.GOOGLE_FIREBASE_API_KEY,
-    authDomain: runtimeConfig.GOOGLE_FIREBASE_AUTH_DOMAIN,
-    projectId: runtimeConfig.GOOGLE_FIREBASE_PROJECT_ID,
-    storageBucket: runtimeConfig.GOOGLE_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: runtimeConfig.GOOGLE_FIREBASE_MESSAGING_ID,
-    appId: runtimeConfig.GOOGLE_FIREBASE_APP_ID,
-    measurementId: runtimeConfig.GOOGLE_FIREBASE_MEASUREMENT_ID,
+    apiKey: publicConfig.GOOGLE_FIREBASE_API_KEY,
+    authDomain: publicConfig.GOOGLE_FIREBASE_AUTH_DOMAIN,
+    projectId: publicConfig.GOOGLE_FIREBASE_PROJECT_ID,
+    storageBucket: publicConfig.GOOGLE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: publicConfig.GOOGLE_FIREBASE_MESSAGING_ID,
+    appId: publicConfig.GOOGLE_FIREBASE_APP_ID,
+    measurementId: publicConfig.GOOGLE_FIREBASE_MEASUREMENT_ID,
   };
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
@@ -72,7 +72,7 @@ export default defineNuxtPlugin(() => {
   onLCP(sendToGoogleAnalytics);
 
   initializeAppCheck(app, {
-    provider: new ReCaptchaV3Provider(runtimeConfig.GOOGLE_FIREBASE_APP_CHECK_SITE_KEY),
+    provider: new ReCaptchaV3Provider(publicConfig.GOOGLE_FIREBASE_APP_CHECK_SITE_KEY),
 
     // Optional argument. If true, the SDK automatically refreshes App Check
     // tokens as needed.
