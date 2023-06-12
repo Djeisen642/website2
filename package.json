@@ -33,7 +33,7 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vuejs-accessibility": "^2.1.0",
-    "firebase-tools": "^12.3.0",
+    "firebase-tools": "^12.3.1",
     "husky": "^8.0.3",
     "node-fetch": "^3.3.1",
     "nuxt": "^3.5.3",
