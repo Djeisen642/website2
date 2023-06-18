@@ -9,6 +9,6 @@ const config = useRuntimeConfig();
 const showAxePopup = ref(false);
 
 onMounted(() => {
-  showAxePopup.value = !config.IS_PRODUCTION;
+  showAxePopup.value = !config.public.IS_PRODUCTION;
 });
 </script>
