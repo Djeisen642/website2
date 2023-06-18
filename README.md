@@ -1,5 +1,7 @@
 # Jason's Website
 
+[![Deploy to Firebase Hosting on merge](https://github.com/Djeisen642/website2/actions/workflows/firebase-hosting-merge.yml/badge.svg)](https://github.com/Djeisen642/website2/actions/workflows/firebase-hosting-merge.yml)
+
 Runs live at https://jasonsuttles.dev
 
 ## Setup
