@@ -40,6 +40,7 @@ const projectId = envVars.projectId;
 const storageBucket = envVars.bucket;
 export default defineNuxtConfig({
   css: ['@/assets/styles/index.scss'],
+  sourcemap: true,
   debug: !isProduction,
   typescript: {
     strict: true,
