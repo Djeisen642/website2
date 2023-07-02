@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-import { isDarkSystemPreference, setupWatchForSystemPreference } from '#imports';
+import { isDarkSystemPreference } from '#imports';
 
 import { disableWatchForSystemPreference } from '~/composables/themeSystemPreference';
 
@@ -46,9 +46,3 @@ export const useStore = defineStore('main', {
     },
   },
 });
-
-const mainStore = useStore();
-
-if (!localStorage.getItem('theme')) {
-  setupWatchForSystemPreference(mainStore.setTheme);
-}
