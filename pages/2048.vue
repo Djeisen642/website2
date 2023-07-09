@@ -18,11 +18,14 @@
   </v-container>
 </template>
 <script lang="ts" setup>
+import { useTheme } from 'vuetify';
+
 import {
   NUMS_THAT_CAN_BE_ADDED_AT_RANDOM,
   NUM_SQUARES_PER_SIDE,
   WIN_NUMBER,
 } from '@/utils/constants_2048';
+import { RGBObject } from '@/utils/types';
 
 const enum Direction {
   Up,
@@ -39,6 +42,7 @@ const enum GameState {
 const allValues = ref<(number | null)[]>(
   new Array(NUM_SQUARES_PER_SIDE * NUM_SQUARES_PER_SIDE).fill(null),
 );
+const theme = useTheme();
 const rows = computed(() => {
   return getArrayOfArrays(Direction.Left);
 });
@@ -46,63 +50,6 @@ const gameState = ref(GameState.Ongoing);
 const gameStateText = computed(() => {
   return gameState.value === GameState.Lost ? 'You Lost!!!' : 'You Won!!!';
 });
-
-function getColorStyle() {
-  // (value: number | null) {
-  // const baseBackground = getRGBColor(
-  //   window.getComputedStyle(document.body, null).getPropertyValue('--v-theme-secondary'),
-  // );
-  // const backgroundColorRGB = value
-  //   ? {
-  //       r: baseBackground.r + (value % 256),
-  //       g: baseBackground.g + (value % 256),
-  //       b: baseBackground.b + (value % 256),
-  //     }
-  //   : baseBackground;
-
-  // return {
-  //   color: getTextColor(backgroundColorRGB),
-  //   'background-color': toHexRGB(backgroundColorRGB),
-  // };
-  return {
-    color: 'rgb(var(--v-theme-primary))',
-    'background-color': 'rgb(var(--v-theme-secondary))',
-  };
-}
-
-// type RGBObject = {
-//   r: number;
-//   g: number;
-//   b: number;
-// };
-// function getRGBColor(colorVariable: string): RGBObject {
-//   const [rDec, gDec, bDec] = colorVariable.split(',');
-//   // Split the color variable into its red, green, and blue values.
-//   const r = parseInt(rDec);
-//   const g = parseInt(gDec);
-//   const b = parseInt(bDec);
-
-//   // Return the RGB hex value.
-//   return { r, g, b };
-// }
-// function toHexRGB(color: RGBObject) {
-//   const r = color.r.toString(16);
-//   const g = color.g.toString(16);
-//   const b = color.b.toString(16);
-
-//   // Return the RGB hex value.
-//   return `#${r}${g}${b}`;
-// }
-
-// function getTextColor(backgroundColor: RGBObject) {
-//   // Calculate the luminance of the background color.
-//   const luminance =
-//     backgroundColor.r * 0.299 + backgroundColor.g * 0.587 + backgroundColor.b * 0.114;
-
-//   // If the luminance is greater than 186, use black text.
-//   // Otherwise, use white text.
-//   return luminance > 186 ? 'rgb(var(--v-theme-primary))' : 'rgb(var(--v-theme-secondary))';
-// }
 
 function getArrayOfArrays(direction: Direction) {
   if ([Direction.Up, Direction.Down].includes(direction)) return getStripedArrayOfArrays(direction);
@@ -193,7 +140,6 @@ function setRandomEmptySquare() {
     pickEmpty--;
   }
 }
-setRandomEmptySquare();
 
 function checkEndGame() {
   const hasWinNumber = allValues.value.includes(WIN_NUMBER);
@@ -214,6 +160,82 @@ function onDirectionalKeyStroke(e: KeyboardEvent, direction: Direction) {
   setRandomEmptySquare();
   checkEndGame();
 }
+
+// ---------------- Used Google Bard to guide development: start ------------- //
+function rgbHexToDecimal(hexString: string) {
+  // Split the hex string into three parts.
+  const red = parseInt(hexString.substring(1, 3), 16);
+  const green = parseInt(hexString.substring(3, 5), 16);
+  const blue = parseInt(hexString.substring(5, 7), 16);
+
+  // Return the decimal value.
+  return { r: red, g: green, b: blue };
+}
+function getColorStyle(value: number | null) {
+  const backgroundColorRGB = value
+    ? hashToVividColor(generatePseudoRandomNumber(value))
+    : rgbHexToDecimal(theme.current.value.colors.secondary);
+
+  return {
+    color: getTextColor(backgroundColorRGB),
+    'background-color': toHexRGB(backgroundColorRGB),
+  };
+}
+
+function generatePseudoRandomNumber(value: number) {
+  return (1103515245 * value + 12345) % 2 ** 31;
+}
+
+function hashToVividColor(number: number) {
+  // Calculate the red, green, and blue values of the color.
+  let r = (number % 256) + 128;
+  let g = (Math.floor((number / 256) % 255) + 128) * 0.7;
+  let b = (Math.floor((number / 65536) % 255) + 128) * 0.5;
+
+  // Check if the color is vivid.
+  const isVivid = r + g + b > 500;
+
+  // If the color is not vivid, increase the saturation.
+  if (!isVivid) {
+    const colorIndex = Math.floor(number % 3);
+    switch (colorIndex) {
+      case 0:
+        r += 100;
+        break;
+      case 1:
+        g += 100;
+        break;
+      case 2:
+        b += 100;
+        break;
+    }
+  }
+
+  // Return the RGB hex value.
+  return { r, g, b };
+}
+
+function toHexRGB(color: RGBObject) {
+  const r = color.r;
+  const g = color.g;
+  const b = color.b;
+
+  // Return the RGB hex value.
+  return `rgb(${r},${g},${b})`;
+}
+
+function getTextColor(backgroundColor: RGBObject) {
+  // Calculate the luminance of the background color.
+  const luminance =
+    backgroundColor.r * 0.299 + backgroundColor.g * 0.587 + backgroundColor.b * 0.114;
+
+  // If the luminance is greater than 186, use black text.
+  // Otherwise, use white text.
+  return luminance > 186 ? 'rgb(var(--v-theme-secondary))' : 'rgb(var(--v-theme-primary))';
+}
+// ---------------- Used Google Bard to guide development: stop ------------- //
+
+setRandomEmptySquare();
 
 onKeyStroke(['s', 'ArrowDown'], e => {
   onDirectionalKeyStroke(e, Direction.Down);

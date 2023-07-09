@@ -16,3 +16,9 @@ export type GameDetails = {
   link: string;
   year: number;
 };
+
+export type RGBObject = {
+  r: number;
+  g: number;
+  b: number;
+};
