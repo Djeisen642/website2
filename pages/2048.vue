@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container ref="container" fluid>
     <v-row v-for="(cols, rowIndex) in rows" :key="rowIndex" class="row-2048" align-content="center">
       <v-spacer />
       <p
@@ -151,7 +151,7 @@ function checkEndGame() {
   if (numEmpty === 0) gameState.value = GameState.Lost;
 }
 
-function onDirectionalKeyStroke(e: KeyboardEvent, direction: Direction) {
+function onDirectionalKeyStroke(e: Event, direction: Direction) {
   if (gameState.value !== GameState.Ongoing) return;
   e.preventDefault();
   const arrayOfArrays = getArrayOfArrays(direction);
@@ -251,6 +251,26 @@ onKeyStroke(['a', 'ArrowLeft'], e => {
 
 onKeyStroke(['d', 'ArrowRight'], e => {
   onDirectionalKeyStroke(e, Direction.Right);
+});
+
+const container = ref(null);
+useSwipe(container, {
+  onSwipeEnd(e, direction) {
+    switch (direction) {
+      case 'down':
+        onDirectionalKeyStroke(e, Direction.Down);
+        break;
+      case 'up':
+        onDirectionalKeyStroke(e, Direction.Up);
+        break;
+      case 'left':
+        onDirectionalKeyStroke(e, Direction.Left);
+        break;
+      case 'right':
+        onDirectionalKeyStroke(e, Direction.Right);
+        break;
+    }
+  },
 });
 </script>
 <style lang="scss" scoped>
