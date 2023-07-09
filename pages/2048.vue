@@ -275,9 +275,11 @@ useSwipe(container, {
 </script>
 <style lang="scss" scoped>
 $square-side: 100px;
+$max-square-side: min(24vh, 24vw);
 
 .col-2048 {
   width: $square-side;
+  max-width: $max-square-side;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -289,5 +291,6 @@ $square-side: 100px;
 
 .row-2048 {
   height: $square-side;
+  max-height: $max-square-side;
 }
 </style>
