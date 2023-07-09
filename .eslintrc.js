@@ -2,10 +2,13 @@ require('@rushstack/eslint-patch/modern-module-resolution');
 
 module.exports = {
   root: true,
+  env: {
+    es2023: true,
+  },
   extends: [
     '@nuxtjs/eslint-config-typescript',
-    'plugin:prettier/recommended',
     'plugin:vuejs-accessibility/recommended',
+    'prettier',
   ],
   plugins: ['vuejs-accessibility'],
   rules: {

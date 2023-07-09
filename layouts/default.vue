@@ -57,6 +57,10 @@ const pages = ref([
     title: 'Cat and Mouse game',
     to: '/catandmouse',
   },
+  {
+    title: '2048 Clone',
+    to: '/2048',
+  },
 ]);
 
 const route = useRoute();

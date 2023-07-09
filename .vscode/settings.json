@@ -1,0 +1,27 @@
+{
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "stylelint.validate": [
+    "css",
+    "vue"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": true
+  },
+  "eslint.validate": [
+    "typescript",
+    "vue"
+  ],
+  "vue.server.configFilePath": "./volar.config.ts",
+  "html.format.wrapLineLength": 100,
+  "html.format.wrapAttributes": "force-expand-multiline",
+}
