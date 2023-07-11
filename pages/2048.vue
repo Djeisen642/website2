@@ -14,7 +14,11 @@
       </p>
       <v-spacer />
     </v-row>
-    <p v-if="gameState !== GameState.Ongoing">{{ gameStateText }}</p>
+    <v-row>
+      <v-spacer />
+      <h2 v-if="gameState !== GameState.Ongoing">{{ gameStateText }}</h2>
+      <v-spacer />
+    </v-row>
   </v-container>
 </template>
 <script lang="ts" setup>
@@ -126,6 +130,7 @@ function fromStripedArrayOfArrays(direction: Direction, arrayOfArrays: (number |
 function setRandomEmptySquare() {
   if (gameState.value !== GameState.Ongoing) return;
   const numEmpty = allValues.value.filter(value => !value).length;
+  if (numEmpty === 0) return;
   let pickEmpty = Math.floor(Math.random() * numEmpty);
   const pickANumber =
     NUMS_THAT_CAN_BE_ADDED_AT_RANDOM[
@@ -147,16 +152,34 @@ function checkEndGame() {
     gameState.value = GameState.Won;
     return;
   }
-  const numEmpty = allValues.value.filter(value => !value).length;
-  if (numEmpty === 0) gameState.value = GameState.Lost;
+  const hasEmpty = allValues.value.some(value => !value);
+  if (hasEmpty) return;
+  const values = allValues.value;
+  for (let valueIndex = 0; valueIndex < values.length; valueIndex++) {
+    const value = values[valueIndex];
+    if (
+      value &&
+      [
+        values[valueIndex - NUM_SQUARES_PER_SIDE],
+        values[valueIndex + NUM_SQUARES_PER_SIDE],
+        values[valueIndex - 1],
+        values[valueIndex + 1],
+      ].includes(value)
+    )
+      return;
+  }
+  gameState.value = GameState.Lost;
 }
 
 function onDirectionalKeyStroke(e: Event, direction: Direction) {
   if (gameState.value !== GameState.Ongoing) return;
   e.preventDefault();
+  const originalOrder = allValues.value.slice();
   const arrayOfArrays = getArrayOfArrays(direction);
   const collapseResult = collapse(arrayOfArrays);
-  allValues.value = fromArrayOfArrays(direction, collapseResult);
+  const newOrder = fromArrayOfArrays(direction, collapseResult);
+  if (originalOrder.every((item, i) => newOrder[i] === item)) return; // if no change occurred, the move basically didn't happen
+  allValues.value = newOrder;
   setRandomEmptySquare();
   checkEndGame();
 }
