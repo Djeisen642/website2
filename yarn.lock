@@ -2501,10 +2501,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:>=12.12.47, @types/node@npm:>=13.7.0, @types/node@npm:^20.4.1":
+"@types/node@npm:*, @types/node@npm:>=12.12.47, @types/node@npm:>=13.7.0":
   version: 20.4.1
   resolution: "@types/node@npm:20.4.1"
   checksum: 22cbcc792f2eb636fe4188778ed0f32658ab872aa7fcb9847b3fa289a42b14b9f5e30c6faec50ef3c7adbc6c2a246926e5858136bb8b10c035a3fcaa6afbeed2
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^20.4.2":
+  version: 20.4.2
+  resolution: "@types/node@npm:20.4.2"
+  checksum: 99e544ea7560d51f01f95627fc40394c24a13da8f041121a0da13e4ef0a2aa332932eaf9a5e8d0e30d1c07106e96a183be392cbba62e8cf0bf6a085d5c0f4149
   languageName: node
   linkType: hard
 
@@ -5674,18 +5681,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-prettier@npm:^4.2.1":
-  version: 4.2.1
-  resolution: "eslint-plugin-prettier@npm:4.2.1"
+"eslint-plugin-prettier@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "eslint-plugin-prettier@npm:5.0.0"
   dependencies:
     prettier-linter-helpers: ^1.0.0
+    synckit: ^0.8.5
   peerDependencies:
-    eslint: ">=7.28.0"
-    prettier: ">=2.0.0"
+    "@types/eslint": ">=8.0.0"
+    eslint: ">=8.0.0"
+    prettier: ">=3.0.0"
   peerDependenciesMeta:
+    "@types/eslint":
+      optional: true
     eslint-config-prettier:
       optional: true
-  checksum: b9e839d2334ad8ec7a5589c5cb0f219bded260839a857d7a486997f9870e95106aa59b8756ff3f37202085ebab658de382b0267cae44c3a7f0eb0bcc03a4f6d6
+  checksum: 84e88744b9050f2d5ef31b94e85294dda16f3a53c2449f9d33eac8ae6264889b459bf35a68e438fb6b329c2a1d6491aac4bfa00d86317e7009de3dad0311bec6
   languageName: node
   linkType: hard
 
@@ -6325,9 +6336,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase-tools@npm:^12.4.3":
-  version: 12.4.3
-  resolution: "firebase-tools@npm:12.4.3"
+"firebase-tools@npm:^12.4.4":
+  version: 12.4.4
+  resolution: "firebase-tools@npm:12.4.4"
   dependencies:
     "@google-cloud/pubsub": ^3.0.1
     abort-controller: ^3.0.0
@@ -6374,7 +6385,7 @@ __metadata:
     request: ^2.87.0
     retry: ^0.13.1
     rimraf: ^3.0.0
-    semver: ^5.7.1
+    semver: ^7.5.2
     stream-chain: ^2.2.4
     stream-json: ^1.7.3
     strip-ansi: ^6.0.1
@@ -6391,7 +6402,7 @@ __metadata:
     ws: ^7.2.3
   bin:
     firebase: lib/bin/firebase.js
-  checksum: 708f4983fe9d1f29d6ed7dd12a0092739e9e6b04576fb1d7c8a4c0942fde35499e0be32fd4dbf8d6b275f4881aa6ab457dd2fce0b919c6ab00f78ad72819348b
+  checksum: 55fd4d4f33a9f137d5cac0cd5ca953b86c0df39dcd0a7aec65242f4edc3b26f93ec07a012893137049d2b84afda1507343e63b7378bafbc753339e10136977f2
   languageName: node
   linkType: hard
 
@@ -10848,6 +10859,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"postcss@npm:^8.4.25":
+  version: 8.4.25
+  resolution: "postcss@npm:8.4.25"
+  dependencies:
+    nanoid: ^3.3.6
+    picocolors: ^1.0.0
+    source-map-js: ^1.0.2
+  checksum: 9ed3ab8af43ad5210c28f56f916fd9b8c9f94fbeaebbf645dcf579bc28bdd8056c2a7ecc934668d399b81fedb6128f0c4b299f931e50454964bc911c25a3a0a2
+  languageName: node
+  linkType: hard
+
 "prelude-ls@npm:^1.2.1":
   version: 1.2.1
   resolution: "prelude-ls@npm:1.2.1"
@@ -11757,7 +11779,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:2 || 3 || 4 || 5, semver@npm:^5.5.0, semver@npm:^5.7.1":
+"semver@npm:2 || 3 || 4 || 5, semver@npm:^5.5.0":
   version: 5.7.1
   resolution: "semver@npm:5.7.1"
   bin:
@@ -11794,6 +11816,17 @@ __metadata:
   bin:
     semver: bin/semver.js
   checksum: 9d58db16525e9f749ad0a696a1f27deabaa51f66e91d2fa2b0db3de3e9644e8677de3b7d7a03f4c15bc81521e0c3916d7369e0572dbde250d9bedf5194e2a8a7
+  languageName: node
+  linkType: hard
+
+"semver@npm:^7.5.2":
+  version: 7.5.4
+  resolution: "semver@npm:7.5.4"
+  dependencies:
+    lru-cache: ^6.0.0
+  bin:
+    semver: bin/semver.js
+  checksum: 12d8ad952fa353b0995bf180cdac205a4068b759a140e5d3c608317098b3575ac2f1e09182206bf2eb26120e1c0ed8fb92c48c592f6099680de56bb071423ca3
   languageName: node
   linkType: hard
 
@@ -12595,6 +12628,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"synckit@npm:^0.8.5":
+  version: 0.8.5
+  resolution: "synckit@npm:0.8.5"
+  dependencies:
+    "@pkgr/utils": ^2.3.1
+    tslib: ^2.5.0
+  checksum: 8a9560e5d8f3d94dc3cf5f7b9c83490ffa30d320093560a37b88f59483040771fd1750e76b9939abfbb1b5a23fd6dfbae77f6b338abffe7cae7329cd9b9bb86b
+  languageName: node
+  linkType: hard
+
 "table@npm:^6.8.1":
   version: 6.8.1
   resolution: "table@npm:6.8.1"
@@ -12876,6 +12919,13 @@ __metadata:
   version: 2.5.0
   resolution: "tslib@npm:2.5.0"
   checksum: ae3ed5f9ce29932d049908ebfdf21b3a003a85653a9a140d614da6b767a93ef94f460e52c3d787f0e4f383546981713f165037dc2274df212ea9f8a4541004e1
+  languageName: node
+  linkType: hard
+
+"tslib@npm:^2.5.0":
+  version: 2.6.0
+  resolution: "tslib@npm:2.6.0"
+  checksum: c01066038f950016a18106ddeca4649b4d76caa76ec5a31e2a26e10586a59fceb4ee45e96719bf6c715648e7c14085a81fee5c62f7e9ebee68e77a5396e5538f
   languageName: node
   linkType: hard
 
@@ -13520,7 +13570,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^3.0.0 || ^4.0.0, vite@npm:^4.4.2":
+"vite@npm:^3.0.0 || ^4.0.0":
   version: 4.4.2
   resolution: "vite@npm:4.4.2"
   dependencies:
@@ -13557,6 +13607,46 @@ __metadata:
   bin:
     vite: bin/vite.js
   checksum: 37a1c3a0ccc4b80c0a696203d3608d6bf7dc98219ddc178e528b972e3305af9ab8f92dea455421024e98c59372f6a97b1b4cc409a05f757a64bff830610053c6
+  languageName: node
+  linkType: hard
+
+"vite@npm:^4.4.3":
+  version: 4.4.3
+  resolution: "vite@npm:4.4.3"
+  dependencies:
+    esbuild: ^0.18.10
+    fsevents: ~2.3.2
+    postcss: ^8.4.25
+    rollup: ^3.25.2
+  peerDependencies:
+    "@types/node": ">= 14"
+    less: "*"
+    lightningcss: ^1.21.0
+    sass: "*"
+    stylus: "*"
+    sugarss: "*"
+    terser: ^5.4.0
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  peerDependenciesMeta:
+    "@types/node":
+      optional: true
+    less:
+      optional: true
+    lightningcss:
+      optional: true
+    sass:
+      optional: true
+    stylus:
+      optional: true
+    sugarss:
+      optional: true
+    terser:
+      optional: true
+  bin:
+    vite: bin/vite.js
+  checksum: 2f7c90de35c840ed7f33000d65006053885c0342aa7c19cee7369d7b3d92473a9bae790f910eb3e9900bdb7ca89559a772ee4782f35636ec4e6bd10717e7f5ff
   languageName: node
   linkType: hard
 
@@ -13754,9 +13844,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vuetify@npm:3.3.7":
-  version: 3.3.7
-  resolution: "vuetify@npm:3.3.7"
+"vuetify@npm:3.3.8":
+  version: 3.3.8
+  resolution: "vuetify@npm:3.3.8"
   peerDependencies:
     typescript: ">=4.7"
     vite-plugin-vuetify: ^1.0.0-alpha.12
@@ -13772,7 +13862,7 @@ __metadata:
       optional: true
     webpack-plugin-vuetify:
       optional: true
-  checksum: ef652d200caca011bab98d0c1a8b34cdc2a9f2ce4ada76826aac43b66c3eb50d75cda49e02a6609ec9349f0851f4a1a9117a91be8737ce228947b73b71aa707f
+  checksum: a3287b1189bc8ca8c1d6f77d0510b376ae1d873dfea3616ae350bd97de61e0cad9c17484e029a25da47f223c34ccfcd8e1c08123fa6fdbe2222e45a9a790cedb
   languageName: node
   linkType: hard
 
@@ -13832,7 +13922,7 @@ __metadata:
     "@pinia/nuxt": ^0.4.11
     "@rushstack/eslint-patch": ^1.3.2
     "@trivago/prettier-plugin-sort-imports": ^4.1.1
-    "@types/node": ^20.4.1
+    "@types/node": ^20.4.2
     "@types/uuid": ^9.0.2
     "@volar-plugins/prettier": ^2.0.0
     "@vueuse/core": ^10.2.1
@@ -13840,10 +13930,10 @@ __metadata:
     axe-core: ^4.7.2
     eslint: ^8.44.0
     eslint-config-prettier: ^8.8.0
-    eslint-plugin-prettier: ^4.2.1
+    eslint-plugin-prettier: ^5.0.0
     eslint-plugin-vuejs-accessibility: ^2.1.0
     firebase: ^10.0.0
-    firebase-tools: ^12.4.3
+    firebase-tools: ^12.4.4
     husky: ^8.0.3
     node-fetch: ^3.3.1
     nuxt: ^3.6.2
@@ -13855,11 +13945,11 @@ __metadata:
     stylelint-config-recommended-vue: ^1.5.0
     stylelint-config-standard-scss: ^10.0.0
     uuid: ^9.0.0
-    vite: ^4.4.2
+    vite: ^4.4.3
     vite-plugin-vuetify: ^1.0.2
     vue: ^3.3.4
     vue-axe: ^3.1.2
-    vuetify: 3.3.7
+    vuetify: 3.3.8
     web-vitals: ^3.4.0
   languageName: unknown
   linkType: soft
