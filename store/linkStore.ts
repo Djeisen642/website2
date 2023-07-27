@@ -3,11 +3,16 @@ import { deleteDoc, doc, onSnapshot, query, setDoc } from '@firebase/firestore';
 import { defineStore } from 'pinia';
 import { v5 as uuidV5 } from 'uuid';
 
+
+
 import { useNuxtApp } from '#app';
+
+
 
 import { UUID_NAMESPACE } from '~/utils/constants';
 import { checkIfImageExists } from '~/utils/helpers';
 import type { LinkDetails } from '~/utils/types';
+
 
 const nuxtApp = useNuxtApp();
 
@@ -26,7 +31,7 @@ export const useLinkStore = defineStore('links', {
       this.links = [];
       querySnapshot.forEach(async doc => {
         const linkObject = doc.data();
-        linkObject.imageExists = await checkIfImageExists(`${linkObject.link}/favicon.ico`);
+        linkObject.imageExists = await checkIfImageExists(`${new URL(linkObject.link).origin}/favicon.ico`);
         this.links.push(linkObject);
       });
       this.loaded = true;
