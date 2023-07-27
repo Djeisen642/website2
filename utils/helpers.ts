@@ -24,3 +24,7 @@ export function checkIfImageExists(url: string): Promise<boolean> {
     };
   });
 }
+
+export function getFavicon(url: string): string {
+  return `${new URL(url).origin}/favicon.ico`;
+}

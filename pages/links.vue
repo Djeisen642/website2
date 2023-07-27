@@ -21,7 +21,7 @@
               <v-img
                 v-if="link.imageExists"
                 cover
-                :src="link.link + '/favicon.ico'"
+                :src="getFavicon(link.link)"
                 aria-hidden="true"
               />
               <span v-else class="text-h5">{{ link.title.substring(0, 1).toUpperCase() }}</span>
@@ -45,7 +45,7 @@
         <v-list-item class="d-md-none" role="listitem" @click="onLinkClick(link)">
           <template #prepend>
             <v-avatar color="primary">
-              <v-img v-if="link.imageExists" cover :src="link.link + '/favicon.ico'" />
+              <v-img v-if="link.imageExists" cover :src="getFavicon(link.link)" />
               <span v-else class="text-h5">{{ link.title.substring(0, 1).toUpperCase() }}</span>
             </v-avatar>
           </template>
@@ -86,6 +86,7 @@ import { ref, useHead } from '#imports';
 import { useAuthStore } from '~/store/authStore';
 import { useLinkStore } from '~/store/linkStore';
 import { useStore } from '~/store/mainStore';
+import { getFavicon } from '~/utils/helpers';
 import type { LinkDetails } from '~/utils/types';
 
 const mainStore = useStore();

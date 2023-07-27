@@ -10,7 +10,7 @@ import { useNuxtApp } from '#app';
 
 
 import { UUID_NAMESPACE } from '~/utils/constants';
-import { checkIfImageExists } from '~/utils/helpers';
+import { checkIfImageExists, getFavicon } from '~/utils/helpers';
 import type { LinkDetails } from '~/utils/types';
 
 
@@ -31,7 +31,7 @@ export const useLinkStore = defineStore('links', {
       this.links = [];
       querySnapshot.forEach(async doc => {
         const linkObject = doc.data();
-        linkObject.imageExists = await checkIfImageExists(`${new URL(linkObject.link).origin}/favicon.ico`);
+        linkObject.imageExists = await checkIfImageExists(getFavicon(linkObject.link));
         this.links.push(linkObject);
       });
       this.loaded = true;
