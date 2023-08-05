@@ -24,7 +24,7 @@
     </v-main>
     <default-footer />
     <error-snackbar :snackbar="mainStore.snackbar.snackbar" :text="mainStore.snackbar.text" />
-    <vue-axe />
+    <vue-axe v-if="!config.public.IS_PRODUCTION" />
   </v-app>
 </template>
 <script setup lang="ts">
@@ -34,6 +34,7 @@ import DefaultFooter from '~/components/DefaultFooter.vue';
 import { useStore } from '~/store/mainStore.js';
 
 const mainStore = useStore();
+const config = useRuntimeConfig();
 
 const drawer = ref(false);
 const pages = ref([

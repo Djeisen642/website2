@@ -1,14 +1,7 @@
 <template>
-  <vue-axe-popup v-if="showAxePopup" />
+  <vue-axe-popup />
 </template>
 <script setup lang="ts">
 // @ts-expect-error - vue-axe doesn't have types
 import { VueAxePopup } from 'vue-axe';
-
-const config = useRuntimeConfig();
-const showAxePopup = ref(false);
-
-onMounted(() => {
-  showAxePopup.value = !config.public.IS_PRODUCTION;
-});
 </script>
