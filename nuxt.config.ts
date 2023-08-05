@@ -35,6 +35,9 @@ const envVars = isProduction
       url: 'http://localhost:3000',
     };
 
+const plugins = [];
+if (!isProduction) plugins.push('~/plugins/dev/axe.ts');
+
 const authDomain = envVars.domain;
 const projectId = envVars.projectId;
 const storageBucket = envVars.bucket;
@@ -70,6 +73,7 @@ export default defineNuxtConfig({
       siteUrl: envVars.url,
     },
   },
+  plugins,
   ssr: false,
   telemetry: false,
   app: {
