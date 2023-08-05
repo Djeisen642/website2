@@ -51,16 +51,11 @@ export default defineNuxtConfig({
       if (!Array.isArray(nuxt.options.app.head.style)) throw new Error('What happened here?');
       nuxt.options.app.head.style.push(...styles);
     },
-  },
-  modules: [
-    '@vueuse/nuxt',
-    '@pinia/nuxt',
-    '@nuxtjs/robots',
-    (_, nuxt) => {
-      // @ts-ignore - no idea why this is erroring
-      nuxt.hooks.hook('vite:extendConfig', config => config.plugins?.push(vuetify()));
+    'vite:extendConfig': config => {
+      config.plugins?.push(vuetify());
     },
-  ],
+  },
+  modules: ['@vueuse/nuxt', '@pinia/nuxt', '@nuxtjs/robots'],
   runtimeConfig: {
     public: {
       IS_PRODUCTION: isProduction,

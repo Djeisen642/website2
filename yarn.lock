@@ -2550,10 +2550,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.4.5":
-  version: 20.4.5
-  resolution: "@types/node@npm:20.4.5"
-  checksum: 36a0304a8dc346a1b2d2edac4c4633eecf70875793d61a5274d0df052d7a7af7a8e34f29884eac4fbd094c4f0201477dcb39c0ecd3307ca141688806538d1138
+"@types/node@npm:^20.4.7":
+  version: 20.4.7
+  resolution: "@types/node@npm:20.4.7"
+  checksum: a40d7003f66b56220a2028179e49f950b46fa6dbf860a4a6ecbd6ba7976f05b2f0b31ced39689ec88a7d9e32d07e088c6a06d270b99d5bc13a28291ac2f30ca7
   languageName: node
   linkType: hard
 
@@ -5619,14 +5619,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-prettier@npm:^8.9.0":
-  version: 8.9.0
-  resolution: "eslint-config-prettier@npm:8.9.0"
+"eslint-config-prettier@npm:^8.10.0":
+  version: 8.10.0
+  resolution: "eslint-config-prettier@npm:8.10.0"
   peerDependencies:
     eslint: ">=7.0.0"
   bin:
     eslint-config-prettier: bin/cli.js
-  checksum: a675d0dabd76b700ef2d062b5ec6a634e105a8e8c070f95281fd2ccb614527fac60b4c758132058c50f0521fd19313f1f5be45ce9ebf081f2e5f77ae6eb7d8db
+  checksum: 153266badd477e49b0759816246b2132f1dbdb6c7f313ca60a9af5822fd1071c2bc5684a3720d78b725452bbac04bb130878b2513aea5e72b1b792de5a69fec8
   languageName: node
   linkType: hard
 
@@ -6437,9 +6437,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase-tools@npm:^12.4.6":
-  version: 12.4.6
-  resolution: "firebase-tools@npm:12.4.6"
+"firebase-tools@npm:^12.4.7":
+  version: 12.4.7
+  resolution: "firebase-tools@npm:12.4.7"
   dependencies:
     "@google-cloud/pubsub": ^3.0.1
     abort-controller: ^3.0.0
@@ -6503,7 +6503,7 @@ __metadata:
     ws: ^7.2.3
   bin:
     firebase: lib/bin/firebase.js
-  checksum: f21981b5109fc1b2ceba9582b5825ee84e2db0eb4cefbfaff3f64a48fddca5131da858db39c4e86787b41de8037bfbac805c8205462fb845d571259d1c4557f6
+  checksum: a218a5fb5133a016dcc420a47987371dee306cb58927e6d5d8f07a3889b2d24907eebc36d2d4561f722fe0d1d4aa7753e6b1b6e2c7920dca03060f55b6889bc5
   languageName: node
   linkType: hard
 
@@ -11857,16 +11857,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.64.1":
-  version: 1.64.1
-  resolution: "sass@npm:1.64.1"
+"sass@npm:^1.64.2":
+  version: 1.64.2
+  resolution: "sass@npm:1.64.2"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: e908f96f3d5fa5869e2f2aec97548c93d6ef390680af89870fcae8bdbaee2392ac650fbeae8d2ef8e4c99cb9f81e6b3624e1cb659af6d6e746332a22233b5ad8
+  checksum: 43a5c9b9b3b6ba27feb5c45eba90edc437b15a30fd443f5d2623bbd59fe4a922f2a6a9990296c6a6c2b5bce7f401922c5049357415f50b745952c2d478bc5526
   languageName: node
   linkType: hard
 
@@ -13699,9 +13699,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^4.4.7":
-  version: 4.4.7
-  resolution: "vite@npm:4.4.7"
+"vite@npm:^4.4.8":
+  version: 4.4.8
+  resolution: "vite@npm:4.4.8"
   dependencies:
     esbuild: ^0.18.10
     fsevents: ~2.3.2
@@ -13735,7 +13735,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 787c4d891da18d0a0545bee07dec73c3201979dcf2b1ea3dc13fdd2d3b9ad76d413bcc0e68502183e309007a612c1f4116adefe0093d95fbbb9cf1c1755f7e41
+  checksum: e8ffe688f8a7396b1357778f00cb06d1f3dadad200823c47a1955cf52774a0cbff5ac4d6a8f8d09e26c1d4e588e5815956f9eba02ae301e77a36c3d181a1bc86
   languageName: node
   linkType: hard
 
@@ -13921,9 +13921,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vuetify@npm:3.3.10":
-  version: 3.3.10
-  resolution: "vuetify@npm:3.3.10"
+"vuetify@npm:3.3.11":
+  version: 3.3.11
+  resolution: "vuetify@npm:3.3.11"
   peerDependencies:
     typescript: ">=4.7"
     vite-plugin-vuetify: ^1.0.0-alpha.12
@@ -13939,7 +13939,7 @@ __metadata:
       optional: true
     webpack-plugin-vuetify:
       optional: true
-  checksum: f11aa2821c0fafff31ac231254c3f9197b01140968575787a73a637601c007997d57594dcfe4f7aca5c78d42663469291b483ad732d3bda47808c24ba2f3c620
+  checksum: e9a90fc8ccab8f509fa20c8351f7d391150dc92cb8a8e33f047cbb1cc8a203904801e056c42bc4147071ec9b884d54ee170af17b2932ce01b41573f81b675a4d
   languageName: node
   linkType: hard
 
@@ -13999,34 +13999,34 @@ __metadata:
     "@pinia/nuxt": ^0.4.11
     "@rushstack/eslint-patch": ^1.3.2
     "@trivago/prettier-plugin-sort-imports": ^4.2.0
-    "@types/node": ^20.4.5
+    "@types/node": ^20.4.7
     "@types/uuid": ^9.0.2
     "@volar-plugins/prettier": ^2.0.0
     "@vueuse/core": ^10.3.0
     "@vueuse/nuxt": ^10.3.0
     axe-core: ^4.7.2
     eslint: ^8.46.0
-    eslint-config-prettier: ^8.9.0
+    eslint-config-prettier: ^8.10.0
     eslint-plugin-prettier: ^5.0.0
     eslint-plugin-vuejs-accessibility: ^2.1.0
     firebase: ^10.1.0
-    firebase-tools: ^12.4.6
+    firebase-tools: ^12.4.7
     husky: ^8.0.3
     node-fetch: ^3.3.2
     nuxt: ^3.6.5
     pinst: ^3.0.0
     postcss-html: ^1.5.0
     prettier: ^2.8.8
-    sass: ^1.64.1
+    sass: ^1.64.2
     stylelint: ^15.10.2
     stylelint-config-recommended-vue: ^1.5.0
     stylelint-config-standard-scss: ^10.0.0
     uuid: ^9.0.0
-    vite: ^4.4.7
+    vite: ^4.4.8
     vite-plugin-vuetify: ^1.0.2
     vue: ^3.3.4
     vue-axe: ^3.1.2
-    vuetify: 3.3.10
+    vuetify: 3.3.11
     web-vitals: ^3.4.0
   languageName: unknown
   linkType: soft

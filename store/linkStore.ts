@@ -1,18 +1,13 @@
-import type { QuerySnapshot } from '@firebase/firestore';
-import { deleteDoc, doc, onSnapshot, query, setDoc } from '@firebase/firestore';
+import type { QuerySnapshot } from 'firebase/firestore';
+import { deleteDoc, doc, onSnapshot, query, setDoc } from 'firebase/firestore';
 import { defineStore } from 'pinia';
 import { v5 as uuidV5 } from 'uuid';
 
-
-
 import { useNuxtApp } from '#app';
-
-
 
 import { UUID_NAMESPACE } from '~/utils/constants';
 import { checkIfImageExists, getFavicon } from '~/utils/helpers';
 import type { LinkDetails } from '~/utils/types';
-
 
 const nuxtApp = useNuxtApp();
 

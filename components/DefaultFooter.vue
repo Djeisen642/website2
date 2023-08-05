@@ -36,7 +36,7 @@
   </v-footer>
 </template>
 <script setup lang="ts">
-import { FirebaseError } from '@firebase/util';
+import { FirebaseError } from 'firebase/app';
 
 import { useNuxtApp } from '#app';
 

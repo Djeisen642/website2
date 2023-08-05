@@ -1,11 +1,10 @@
 // Import the functions you need from the SDKs you need
-import { ReCaptchaV3Provider, initializeAppCheck } from '@firebase/app-check';
-import { collection } from '@firebase/firestore';
-import { getPerformance } from '@firebase/performance';
 import { getAnalytics, logEvent } from 'firebase/analytics';
 import { initializeApp } from 'firebase/app';
+import { ReCaptchaV3Provider, initializeAppCheck } from 'firebase/app-check';
 import { getAuth } from 'firebase/auth';
-import { CollectionReference, DocumentData, getFirestore } from 'firebase/firestore';
+import { CollectionReference, DocumentData, collection, getFirestore } from 'firebase/firestore';
+import { getPerformance } from 'firebase/performance';
 import { ReportCallback, onCLS, onFID, onLCP } from 'web-vitals';
 
 import { defineNuxtPlugin, useRuntimeConfig } from '#imports';
