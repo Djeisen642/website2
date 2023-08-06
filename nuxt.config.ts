@@ -43,7 +43,7 @@ const projectId = envVars.projectId;
 const storageBucket = envVars.bucket;
 export default defineNuxtConfig({
   css: ['@/assets/styles/index.scss'],
-  sourcemap: true,
+  sourcemap: !isProduction,
   debug: !isProduction,
   typescript: {
     strict: true,
@@ -58,7 +58,7 @@ export default defineNuxtConfig({
       config.plugins?.push(vuetify());
     },
   },
-  modules: ['@vueuse/nuxt', '@pinia/nuxt', '@nuxtjs/robots'],
+  modules: ['@vueuse/nuxt', '@pinia/nuxt', '@nuxtjs/robots', '@nuxtjs/device'],
   runtimeConfig: {
     public: {
       IS_PRODUCTION: isProduction,

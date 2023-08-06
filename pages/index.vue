@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-parallax
-      src="/images/reflection.webp"
+      :src="img"
       height="100vh"
       lazy-src="/images/reflection_small.webp"
       alt="Background image of clouds, mountains, and reflection"
@@ -66,8 +66,11 @@
 </template>
 
 <script setup lang="ts">
-import { definePageMeta, useHead } from '#imports';
-
+const img = ref('/images/reflection.webp');
+const device = useDevice();
+if (device.isMobile) {
+  img.value = '/images/reflection-mobile.webp';
+}
 definePageMeta({
   layout: 'homepage',
 });

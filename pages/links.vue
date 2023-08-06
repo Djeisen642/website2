@@ -81,8 +81,6 @@
   </v-container>
 </template>
 <script setup lang="ts">
-import { ref, useHead } from '#imports';
-
 import { useAuthStore } from '~/store/authStore';
 import { useLinkStore } from '~/store/linkStore';
 import { useStore } from '~/store/mainStore';
