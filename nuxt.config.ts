@@ -58,7 +58,7 @@ export default defineNuxtConfig({
       config.plugins?.push(vuetify());
     },
   },
-  modules: ['nuxt-purgecss', '@vueuse/nuxt', '@pinia/nuxt', '@nuxtjs/robots', '@nuxtjs/device'],
+  modules: ['@vueuse/nuxt', '@pinia/nuxt', '@nuxtjs/robots', '@nuxtjs/device'],
   runtimeConfig: {
     public: {
       IS_PRODUCTION: isProduction,
