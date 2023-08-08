@@ -11,6 +11,7 @@
         width="10"
         color="primary"
         bg-color="secondary"
+        aria-label="Loading games..."
       />
     </v-sheet>
 

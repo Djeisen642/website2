@@ -11,6 +11,7 @@
         width="10"
         color="primary"
         bg-color="secondary"
+        aria-label="Loading links..."
       />
     </v-sheet>
     <v-list lines="three" role="list">

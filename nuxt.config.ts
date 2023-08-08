@@ -48,6 +48,11 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
   },
+  vite: {
+    optimizeDeps: {
+      include: ['axe-core'],
+    },
+  },
   hooks: {
     async ready(nuxt) {
       const styles = await getFontStyles();
