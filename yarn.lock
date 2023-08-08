@@ -10868,7 +10868,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.1.10, postcss@npm:^8.4.0, postcss@npm:^8.4.23, postcss@npm:^8.4.24, postcss@npm:^8.4.25, postcss@npm:^8.4.26":
+"postcss@npm:^8.1.10, postcss@npm:^8.4.0, postcss@npm:^8.4.23, postcss@npm:^8.4.24, postcss@npm:^8.4.25, postcss@npm:^8.4.26, postcss@npm:^8.4.27":
   version: 8.4.27
   resolution: "postcss@npm:8.4.27"
   dependencies:
@@ -11656,6 +11656,20 @@ __metadata:
   bin:
     rollup: dist/bin/rollup
   checksum: 7186beeba0e6fd33b37aa33ede7157e77af0a0be4b75d345a51dab4be5962a8e7a1c5ec8868e7c4cd361b456eb1b47bdb75e5db32ab37a546bed383d06b40384
+  languageName: node
+  linkType: hard
+
+"rollup@npm:^3.27.1":
+  version: 3.27.2
+  resolution: "rollup@npm:3.27.2"
+  dependencies:
+    fsevents: ~2.3.2
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  bin:
+    rollup: dist/bin/rollup
+  checksum: 524477e73885bafd2df395c12db330f3893e1f8eca67e811fb1423a4f6318451987e978607c75f8115bd9ce7fa834460969b0c39b797d45da87fa42fef9bafa8
   languageName: node
   linkType: hard
 
@@ -13532,7 +13546,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^3.0.0 || ^4.0.0, vite@npm:^4.4.8":
+"vite@npm:^3.0.0 || ^4.0.0":
   version: 4.4.8
   resolution: "vite@npm:4.4.8"
   dependencies:
@@ -13569,6 +13583,46 @@ __metadata:
   bin:
     vite: bin/vite.js
   checksum: e8ffe688f8a7396b1357778f00cb06d1f3dadad200823c47a1955cf52774a0cbff5ac4d6a8f8d09e26c1d4e588e5815956f9eba02ae301e77a36c3d181a1bc86
+  languageName: node
+  linkType: hard
+
+"vite@npm:^4.4.9":
+  version: 4.4.9
+  resolution: "vite@npm:4.4.9"
+  dependencies:
+    esbuild: ^0.18.10
+    fsevents: ~2.3.2
+    postcss: ^8.4.27
+    rollup: ^3.27.1
+  peerDependencies:
+    "@types/node": ">= 14"
+    less: "*"
+    lightningcss: ^1.21.0
+    sass: "*"
+    stylus: "*"
+    sugarss: "*"
+    terser: ^5.4.0
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  peerDependenciesMeta:
+    "@types/node":
+      optional: true
+    less:
+      optional: true
+    lightningcss:
+      optional: true
+    sass:
+      optional: true
+    stylus:
+      optional: true
+    sugarss:
+      optional: true
+    terser:
+      optional: true
+  bin:
+    vite: bin/vite.js
+  checksum: c511024ceae39c68c7dbf2ac4381ee655cd7bb62cf43867a14798bc835d3320b8fa7867a336143c30825c191c1fb4e9aa3348fce831ab617e96203080d3d2908
   languageName: node
   linkType: hard
 
@@ -13856,7 +13910,7 @@ __metadata:
     stylelint-config-recommended-vue: ^1.5.0
     stylelint-config-standard-scss: ^10.0.0
     uuid: ^9.0.0
-    vite: ^4.4.8
+    vite: ^4.4.9
     vite-plugin-vuetify: ^1.0.2
     vue: ^3.3.4
     vue-axe: ^3.1.2
