@@ -57,7 +57,7 @@
     "@pinia/nuxt": "^0.4.11",
     "@vueuse/core": "^10.3.0",
     "@vueuse/nuxt": "^10.3.0",
-    "firebase": "^10.1.0",
+    "firebase": "^10.2.0",
     "uuid": "^9.0.0",
     "vue": "^3.3.4",
     "vuetify": "3.3.12",
