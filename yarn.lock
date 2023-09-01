@@ -3438,19 +3438,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vueuse/core@npm:10.3.0":
-  version: 10.3.0
-  resolution: "@vueuse/core@npm:10.3.0"
-  dependencies:
-    "@types/web-bluetooth": ^0.0.17
-    "@vueuse/metadata": 10.3.0
-    "@vueuse/shared": 10.3.0
-    vue-demi: ">=0.14.5"
-  checksum: 54af7ab9f2aff8cc795dfc9d846aa9a27dc0949d7a6eec79697819e7dc8cb17b1682f267e7501382afa45736b6877363e640e381b7ac1fd6bc18dc860911afd8
-  languageName: node
-  linkType: hard
-
-"@vueuse/core@npm:^10.4.1":
+"@vueuse/core@npm:10.4.1, @vueuse/core@npm:^10.4.1":
   version: 10.4.1
   resolution: "@vueuse/core@npm:10.4.1"
   dependencies:
@@ -3462,13 +3450,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vueuse/metadata@npm:10.3.0":
-  version: 10.3.0
-  resolution: "@vueuse/metadata@npm:10.3.0"
-  checksum: fb5cb1ff730129ddd831e37cd6e7fed2ebc12211ed63c5075ecef7311852063a8eb152bb213459e36f7b69711f8da35835e2c0ece018c43700febf591ed96937
-  languageName: node
-  linkType: hard
-
 "@vueuse/metadata@npm:10.4.1":
   version: 10.4.1
   resolution: "@vueuse/metadata@npm:10.4.1"
@@ -3476,28 +3457,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vueuse/nuxt@npm:^10.3.0":
-  version: 10.3.0
-  resolution: "@vueuse/nuxt@npm:10.3.0"
+"@vueuse/nuxt@npm:^10.4.1":
+  version: 10.4.1
+  resolution: "@vueuse/nuxt@npm:10.4.1"
   dependencies:
     "@nuxt/kit": ^3.6.5
-    "@vueuse/core": 10.3.0
-    "@vueuse/metadata": 10.3.0
+    "@vueuse/core": 10.4.1
+    "@vueuse/metadata": 10.4.1
     local-pkg: ^0.4.3
     nuxt: ^3.6.5
     vue-demi: ">=0.14.5"
   peerDependencies:
     nuxt: ^3.0.0
-  checksum: 3c7367dd8a74cf8c9ac114eb80ae39f9d081ba2298d4f4df22e4c3d8346c0ed2bb6dbdd22f713bca42c2b852951f554c2ca45bef2a820741e0c2adfe5402a308
-  languageName: node
-  linkType: hard
-
-"@vueuse/shared@npm:10.3.0":
-  version: 10.3.0
-  resolution: "@vueuse/shared@npm:10.3.0"
-  dependencies:
-    vue-demi: ">=0.14.5"
-  checksum: 2392ce5c798ff2aa09c82de11fef3a6cc1eb3d198598e0f19f803645003003e06c90bc4cde5367200f8458a31344edcd4ab571b84a4f7d21ee8083b9309c9bf3
+  checksum: 9c35468dd2a91618cc28e779c2124a1deffa221c68e7d4866220711c446017c260ae6572db3d82a4d57916057a456bb34da71c53f60ce292c5e35069eb07d0f6
   languageName: node
   linkType: hard
 
@@ -15130,7 +15102,7 @@ __metadata:
     "@types/node": ^20.5.4
     "@types/uuid": ^9.0.2
     "@vueuse/core": ^10.4.1
-    "@vueuse/nuxt": ^10.3.0
+    "@vueuse/nuxt": ^10.4.1
     axe-core: ^4.7.2
     eslint: ^8.48.0
     eslint-config-prettier: ^9.0.0
