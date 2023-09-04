@@ -14851,9 +14851,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"volar-service-prettier@npm:^0.0.11":
-  version: 0.0.11
-  resolution: "volar-service-prettier@npm:0.0.11"
+"volar-service-prettier@npm:^0.0.13":
+  version: 0.0.13
+  resolution: "volar-service-prettier@npm:0.0.13"
   peerDependencies:
     "@volar/language-service": ~1.10.0
     prettier: ^2.2 || ^3.0
@@ -14862,7 +14862,7 @@ __metadata:
       optional: true
     prettier:
       optional: true
-  checksum: fc35145584d0e43f515174a06ed845a30a36b0be2c59eea25c1ef41394ce86d529e491dd93f79882f1d16134ecddf770560561f123c7ee387ceb9c3fd51ea8b2
+  checksum: 109ae3ad70e1149b2f7b7890a9b0de6b46bddffa863c4f5ddcc83434b9f17fe6f526907bf28e97f7a002ad072b51ef33c0d5588db93006113bafa38ab11dbe26
   languageName: node
   linkType: hard
 
@@ -15123,7 +15123,7 @@ __metadata:
     uuid: ^9.0.0
     vite: ^4.4.9
     vite-plugin-vuetify: ^1.0.2
-    volar-service-prettier: ^0.0.11
+    volar-service-prettier: ^0.0.13
     vue: ^3.3.4
     vue-axe: ^3.1.2
     vuetify: 3.3.14
