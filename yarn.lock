@@ -4119,10 +4119,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axe-core@npm:^4.8.0":
-  version: 4.8.0
-  resolution: "axe-core@npm:4.8.0"
-  checksum: c3796c7568d15e865ce08d4745318305d0620530e72870c92d984ba0f6fdf16f24fce3df7d30a63ac79fadc27c331d9d6c875ce8cb818b106e095618e099df9b
+"axe-core@npm:^4.8.1":
+  version: 4.8.1
+  resolution: "axe-core@npm:4.8.1"
+  checksum: 78cc7c19bd98d9fc859e9f08923d12c0023f93c9f807b2eebc2ef7b415d7c7cd0dcda914848fa5443ec4b58a9db879366186528a86e08b1c1b336ee38a029c7e
   languageName: node
   linkType: hard
 
@@ -15130,7 +15130,7 @@ __metadata:
     "@types/uuid": ^9.0.3
     "@vueuse/core": ^10.4.1
     "@vueuse/nuxt": ^10.4.1
-    axe-core: ^4.8.0
+    axe-core: ^4.8.1
     eslint: ^8.48.0
     eslint-config-prettier: ^9.0.0
     eslint-plugin-prettier: ^5.0.0
