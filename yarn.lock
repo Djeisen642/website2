@@ -7125,9 +7125,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase-tools@npm:^12.5.2":
-  version: 12.5.2
-  resolution: "firebase-tools@npm:12.5.2"
+"firebase-tools@npm:^12.5.4":
+  version: 12.5.4
+  resolution: "firebase-tools@npm:12.5.4"
   dependencies:
     "@google-cloud/pubsub": ^3.0.1
     abort-controller: ^3.0.0
@@ -7191,7 +7191,7 @@ __metadata:
     ws: ^7.2.3
   bin:
     firebase: lib/bin/firebase.js
-  checksum: 3ebdac6bc03cc31458188ba309d2658fcfe6e3b3a0a52ae8322b4d6486539cbf9e4292fcb552b09144ba701391f667faf36d04deea3b6d32f4366bc91597e30d
+  checksum: fe4a8d620f3e02e7db0358ff779d8846c14cc9ad6fe29b3e374651fe0a49c4fab4d9ea1ec0aaaa226c0a97c14b2b239ebf8e51e1e5ce72f700be3154a53ceac9
   languageName: node
   linkType: hard
 
@@ -15136,7 +15136,7 @@ __metadata:
     eslint-plugin-prettier: ^5.0.0
     eslint-plugin-vuejs-accessibility: ^2.2.0
     firebase: ^10.3.1
-    firebase-tools: ^12.5.2
+    firebase-tools: ^12.5.4
     husky: ^8.0.3
     node-fetch: ^3.3.2
     nuxt: ^3.7.1
