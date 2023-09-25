@@ -28,7 +28,7 @@
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@rushstack/eslint-patch": "^1.4.0",
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
-    "@types/node": "^20.6.3",
+    "@types/node": "^20.6.5",
     "@types/uuid": "^9.0.4",
     "axe-core": "^4.8.1",
     "eslint": "^8.49.0",
