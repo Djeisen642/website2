@@ -22,12 +22,13 @@ export const useGameStore = defineStore('games', {
   }),
   actions: {
     _handleSnapshot(querySnapshot: QuerySnapshot<GameDetails>) {
-      this.games = [];
+      const games: Array<GameDetails> = [];
+
+      for (const doc of querySnapshot.docs) {
+        games.push(doc.data());
+      }
+      this.games = games.sort((a, b) => a.year - b.year);
       this.loaded = true;
-      querySnapshot.forEach(doc => {
-        this.games.push(doc.data());
-      });
-      this.games.sort((a, b) => a.year - b.year);
     },
 
     init() {

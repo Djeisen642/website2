@@ -16,11 +16,7 @@ export const useAuthStore = defineStore('auth', {
   actions: {
     init() {
       onAuthStateChanged(nuxtApp.$auth, user => {
-        if (user) {
-          this.user = user;
-        } else {
-          this.user = undefined;
-        }
+        this.user = user || undefined;
       });
     },
   },

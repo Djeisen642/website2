@@ -5,7 +5,6 @@
  * @author Kallil Belmonte
  * @see CodePen {@link https://codepen.io/kallil-belmonte/full/KKKRoyx}
  */
-
 export function checkIfImageExists(url: string): Promise<boolean> {
   const img = new Image();
   img.src = url;

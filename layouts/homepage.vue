@@ -1,6 +1,5 @@
 <template>
   <v-app :theme="mainStore.theme">
-    <under-construction-banner />
     <v-main>
       <slot />
     </v-main>
@@ -13,7 +12,6 @@
 </template>
 <script setup lang="ts">
 import DefaultFooter from '~/components/DefaultFooter.vue';
-import UnderConstructionBanner from '~/components/UnderConstructionBanner.vue';
 import { useStore } from '~/store/mainStore.js';
 
 const mainStore = useStore();

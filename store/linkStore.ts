@@ -22,13 +22,15 @@ export const useLinkStore = defineStore('links', {
     loaded: false,
   }),
   actions: {
-    _handleSnapshot(querySnapshot: QuerySnapshot<LinkDetails>) {
-      this.links = [];
-      querySnapshot.forEach(async doc => {
+    async _handleSnapshot(querySnapshot: QuerySnapshot<LinkDetails>) {
+      const links: Array<LinkDetails> = [];
+
+      for (const doc of querySnapshot.docs) {
         const linkObject = doc.data();
         linkObject.imageExists = await checkIfImageExists(getFavicon(linkObject.link));
-        this.links.push(linkObject);
-      });
+        links.push(linkObject);
+      }
+      this.links = links;
       this.loaded = true;
     },
 
