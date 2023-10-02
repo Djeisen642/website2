@@ -2646,7 +2646,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:>=12.12.47, @types/node@npm:>=13.7.0, @types/node@npm:^20.7.0":
+"@types/node@npm:*, @types/node@npm:>=12.12.47, @types/node@npm:>=13.7.0":
   version: 20.7.0
   resolution: "@types/node@npm:20.7.0"
   checksum: 1b2919925c213f4d2039ada7a8354c998e144f7291db8d719ef58ea9924ab636c113690073b0ec3b82ba62907385f7e0f51e9d1583c1a818776daa5156d3a590
@@ -2657,6 +2657,13 @@ __metadata:
   version: 20.4.7
   resolution: "@types/node@npm:20.4.7"
   checksum: a40d7003f66b56220a2028179e49f950b46fa6dbf860a4a6ecbd6ba7976f05b2f0b31ced39689ec88a7d9e32d07e088c6a06d270b99d5bc13a28291ac2f30ca7
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^20.8.0":
+  version: 20.8.0
+  resolution: "@types/node@npm:20.8.0"
+  checksum: ebad6342d54238a24bf980d7750117a5d67749c9b72cbb7a974a1e932c39034aa3a810d669e007e8a5071782a253aa069a187b614407a382403c9826e837c849
   languageName: node
   linkType: hard
 
@@ -14369,7 +14376,7 @@ __metadata:
     "@pinia/nuxt": ^0.4.11
     "@rushstack/eslint-patch": ^1.5.0
     "@trivago/prettier-plugin-sort-imports": ^4.2.0
-    "@types/node": ^20.7.0
+    "@types/node": ^20.8.0
     "@types/uuid": ^9.0.4
     "@vueuse/core": ^10.4.1
     "@vueuse/nuxt": ^10.4.1
