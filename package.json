@@ -22,7 +22,7 @@
     "up-i": "yarn upgrade-interactive && yarn up -R"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.7.1",
+    "@commitlint/cli": "^17.7.2",
     "@commitlint/config-conventional": "^17.7.0",
     "@nuxtjs/device": "^3.1.1",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
