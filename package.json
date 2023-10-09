@@ -48,7 +48,7 @@
     "stylelint-config-standard-scss": "^11.0.0",
     "vite": "^4.4.11",
     "vite-plugin-vuetify": "^1.0.2",
-    "volar-service-prettier": "^0.0.13",
+    "volar-service-prettier": "^0.0.14",
     "vue-axe": "^3.1.2"
   },
   "dependencies": {
