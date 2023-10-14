@@ -432,13 +432,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/cli@npm:^17.7.2":
-  version: 17.7.2
-  resolution: "@commitlint/cli@npm:17.7.2"
+"@commitlint/cli@npm:^17.8.0":
+  version: 17.8.0
+  resolution: "@commitlint/cli@npm:17.8.0"
   dependencies:
     "@commitlint/format": ^17.4.4
-    "@commitlint/lint": ^17.7.0
-    "@commitlint/load": ^17.7.2
+    "@commitlint/lint": ^17.8.0
+    "@commitlint/load": ^17.8.0
     "@commitlint/read": ^17.5.1
     "@commitlint/types": ^17.4.4
     execa: ^5.0.0
@@ -448,16 +448,16 @@ __metadata:
     yargs: ^17.0.0
   bin:
     commitlint: cli.js
-  checksum: 7d5d86b27980135713094e44023ee7a6cc2bb1cd015f92111857e069a3127dab63d4575b507bdac2e16255aaab65da908d1f7667e8aa9de7e032d9c464ef3154
+  checksum: 3780a143aa943c832283b762be9d2bc317745ce716f798ff6a07c1f5d1bb2a8fee169fc153e7545b00bea81e255f108e078ee7d79db8c3631d87e5820ea71d50
   languageName: node
   linkType: hard
 
-"@commitlint/config-conventional@npm:^17.7.0":
-  version: 17.7.0
-  resolution: "@commitlint/config-conventional@npm:17.7.0"
+"@commitlint/config-conventional@npm:^17.8.0":
+  version: 17.8.0
+  resolution: "@commitlint/config-conventional@npm:17.8.0"
   dependencies:
     conventional-changelog-conventionalcommits: ^6.1.0
-  checksum: 932cf35c12855e360c750bc19ffedc0925f8658f316aaacdf5441ce775712934386643a9ac418f18e24e5bb1bf71ed721b8ae452a13d04908b0e55cd3d2d988f
+  checksum: 33a6f7867e0ef6b39a34246a615a75ea4eaab76852d00ffee8c28560fe0786cf56a4f20d747d2f56b28a4bddc3637a5bf7948b465744edcd890b9c2337a2c741
   languageName: node
   linkType: hard
 
@@ -502,31 +502,31 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/is-ignored@npm:^17.7.0":
-  version: 17.7.0
-  resolution: "@commitlint/is-ignored@npm:17.7.0"
+"@commitlint/is-ignored@npm:^17.8.0":
+  version: 17.8.0
+  resolution: "@commitlint/is-ignored@npm:17.8.0"
   dependencies:
     "@commitlint/types": ^17.4.4
     semver: 7.5.4
-  checksum: aa0b695d6e7bee5e732f96a2ff383347ff476eb48f9d3b4ed75b098cafa27e56da15563833d3cf4e1268fc26819180cd8b5bdc322b087073a63bc94f699944b2
+  checksum: ae18943cae8370476049fcbf08c18256f44e2063c9be553eb282a81231ec50a8aff1b861e93108dc823fe6331e1aedcdd7c74c777b57e564308eeb7f7b9da33c
   languageName: node
   linkType: hard
 
-"@commitlint/lint@npm:^17.7.0":
-  version: 17.7.0
-  resolution: "@commitlint/lint@npm:17.7.0"
+"@commitlint/lint@npm:^17.8.0":
+  version: 17.8.0
+  resolution: "@commitlint/lint@npm:17.8.0"
   dependencies:
-    "@commitlint/is-ignored": ^17.7.0
+    "@commitlint/is-ignored": ^17.8.0
     "@commitlint/parse": ^17.7.0
     "@commitlint/rules": ^17.7.0
     "@commitlint/types": ^17.4.4
-  checksum: 72765e0f2c6b78faa1c7ceb1050ef624d505deb0f95c5ac2ce1959c3ee8c2ce579d4f5aaf9434adf244727a97653be4d7fbc0d75cda2d8915e563ebeb7b886ae
+  checksum: 7a2729575de88b15c296619d78bb7cde4da535adb35b8a5f5834585d3ae293cc01352a2bbb98cb02c6938cedb871c787c5086d47d42750b311094a459b33cbc9
   languageName: node
   linkType: hard
 
-"@commitlint/load@npm:^17.7.2":
-  version: 17.7.2
-  resolution: "@commitlint/load@npm:17.7.2"
+"@commitlint/load@npm:^17.8.0":
+  version: 17.8.0
+  resolution: "@commitlint/load@npm:17.8.0"
   dependencies:
     "@commitlint/config-validator": ^17.6.7
     "@commitlint/execute-rule": ^17.4.0
@@ -542,7 +542,7 @@ __metadata:
     resolve-from: ^5.0.0
     ts-node: ^10.8.1
     typescript: ^4.6.4 || ^5.0.0
-  checksum: dda9f7efd6413309266617a5ee026df65cc8c590b86c312f5905285fcbef5ae3ec983694c145007d89402c9f728882465f016167b156f43f6ed414c3b8ca079a
+  checksum: 24287a9dfbf57f7d824ffc7f6a3df2f4771db501ce05219ed93abd00b68dc629a41a70c4d6c142ca05c4f29d38a1cf823353886c2378f5dd77d6e0cf2c540ffc
   languageName: node
   linkType: hard
 
@@ -1027,10 +1027,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/js@npm:8.50.0":
-  version: 8.50.0
-  resolution: "@eslint/js@npm:8.50.0"
-  checksum: 302478f2acaaa7228729ec6a04f56641590185e1d8cd1c836a6db8a6b8009f80a57349341be9fbb9aa1721a7a569d1be3ffc598a33300d22816f11832095386c
+"@eslint/js@npm:8.51.0":
+  version: 8.51.0
+  resolution: "@eslint/js@npm:8.51.0"
+  checksum: 0228bf1e1e0414843e56d9ff362a2a72d579c078f93174666f29315690e9e30a8633ad72c923297f7fd7182381b5a476805ff04dac8debe638953eb1ded3ac73
   languageName: node
   linkType: hard
 
@@ -1115,16 +1115,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@firebase/app-compat@npm:0.2.19":
-  version: 0.2.19
-  resolution: "@firebase/app-compat@npm:0.2.19"
+"@firebase/app-compat@npm:0.2.20":
+  version: 0.2.20
+  resolution: "@firebase/app-compat@npm:0.2.20"
   dependencies:
-    "@firebase/app": 0.9.19
+    "@firebase/app": 0.9.20
     "@firebase/component": 0.6.4
     "@firebase/logger": 0.4.0
     "@firebase/util": 1.9.3
     tslib: ^2.1.0
-  checksum: ff303e9582252e193476a9ed977609f253b93782f41139b463f02c34accdfa75ac8310d3d8a2390ffc65a108044cfdf7bd73fee643586eecf9478e6e3d3f7eff
+  checksum: ca85eebfad461292d316fb2236cd26bdc991eb87ce0d2c5b7275436864806251e625963652b9ca2512f9e87be0d8e8cede866f7c6514bb4c1f43d3b956b77e01
   languageName: node
   linkType: hard
 
@@ -1135,16 +1135,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@firebase/app@npm:0.9.19":
-  version: 0.9.19
-  resolution: "@firebase/app@npm:0.9.19"
+"@firebase/app@npm:0.9.20":
+  version: 0.9.20
+  resolution: "@firebase/app@npm:0.9.20"
   dependencies:
     "@firebase/component": 0.6.4
     "@firebase/logger": 0.4.0
     "@firebase/util": 1.9.3
     idb: 7.1.1
     tslib: ^2.1.0
-  checksum: a0e4a75b4f428f57afd3feae6841632e1d1773785cf457b38d2610b5e184d6f980c16feeb3c84ec8d47d261c6cfb71006adf403d5829e670184503b171459162
+  checksum: 38650e7baddb7e885aad20b6db03756a5c34919e054be5d2bdc7fad256bc20608409f09793a9501c27e2a32864b012e4bdbb2209c008ac623cb52be8458c21f5
   languageName: node
   linkType: hard
 
@@ -1248,18 +1248,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@firebase/firestore-compat@npm:0.3.18":
-  version: 0.3.18
-  resolution: "@firebase/firestore-compat@npm:0.3.18"
+"@firebase/firestore-compat@npm:0.3.19":
+  version: 0.3.19
+  resolution: "@firebase/firestore-compat@npm:0.3.19"
   dependencies:
     "@firebase/component": 0.6.4
-    "@firebase/firestore": 4.2.0
+    "@firebase/firestore": 4.3.0
     "@firebase/firestore-types": 3.0.0
     "@firebase/util": 1.9.3
     tslib: ^2.1.0
   peerDependencies:
     "@firebase/app-compat": 0.x
-  checksum: a8d6251b95fabd7b970e4a0d08420014bd4bf65b47f710e1f78f46a0065ab5c3fa7132da32b1eabf4c4629fc30d68ff27192a3456c54c846a8722c0330339c2a
+  checksum: 1dd333be99e22044721b2f7d46e0e12abe4c7a25c0691566dfa69eea50d97783ad2e2b3e4277f10c5c62529b23ba8a87cad78f495a707bf4e51452b34bb7425f
   languageName: node
   linkType: hard
 
@@ -1273,9 +1273,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@firebase/firestore@npm:4.2.0":
-  version: 4.2.0
-  resolution: "@firebase/firestore@npm:4.2.0"
+"@firebase/firestore@npm:4.3.0":
+  version: 4.3.0
+  resolution: "@firebase/firestore@npm:4.3.0"
   dependencies:
     "@firebase/component": 0.6.4
     "@firebase/logger": 0.4.0
@@ -1287,7 +1287,7 @@ __metadata:
     tslib: ^2.1.0
   peerDependencies:
     "@firebase/app": 0.x
-  checksum: b7722563185656dda5982df19a15cd73120c3d2314a26897fb29ae01b4cd63052e1360a46333f156de38fb4356cf961e2fba2a03e4fdf9be8319eb5ce875f29b
+  checksum: 8b0421bc1210f0b6dc6884060449c8c85c25cc801038117d1d3c3e2e16ae3fa643b2280581db2a10723502ea631db136c395af9c655c792d1935c35963b80f2b
   languageName: node
   linkType: hard
 
@@ -1777,10 +1777,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdi/js@npm:^7.2.96":
-  version: 7.2.96
-  resolution: "@mdi/js@npm:7.2.96"
-  checksum: f8e22da5d994a4b764580d22290c825c1d789a6e015c166e271e2164fb80d33551d6632632897e30ae9033a3fe4aa6a28f2e97c5d3ad56c823f89f859944899e
+"@mdi/js@npm:^7.3.67":
+  version: 7.3.67
+  resolution: "@mdi/js@npm:7.3.67"
+  checksum: bba88d6f1305a02c3b7372930746314aec1ddc31f04372c4da419a345661de3be34181a749afa00b1c0cd8281d9f443efe1876ee9ba683032e88f35466886900
   languageName: node
   linkType: hard
 
@@ -1854,7 +1854,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/kit@npm:3.7.4, @nuxt/kit@npm:^3.0.0, @nuxt/kit@npm:^3.5.0, @nuxt/kit@npm:^3.6.5, @nuxt/kit@npm:^3.7.3":
+"@nuxt/kit@npm:3.7.4, @nuxt/kit@npm:^3.0.0, @nuxt/kit@npm:^3.5.0, @nuxt/kit@npm:^3.7.3, @nuxt/kit@npm:^3.7.4":
   version: 3.7.4
   resolution: "@nuxt/kit@npm:3.7.4"
   dependencies:
@@ -2194,13 +2194,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pinia/nuxt@npm:^0.4.11":
-  version: 0.4.11
-  resolution: "@pinia/nuxt@npm:0.4.11"
+"@pinia/nuxt@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "@pinia/nuxt@npm:0.5.0"
   dependencies:
     "@nuxt/kit": ^3.5.0
-    pinia: ">=2.1.0"
-  checksum: 1a634ab7cbd1ecc3fd18d909e2ef6ef7d9cd161503d638f452e1dbd87233e9f05ccd0c11d50d40a66ceb37d569b02521dfdce895b39653b513d7be39cfb8af1e
+    pinia: ">=2.1.7"
+  checksum: 8e8d0bb5981f29feced4335c4738ab631ada640be1f7c7c51c33d107c382acc8a769c654bbd785ea0f10599408a23aefde66a92eefc4d3621cd9d68304893f0b
   languageName: node
   linkType: hard
 
@@ -2646,10 +2646,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:>=12.12.47, @types/node@npm:>=13.7.0, @types/node@npm:^20.8.2":
-  version: 20.8.2
-  resolution: "@types/node@npm:20.8.2"
-  checksum: 3da73e25d821bfcdb7de98589027e08bb4848e55408671c4a83ec0341e124b5313a0b20e1e4b4eff1168ea17a86f622ad73fcb04b761abd77496b9a27cbd5de5
+"@types/node@npm:*, @types/node@npm:>=12.12.47, @types/node@npm:>=13.7.0, @types/node@npm:^20.8.6":
+  version: 20.8.6
+  resolution: "@types/node@npm:20.8.6"
+  dependencies:
+    undici-types: ~5.25.1
+  checksum: ccfb7ac482c5a96edeb239893c5c099f5257fcc2ed9ae62fefdfbc782b79e16dbc2af9a85b379665237bf759904b44ca2be68e75d239e0297882aad42f61905c
   languageName: node
   linkType: hard
 
@@ -2698,17 +2700,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/uuid@npm:^9.0.4":
-  version: 9.0.4
-  resolution: "@types/uuid@npm:9.0.4"
-  checksum: 356e2504456eaebbc43a5af5ca6c07d71f5ae5520b5767cb1c62cd0ec55475fc4ee3d16a2874f4a5fce78e40e8583025afd3a7d9ba41f82939de310665f53f0e
+"@types/uuid@npm:^9.0.5":
+  version: 9.0.5
+  resolution: "@types/uuid@npm:9.0.5"
+  checksum: 7577940949619768303c0bf0a7cc235fac3cfae1c0bb4a2e85bfb87b2eb1024955ab446f775394d259442cd769b663b6ce43c39bdfc955d946bf833804ddb421
   languageName: node
   linkType: hard
 
-"@types/web-bluetooth@npm:^0.0.17":
-  version: 0.0.17
-  resolution: "@types/web-bluetooth@npm:0.0.17"
-  checksum: 8c72ba8cd1d7abd3fcab608e1d8eb828420df23f67d783f1282d4a747f995e91a0c861f92fa195e9423edb22bb34854452028f8a68148a593b35915635a4f4db
+"@types/web-bluetooth@npm:^0.0.18":
+  version: 0.0.18
+  resolution: "@types/web-bluetooth@npm:0.0.18"
+  checksum: 5ab99b3f5bf1a7c86e35a463ad57fdd7bb570a49195d94dbdcd8dedc59067f11caddcda5dfee7b144c8f2e18d85b4b2922c0d5c78f7798686d8a8795fb1393f0
   languageName: node
   linkType: hard
 
@@ -3109,47 +3111,47 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vueuse/core@npm:10.4.1, @vueuse/core@npm:^10.4.1":
-  version: 10.4.1
-  resolution: "@vueuse/core@npm:10.4.1"
+"@vueuse/core@npm:10.5.0, @vueuse/core@npm:^10.5.0":
+  version: 10.5.0
+  resolution: "@vueuse/core@npm:10.5.0"
   dependencies:
-    "@types/web-bluetooth": ^0.0.17
-    "@vueuse/metadata": 10.4.1
-    "@vueuse/shared": 10.4.1
-    vue-demi: ">=0.14.5"
-  checksum: 2232ad6dd3af89aee80d38ffcbe6a3386d1f55f66ac212baac10c3a506f43ee58a4fffabaa7ec483e62dbf6f231ee7ce1fb82ab91f9312e2d9f8c554810d2773
+    "@types/web-bluetooth": ^0.0.18
+    "@vueuse/metadata": 10.5.0
+    "@vueuse/shared": 10.5.0
+    vue-demi: ">=0.14.6"
+  checksum: 9144847c7ec3e2997e324946c573f0f2da32629d7db8c1e5bfc8fd99cc0eb8e2c129691631bd8f9bc3be8c56796d1f057f151b567c7c5a56b7a85dfe6e3c75d5
   languageName: node
   linkType: hard
 
-"@vueuse/metadata@npm:10.4.1":
-  version: 10.4.1
-  resolution: "@vueuse/metadata@npm:10.4.1"
-  checksum: d9c584f4581eed4e7e81423916077dada73b22ee3f1e798682aac1ee640a91b0287088f26dc7e72d7b6ad2e6c8d630fd7ee8ba02ca5987c033ed8391e92b5542
+"@vueuse/metadata@npm:10.5.0":
+  version: 10.5.0
+  resolution: "@vueuse/metadata@npm:10.5.0"
+  checksum: 8db966e86a7a3233d1c36c4aa46510b555f211a40899ab89cfd5f09280e6b325014722185bf0dbb9806b0ca5aff5c1217ded108aef79cd07c72800c573c4fc4a
   languageName: node
   linkType: hard
 
-"@vueuse/nuxt@npm:^10.4.1":
-  version: 10.4.1
-  resolution: "@vueuse/nuxt@npm:10.4.1"
+"@vueuse/nuxt@npm:^10.5.0":
+  version: 10.5.0
+  resolution: "@vueuse/nuxt@npm:10.5.0"
   dependencies:
-    "@nuxt/kit": ^3.6.5
-    "@vueuse/core": 10.4.1
-    "@vueuse/metadata": 10.4.1
-    local-pkg: ^0.4.3
-    nuxt: ^3.6.5
-    vue-demi: ">=0.14.5"
+    "@nuxt/kit": ^3.7.4
+    "@vueuse/core": 10.5.0
+    "@vueuse/metadata": 10.5.0
+    local-pkg: ^0.5.0
+    nuxt: ^3.7.4
+    vue-demi: ">=0.14.6"
   peerDependencies:
     nuxt: ^3.0.0
-  checksum: 9c35468dd2a91618cc28e779c2124a1deffa221c68e7d4866220711c446017c260ae6572db3d82a4d57916057a456bb34da71c53f60ce292c5e35069eb07d0f6
+  checksum: 688b788d994f152887611f274c7b412e6f7c984c357badbc65f7e3a1a91336cc6b18d065180a02cadf7538be419d9a92fa1549b7dfc7bcaeb49066f5d150b33f
   languageName: node
   linkType: hard
 
-"@vueuse/shared@npm:10.4.1":
-  version: 10.4.1
-  resolution: "@vueuse/shared@npm:10.4.1"
+"@vueuse/shared@npm:10.5.0":
+  version: 10.5.0
+  resolution: "@vueuse/shared@npm:10.5.0"
   dependencies:
-    vue-demi: ">=0.14.5"
-  checksum: e1cc0b970e0ce06c8bc2cbed3ce37a9ee7ff0667fc3f354398b4201259db1848da428d62c9ea19c3124f5eb80ce0b3f97328f537e3238ec68cdbb726ff3e3fe8
+    vue-demi: ">=0.14.6"
+  checksum: 8ec1b6e18ccdff2940efbee943539831ce54d59294bb1b1e309c82a845035807ee6b11cca29c3eca2df321e79136b13650399c54cde366212e8b2c69c4befb48
   languageName: node
   linkType: hard
 
@@ -6068,9 +6070,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-prettier@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "eslint-plugin-prettier@npm:5.0.0"
+"eslint-plugin-prettier@npm:^5.0.1":
+  version: 5.0.1
+  resolution: "eslint-plugin-prettier@npm:5.0.1"
   dependencies:
     prettier-linter-helpers: ^1.0.0
     synckit: ^0.8.5
@@ -6083,7 +6085,7 @@ __metadata:
       optional: true
     eslint-config-prettier:
       optional: true
-  checksum: 84e88744b9050f2d5ef31b94e85294dda16f3a53c2449f9d33eac8ae6264889b459bf35a68e438fb6b329c2a1d6491aac4bfa00d86317e7009de3dad0311bec6
+  checksum: c2261033b97bafe99ccb7cc47c2fac6fa85b8bbc8b128042e52631f906b69e12afed2cdd9d7e3021cc892ee8dd4204a3574e1f32a0b718b4bb3b440944b6983b
   languageName: node
   linkType: hard
 
@@ -6201,14 +6203,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.50.0":
-  version: 8.50.0
-  resolution: "eslint@npm:8.50.0"
+"eslint@npm:^8.51.0":
+  version: 8.51.0
+  resolution: "eslint@npm:8.51.0"
   dependencies:
     "@eslint-community/eslint-utils": ^4.2.0
     "@eslint-community/regexpp": ^4.6.1
     "@eslint/eslintrc": ^2.1.2
-    "@eslint/js": 8.50.0
+    "@eslint/js": 8.51.0
     "@humanwhocodes/config-array": ^0.11.11
     "@humanwhocodes/module-importer": ^1.0.1
     "@nodelib/fs.walk": ^1.2.8
@@ -6244,7 +6246,7 @@ __metadata:
     text-table: ^0.2.0
   bin:
     eslint: bin/eslint.js
-  checksum: 9ebfe5615dc84700000d218e32ddfdcfc227ca600f65f18e5541ec34f8902a00356a9a8804d9468fd6c8637a5ef6a3897291dad91ba6579d5b32ffeae5e31768
+  checksum: 214fa5d1fcb67af1b8992ce9584ccd85e1aa7a482f8b8ea5b96edc28fa838a18a3b69456db45fc1ed3ef95f1e9efa9714f737292dc681e572d471d02fda9649c
   languageName: node
   linkType: hard
 
@@ -6728,9 +6730,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase-tools@npm:^12.6.2":
-  version: 12.6.2
-  resolution: "firebase-tools@npm:12.6.2"
+"firebase-tools@npm:^12.7.0":
+  version: 12.7.0
+  resolution: "firebase-tools@npm:12.7.0"
   dependencies:
     "@google-cloud/pubsub": ^3.0.1
     abort-controller: ^3.0.0
@@ -6794,27 +6796,27 @@ __metadata:
     ws: ^7.2.3
   bin:
     firebase: lib/bin/firebase.js
-  checksum: e98fdb8e71ce7e0bbf2168ee97a2540ef85018f9cf401d4d8a64c0861e31b907930137d064f8111b755d6e0b15f18c8a9b929e592a9ec571f07b4c2d54262ea0
+  checksum: f861f3f10b7e3162769e527fc959f8665ae2b3d6bb192d15a6b1542158c3eefb2386ad0c59c13bb1a08018d2baeb87ac7e15b9fc2ae6d1772fc98e5ec79f54ee
   languageName: node
   linkType: hard
 
-"firebase@npm:^10.4.0":
-  version: 10.4.0
-  resolution: "firebase@npm:10.4.0"
+"firebase@npm:^10.5.0":
+  version: 10.5.0
+  resolution: "firebase@npm:10.5.0"
   dependencies:
     "@firebase/analytics": 0.10.0
     "@firebase/analytics-compat": 0.2.6
-    "@firebase/app": 0.9.19
+    "@firebase/app": 0.9.20
     "@firebase/app-check": 0.8.0
     "@firebase/app-check-compat": 0.3.7
-    "@firebase/app-compat": 0.2.19
+    "@firebase/app-compat": 0.2.20
     "@firebase/app-types": 0.9.0
     "@firebase/auth": 1.3.0
     "@firebase/auth-compat": 0.4.6
     "@firebase/database": 1.0.1
     "@firebase/database-compat": 1.0.1
-    "@firebase/firestore": 4.2.0
-    "@firebase/firestore-compat": 0.3.18
+    "@firebase/firestore": 4.3.0
+    "@firebase/firestore-compat": 0.3.19
     "@firebase/functions": 0.10.0
     "@firebase/functions-compat": 0.3.5
     "@firebase/installations": 0.6.4
@@ -6828,7 +6830,7 @@ __metadata:
     "@firebase/storage": 0.11.2
     "@firebase/storage-compat": 0.3.2
     "@firebase/util": 1.9.3
-  checksum: 58e9f33b3f9409eb7fda58cb80d4af37f0c587b4df0e2893f6c6ced0298d0968820c26c0e2cf33a569b63d11f75b223df83c0be412cd4fc844674a7865c88e63
+  checksum: 4b995411bc5a504c5e7d7d76ef567f45665681e2a3acd6220c06e6552baf353d4178a184716cefaed65408d84efb449682dace63bb6e6eab02252061d15691fe
   languageName: node
   linkType: hard
 
@@ -9059,6 +9061,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"local-pkg@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "local-pkg@npm:0.5.0"
+  dependencies:
+    mlly: ^1.4.2
+    pkg-types: ^1.0.3
+  checksum: b0a6931e588ad4f7bf4ab49faacf49e07fc4d05030f895aa055d46727a15b99300d39491cf2c3e3f05284aec65565fb760debb74c32e64109f4a101f9300d81a
+  languageName: node
+  linkType: hard
+
 "locate-path@npm:^5.0.0":
   version: 5.0.0
   resolution: "locate-path@npm:5.0.0"
@@ -10234,7 +10246,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nuxt@npm:^3.6.5, nuxt@npm:^3.7.4":
+"nuxt@npm:^3.7.4":
   version: 3.7.4
   resolution: "nuxt@npm:3.7.4"
   dependencies:
@@ -10849,9 +10861,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pinia@npm:>=2.1.0":
-  version: 2.1.6
-  resolution: "pinia@npm:2.1.6"
+"pinia@npm:>=2.1.7":
+  version: 2.1.7
+  resolution: "pinia@npm:2.1.7"
   dependencies:
     "@vue/devtools-api": ^6.5.0
     vue-demi: ">=0.14.5"
@@ -10864,7 +10876,7 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: 4e881e590c4f6ec9c2dc6174cf7ecc71a48bff1f3a5be878669b3b2fd32994fa64c3cbf499d138bc4e0f222ac6ad1d07935b0a592791acdaf8c9f2a12c98f042
+  checksum: 1b7882aab2828ad209d3e76e06918c8811d04699c9308d372094cde6df485d7e7785f25a3bb5c6a3724aeaee3fb0082fae03c41a6657acd3486c7965a0a09d34
   languageName: node
   linkType: hard
 
@@ -11317,13 +11329,13 @@ __metadata:
   linkType: hard
 
 "postcss@npm:^8.1.10, postcss@npm:^8.4.0, postcss@npm:^8.4.27, postcss@npm:^8.4.30":
-  version: 8.4.30
-  resolution: "postcss@npm:8.4.30"
+  version: 8.4.31
+  resolution: "postcss@npm:8.4.31"
   dependencies:
     nanoid: ^3.3.6
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
-  checksum: 6c810c10c9bd3e03ca016e0b6b6756261e640aba1a9a7b1200b55502bc34b9165e38f590aef3493afc2f30ab55cdfcd43fd0f8408d69a77318ddbcf2a8ad164b
+  checksum: 1d8611341b073143ad90486fcdfeab49edd243377b1f51834dc4f6d028e82ce5190e4f11bb2633276864503654fb7cab28e67abdc0fbf9d1f88cad4a0ff0beea
   languageName: node
   linkType: hard
 
@@ -12196,16 +12208,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.69.0":
-  version: 1.69.0
-  resolution: "sass@npm:1.69.0"
+"sass@npm:^1.69.3":
+  version: 1.69.3
+  resolution: "sass@npm:1.69.3"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: eabea31ea3b1dd529c7eff345c8b6468afe6ab8011bd4f95caa2cffb8fb115cc055ea21de425be6197f7ed22516f5652eccb98d315d592ea152ada553f964b8a
+  checksum: b89a3370c7ede462b344e2136bf1407bf375855c1ec54f73b6257b18fe59dae5377eb9f7b25f21ae4a25d8f0bc41a165d8d7e5f693d8285b1aa51ac6056c4d19
   languageName: node
   linkType: hard
 
@@ -13610,6 +13622,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"undici-types@npm:~5.25.1":
+  version: 5.25.3
+  resolution: "undici-types@npm:5.25.3"
+  checksum: ec9d2cc36520cbd9fbe3b3b6c682a87fe5be214699e1f57d1e3d9a2cb5be422e62735f06e0067dc325fd3dd7404c697e4d479f9147dc8a804e049e29f357f2ff
+  languageName: node
+  linkType: hard
+
 "undici@npm:^5.23.0":
   version: 5.23.0
   resolution: "undici@npm:5.23.0"
@@ -14130,9 +14149,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"volar-service-prettier@npm:^0.0.13":
-  version: 0.0.13
-  resolution: "volar-service-prettier@npm:0.0.13"
+"volar-service-prettier@npm:^0.0.14":
+  version: 0.0.14
+  resolution: "volar-service-prettier@npm:0.0.14"
   peerDependencies:
     "@volar/language-service": ~1.10.0
     prettier: ^2.2 || ^3.0
@@ -14141,7 +14160,7 @@ __metadata:
       optional: true
     prettier:
       optional: true
-  checksum: 109ae3ad70e1149b2f7b7890a9b0de6b46bddffa863c4f5ddcc83434b9f17fe6f526907bf28e97f7a002ad072b51ef33c0d5588db93006113bafa38ab11dbe26
+  checksum: 7af55200ca87cdbc60ca22bfafe73ab04f3206fb4b71c95bcf2b4375e37a66b4c5f766ebc84fe1a11090f8c225c7034c3a2fef0069d20a22382ed19b4c4cd498
   languageName: node
   linkType: hard
 
@@ -14226,9 +14245,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-demi@npm:>=0.14.5":
-  version: 0.14.5
-  resolution: "vue-demi@npm:0.14.5"
+"vue-demi@npm:>=0.14.5, vue-demi@npm:>=0.14.6":
+  version: 0.14.6
+  resolution: "vue-demi@npm:0.14.6"
   peerDependencies:
     "@vue/composition-api": ^1.0.0-rc.1
     vue: ^3.0.0-0 || ^2.6.0
@@ -14238,7 +14257,7 @@ __metadata:
   bin:
     vue-demi-fix: bin/vue-demi-fix.js
     vue-demi-switch: bin/vue-demi-switch.js
-  checksum: ff44b9372b8224590514252a2f73363cced6062205f9628a6b130dccb80e2023d55cd9d1da94aeb68d5539b7ea9eedcecf88ab281a3a9ff48b8db4c5366b9643
+  checksum: 424b1f340d5111fc4d4a0f8042c14ae836ba983bc968773a6d955d6846202d7e6f951993ac1525be8732b0cfe0c81d94ab88f427c97bfa86ead08db06491279b
   languageName: node
   linkType: hard
 
@@ -14290,9 +14309,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vuetify@npm:3.3.20":
-  version: 3.3.20
-  resolution: "vuetify@npm:3.3.20"
+"vuetify@npm:3.3.21":
+  version: 3.3.21
+  resolution: "vuetify@npm:3.3.21"
   peerDependencies:
     typescript: ">=4.7"
     vite-plugin-vuetify: ^1.0.0-alpha.12
@@ -14308,7 +14327,7 @@ __metadata:
       optional: true
     webpack-plugin-vuetify:
       optional: true
-  checksum: c4e9eb8abfeb9a25bee0f59213a3e5d66e69a25b2619a85de4dc77afd8df10ffccdd44b972acfd318a73e364510936595bfb85b1f23e24f75181f5df5be1dff9
+  checksum: 96cdc0f8db9206ab39f23679e76163604c65a384a305e93621c18d57aba770a096d7af66cfefefd492ca3a977969a159135932b82a5214179fb5bb54ad002c0f
   languageName: node
   linkType: hard
 
@@ -14360,43 +14379,43 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "website2@workspace:."
   dependencies:
-    "@commitlint/cli": ^17.7.2
-    "@commitlint/config-conventional": ^17.7.0
-    "@mdi/js": ^7.2.96
+    "@commitlint/cli": ^17.8.0
+    "@commitlint/config-conventional": ^17.8.0
+    "@mdi/js": ^7.3.67
     "@nuxtjs/device": ^3.1.1
     "@nuxtjs/eslint-config-typescript": ^12.1.0
     "@nuxtjs/robots": ^3.0.0
-    "@pinia/nuxt": ^0.4.11
+    "@pinia/nuxt": ^0.5.0
     "@rushstack/eslint-patch": ^1.5.1
     "@trivago/prettier-plugin-sort-imports": ^4.2.0
-    "@types/node": ^20.8.2
-    "@types/uuid": ^9.0.4
-    "@vueuse/core": ^10.4.1
-    "@vueuse/nuxt": ^10.4.1
+    "@types/node": ^20.8.6
+    "@types/uuid": ^9.0.5
+    "@vueuse/core": ^10.5.0
+    "@vueuse/nuxt": ^10.5.0
     axe-core: ^4.8.2
-    eslint: ^8.50.0
+    eslint: ^8.51.0
     eslint-config-prettier: ^9.0.0
-    eslint-plugin-prettier: ^5.0.0
+    eslint-plugin-prettier: ^5.0.1
     eslint-plugin-vuejs-accessibility: ^2.2.0
-    firebase: ^10.4.0
-    firebase-tools: ^12.6.2
+    firebase: ^10.5.0
+    firebase-tools: ^12.7.0
     husky: ^8.0.3
     node-fetch: ^3.3.2
     nuxt: ^3.7.4
     pinst: ^3.0.0
     postcss-html: ^1.5.0
     prettier: ^3.0.3
-    sass: ^1.69.0
+    sass: ^1.69.3
     stylelint: ^15.10.3
     stylelint-config-recommended-vue: ^1.5.0
     stylelint-config-standard-scss: ^11.0.0
     uuid: ^9.0.1
     vite: ^4.4.11
     vite-plugin-vuetify: ^1.0.2
-    volar-service-prettier: ^0.0.13
+    volar-service-prettier: ^0.0.14
     vue: ^3.3.4
     vue-axe: ^3.1.2
-    vuetify: 3.3.20
+    vuetify: 3.3.21
     web-vitals: ^3.5.0
   languageName: unknown
   linkType: soft
