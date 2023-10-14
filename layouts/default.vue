@@ -63,6 +63,10 @@ const pages = ref([
     title: '2048 Clone',
     to: '/2048',
   },
+  {
+    title: 'Code Editor',
+    to: '/codeeditor',
+  },
 ]);
 
 const route = useRoute();
