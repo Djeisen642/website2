@@ -53,7 +53,7 @@
   "dependencies": {
     "@mdi/js": "^7.3.67",
     "@nuxtjs/robots": "^3.0.0",
-    "@pinia/nuxt": "^0.5.0",
+    "@pinia/nuxt": "^0.5.1",
     "@vueuse/core": "^10.5.0",
     "@vueuse/nuxt": "^10.5.0",
     "firebase": "^10.5.0",

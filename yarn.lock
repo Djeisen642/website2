@@ -2194,13 +2194,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pinia/nuxt@npm:^0.5.0":
-  version: 0.5.0
-  resolution: "@pinia/nuxt@npm:0.5.0"
+"@pinia/nuxt@npm:^0.5.1":
+  version: 0.5.1
+  resolution: "@pinia/nuxt@npm:0.5.1"
   dependencies:
     "@nuxt/kit": ^3.5.0
     pinia: ">=2.1.7"
-  checksum: 8e8d0bb5981f29feced4335c4738ab631ada640be1f7c7c51c33d107c382acc8a769c654bbd785ea0f10599408a23aefde66a92eefc4d3621cd9d68304893f0b
+  checksum: d9f6aa9f5fa50e811d538931162aa55c193d66324df48c74044b63916c3fa03dd64441b4ef1ce7043d3c3f1009d6cbf2d180ec4990f39d781e0c5c279275c465
   languageName: node
   linkType: hard
 
@@ -14385,7 +14385,7 @@ __metadata:
     "@nuxtjs/device": ^3.1.1
     "@nuxtjs/eslint-config-typescript": ^12.1.0
     "@nuxtjs/robots": ^3.0.0
-    "@pinia/nuxt": ^0.5.0
+    "@pinia/nuxt": ^0.5.1
     "@rushstack/eslint-patch": ^1.5.1
     "@trivago/prettier-plugin-sort-imports": ^4.2.0
     "@types/node": ^20.8.6
