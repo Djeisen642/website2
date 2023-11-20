@@ -1,4 +1,4 @@
-import { User, onAuthStateChanged } from 'firebase/auth';
+import { type User, onAuthStateChanged } from 'firebase/auth';
 import { defineStore } from 'pinia';
 
 import { useNuxtApp } from '#app';

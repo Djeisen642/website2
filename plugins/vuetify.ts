@@ -9,7 +9,7 @@ import {
   mdiWrench,
 } from '@mdi/js';
 import { defineNuxtPlugin } from 'nuxt/app';
-import { ThemeDefinition, VuetifyOptions, createVuetify } from 'vuetify';
+import { type ThemeDefinition, type VuetifyOptions, createVuetify } from 'vuetify';
 import { md3 } from 'vuetify/blueprints';
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg';
 import colors from 'vuetify/lib/util/colors';

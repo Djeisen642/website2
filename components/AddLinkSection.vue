@@ -48,7 +48,7 @@
   </v-card>
 </template>
 <script setup lang="ts">
-import { VForm } from 'vuetify/lib/components/index.mjs';
+import type { VForm } from 'vuetify/lib/components/index.mjs';
 
 import { useLinkStore } from '~/store/linkStore';
 import { useStore } from '~/store/mainStore';

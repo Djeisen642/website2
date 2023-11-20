@@ -3,13 +3,18 @@ import { getAnalytics, logEvent } from 'firebase/analytics';
 import { initializeApp } from 'firebase/app';
 import { ReCaptchaV3Provider, initializeAppCheck } from 'firebase/app-check';
 import { getAuth } from 'firebase/auth';
-import { CollectionReference, DocumentData, collection, getFirestore } from 'firebase/firestore';
+import {
+  CollectionReference,
+  type DocumentData,
+  collection,
+  getFirestore,
+} from 'firebase/firestore';
 import { getPerformance } from 'firebase/performance';
-import { ReportCallback, onCLS, onFID, onLCP } from 'web-vitals';
+import { type ReportCallback, onCLS, onFID, onLCP } from 'web-vitals';
 
 import { defineNuxtPlugin, useRuntimeConfig } from '#imports';
 
-import { GameDetails, LinkDetails } from '~/utils/types';
+import type { GameDetails, LinkDetails } from '~/utils/types';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries

@@ -29,7 +29,7 @@ import {
   NUM_SQUARES_PER_SIDE,
   WIN_NUMBER,
 } from '@/utils/constants_2048';
-import { RGBObject } from '@/utils/types';
+import type { RGBObject } from '@/utils/types';
 
 const enum Direction {
   Up,

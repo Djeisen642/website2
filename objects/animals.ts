@@ -1,4 +1,4 @@
-import { Boundary, Position, Velocity } from './abstract';
+import { type Boundary, Position, Velocity } from './abstract';
 
 function getRandomArbitrary(min: number, max: number) {
   return Math.random() * (max - min) + min;
