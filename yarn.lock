@@ -2970,7 +2970,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:>=12.12.47, @types/node@npm:>=13.7.0, @types/node@npm:^20.9.2":
+"@types/node@npm:*, @types/node@npm:>=12.12.47, @types/node@npm:>=13.7.0":
   version: 20.9.2
   resolution: "@types/node@npm:20.9.2"
   dependencies:
@@ -2985,6 +2985,15 @@ __metadata:
   dependencies:
     undici-types: "npm:~5.26.4"
   checksum: 6f5bca390970ac42ed073490127edc9822e030def4f5ec7dd71e2dcf5a9dd622be984ef6676b698db126d986229ef5b02c65dac7cfc09cc2c1d94eaefe32a805
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^20.10.0":
+  version: 20.10.0
+  resolution: "@types/node@npm:20.10.0"
+  dependencies:
+    undici-types: "npm:~5.26.4"
+  checksum: c7d5ddbdbf3491e2363135c9611eb6bfae90eda2957279237fa232bcb29cd0df1cc3ee149d6de9915b754262a531ee2d57d33c9ecd58d763e8ad4856113822f3
   languageName: node
   linkType: hard
 
@@ -15149,7 +15158,7 @@ __metadata:
     "@pinia/nuxt": "npm:^0.5.1"
     "@rushstack/eslint-patch": "npm:^1.5.1"
     "@trivago/prettier-plugin-sort-imports": "npm:^4.3.0"
-    "@types/node": "npm:^20.9.2"
+    "@types/node": "npm:^20.10.0"
     "@types/uuid": "npm:^9.0.7"
     "@vueuse/core": "npm:^10.6.1"
     "@vueuse/nuxt": "npm:^10.6.1"
