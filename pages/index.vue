@@ -10,7 +10,7 @@
         <v-sheet color="transparent-card pa-4" flat theme="dark">
           <v-card-title>
             <p class="text-h2 mb-4">Hello there!</p>
-            <p class="text-h3 mb-4 text-wrap">Welcome to my website!</p>
+            <p class="text-h3 mb-4 text-wrap">Welcome to my website</p>
           </v-card-title>
           <v-card-text>
             <v-btn to="/games">Check out my games!</v-btn>
