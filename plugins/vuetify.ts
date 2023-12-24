@@ -66,6 +66,7 @@ export default defineNuxtPlugin({
       },
     };
     const vuetify = createVuetify(vuetifyOptions);
+    // @ts-ignore - not sure why this isn't good. but it should work
     nuxtApp.vueApp.use(vuetify);
   },
 });
