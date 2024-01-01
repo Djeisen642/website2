@@ -56,7 +56,7 @@
     "@mdi/js": "^7.3.67",
     "@nuxtjs/robots": "^3.0.0",
     "@pinia/nuxt": "^0.5.1",
-    "@vueuse/core": "^10.7.0",
+    "@vueuse/core": "^10.7.1",
     "@vueuse/nuxt": "^10.7.0",
     "firebase": "^10.7.1",
     "prettier": "^3.1.1",
