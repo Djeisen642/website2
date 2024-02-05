@@ -60,7 +60,7 @@
     "@vueuse/core": "^10.7.2",
     "@vueuse/nuxt": "^10.7.2",
     "firebase": "^10.8.0",
-    "prettier": "^3.2.4",
+    "prettier": "^3.2.5",
     "uuid": "^9.0.1",
     "vue": "^3.4.15",
     "vuetify": "3.5.2",
