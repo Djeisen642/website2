@@ -3645,7 +3645,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ansi-escapes@npm:^4.2.1, ansi-escapes@npm:^4.3.0":
+"ansi-escapes@npm:^4.2.1, ansi-escapes@npm:^4.3.0, ansi-escapes@npm:^4.3.2":
   version: 4.3.2
   resolution: "ansi-escapes@npm:4.3.2"
   dependencies:
@@ -6888,7 +6888,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"figures@npm:^3.0.0":
+"figures@npm:^3.0.0, figures@npm:^3.2.0":
   version: 3.2.0
   resolution: "figures@npm:3.2.0"
   dependencies:
@@ -6988,9 +6988,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase-tools@npm:^13.3.0":
-  version: 13.3.0
-  resolution: "firebase-tools@npm:13.3.0"
+"firebase-tools@npm:^13.3.1":
+  version: 13.3.1
+  resolution: "firebase-tools@npm:13.3.1"
   dependencies:
     "@google-cloud/pubsub": "npm:^3.0.1"
     abort-controller: "npm:^3.0.0"
@@ -7014,9 +7014,11 @@ __metadata:
     filesize: "npm:^6.1.0"
     form-data: "npm:^4.0.0"
     fs-extra: "npm:^10.1.0"
+    fuzzy: "npm:^0.1.3"
     glob: "npm:^7.1.2"
     google-auth-library: "npm:^7.11.0"
-    inquirer: "npm:^8.2.0"
+    inquirer: "npm:^8.2.6"
+    inquirer-autocomplete-prompt: "npm:^2.0.1"
     js-yaml: "npm:^3.13.1"
     jsonwebtoken: "npm:^9.0.0"
     leven: "npm:^3.1.0"
@@ -7053,7 +7055,7 @@ __metadata:
     ws: "npm:^7.2.3"
   bin:
     firebase: lib/bin/firebase.js
-  checksum: 10/d3a9603d6e03786b9f79791b90dd8699c845af5c53ba48bb9eba77d3adcae54e210b9dfde6d94155fbe2d4adba93ea907601bc03922a474c67ee741bf5173bb9
+  checksum: 10/09ce44099d3e9c949aeacef98f48060693b2e377859496c9966f4f94cce451baeed6967d0d90f54df96bfc9e1b73f41640312f98cc14de7460a2b835d771e890
   languageName: node
   linkType: hard
 
@@ -7303,6 +7305,13 @@ __metadata:
   version: 1.2.3
   resolution: "functions-have-names@npm:1.2.3"
   checksum: 10/0ddfd3ed1066a55984aaecebf5419fbd9344a5c38dd120ffb0739fac4496758dcf371297440528b115e4367fc46e3abc86a2cc0ff44612181b175ae967a11a05
+  languageName: node
+  linkType: hard
+
+"fuzzy@npm:^0.1.3":
+  version: 0.1.3
+  resolution: "fuzzy@npm:0.1.3"
+  checksum: 10/3cf399457f3f9832af5d72bdbf354b287d977fca6bd800fb457579a9ccf8d8faa297f70ab7fada0147591e022d817532072ab07f69490b84f5dda96051e8c3ab
   languageName: node
   linkType: hard
 
@@ -8275,7 +8284,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"inquirer@npm:^8.2.0":
+"inquirer-autocomplete-prompt@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "inquirer-autocomplete-prompt@npm:2.0.1"
+  dependencies:
+    ansi-escapes: "npm:^4.3.2"
+    figures: "npm:^3.2.0"
+    picocolors: "npm:^1.0.0"
+    run-async: "npm:^2.4.1"
+    rxjs: "npm:^7.5.4"
+  peerDependencies:
+    inquirer: ^8.0.0
+  checksum: 10/1c17ca6181f700edc465d6b4e34e0cfaa9b6b99d8f704750e372cb57ea3d5346adee71f96f204c8bf9db87735d9b7750eb7ce6794e26a485c8a87623233dbf8d
+  languageName: node
+  linkType: hard
+
+"inquirer@npm:^8.2.6":
   version: 8.2.6
   resolution: "inquirer@npm:8.2.6"
   dependencies:
@@ -12463,7 +12487,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"run-async@npm:^2.4.0":
+"run-async@npm:^2.4.0, run-async@npm:^2.4.1":
   version: 2.4.1
   resolution: "run-async@npm:2.4.1"
   checksum: 10/c79551224dafa26ecc281cb1efad3510c82c79116aaf681f8a931ce70fdf4ca880d58f97d3b930a38992c7aad7955a08e065b32ec194e1dd49d7790c874ece50
@@ -12479,7 +12503,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rxjs@npm:^7.5.5":
+"rxjs@npm:^7.5.4, rxjs@npm:^7.5.5":
   version: 7.8.1
   resolution: "rxjs@npm:7.8.1"
   dependencies:
@@ -14786,7 +14810,7 @@ __metadata:
     eslint-plugin-prettier: "npm:^5.1.3"
     eslint-plugin-vuejs-accessibility: "npm:^2.2.1"
     firebase: "npm:^10.8.0"
-    firebase-tools: "npm:^13.3.0"
+    firebase-tools: "npm:^13.3.1"
     husky: "npm:^9.0.11"
     node-fetch: "npm:^3.3.2"
     nuxt: "npm:^3.10.2"
