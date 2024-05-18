@@ -10,7 +10,7 @@ import {
   getFirestore,
 } from 'firebase/firestore';
 import { getPerformance } from 'firebase/performance';
-import { type ReportCallback, onCLS, onFID, onLCP } from 'web-vitals';
+import { type MetricType, onCLS, onINP, onLCP } from 'web-vitals';
 
 import { defineNuxtPlugin, useRuntimeConfig } from '#imports';
 
@@ -40,7 +40,7 @@ export default defineNuxtPlugin({
     const analytics = getAnalytics(app);
     getPerformance(app);
 
-    const sendToGoogleAnalytics: ReportCallback = ({ name, delta, id }) => {
+    const sendToGoogleAnalytics = ({ name, delta, id }: MetricType) => {
       // Assumes the global `gtag()` function exists, see:
       // https://developers.google.com/analytics/devguides/collection/gtagjs
       // https://firebase.google.com/docs/analytics/events?platform=web#log_events_5
@@ -74,7 +74,7 @@ export default defineNuxtPlugin({
     };
 
     onCLS(sendToGoogleAnalytics);
-    onFID(sendToGoogleAnalytics);
+    onINP(sendToGoogleAnalytics);
     onLCP(sendToGoogleAnalytics);
 
     initializeAppCheck(app, {

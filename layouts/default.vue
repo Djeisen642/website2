@@ -67,6 +67,10 @@ const pages = ref([
     title: 'Code Editor',
     to: '/codeeditor',
   },
+  {
+    title: 'Pong',
+    to: '/pong',
+  },
 ]);
 
 const route = useRoute();
