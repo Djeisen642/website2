@@ -37,6 +37,13 @@
         </p>
       </div>
     </div>
+    <div :style="{ width: fieldWidth + 'px' }">
+      <ScoreDisplay
+        :player-1-score="player1Score"
+        :player-2-score="player2Score"
+      />
+    </div>
+
     <div>
       <v-btn
         color="primary"
@@ -96,8 +103,9 @@ const ballPositionX = ref(fieldWidth);
 const ballPositionY = ref(fieldHeight);
 const ballSpeedX = ref(0);
 const ballSpeedY = ref(0);
-let ballMaxVelocity = 5;
-const ballMinXSpeed = 2;
+let ballMaxVelocity = 4;
+const ballMinXSpeed = 4;
+const ballMinYSpeed = 1;
 const ballWidth = 10;
 const ballHeight = 10;
 const ballStyle = computed(
@@ -117,6 +125,8 @@ const gameStarted = ref(false);
 const gameOver = ref('');
 const confettiContainer = ref<HTMLDivElement | null>(null);
 const hits = ref(0);
+const player1Score = ref(0);
+const player2Score = ref(0);
 
 onMounted(() => {
   document.addEventListener('keydown', handleKeyDown);
@@ -146,15 +156,12 @@ watch(
 watch(
   () => ballPositionX.value,
   newX => {
-    if (newX <= 0 || newX >= fieldWidth - ballWidth) {
-      if (newX <= 0) {
-        gameOver.value = 'Player 2 wins!';
-        ballPositionX.value = 1;
-      } else if (newX >= fieldWidth - ballWidth) {
-        gameOver.value = 'Player 1 wins!';
-        ballPositionX.value = fieldWidth - ballWidth - 1;
-      }
-      stopGame();
+    if (newX <= 0) {
+      gameEnded(2);
+      ballPositionX.value = 1;
+    } else if (newX >= fieldWidth - ballWidth) {
+      gameEnded(1);
+      ballPositionX.value = fieldWidth - ballWidth - 1;
     }
   },
 );
@@ -164,18 +171,28 @@ function startGame() {
   gameStarted.value = true;
   ballPositionX.value = fieldWidth / 2;
   ballPositionY.value = fieldHeight / 2;
+  increaseMaxVelocity();
   randomizeInitialBallSpeed();
   startInterval();
 }
 
-function stopGame() {
-  createConfetti();
-  gameStarted.value = false;
-  clearInterval(interval);
+function increaseMaxVelocity() {
   ballMaxVelocity *= 1.1;
 
   if (ballMaxVelocity > 15)
     ballMaxVelocity = 15;
+}
+
+function gameEnded(winningPlayer: number) {
+  gameOver.value = `Player ${winningPlayer} wins!`;
+  if (winningPlayer === 1) {
+    player1Score.value++;
+  } else {
+    player2Score.value++;
+  }
+  createConfetti();
+  gameStarted.value = false;
+  clearInterval(interval);
 }
 
 
@@ -210,50 +227,55 @@ function updatePaddlePosition() {
 function checkCollisions() {
   if (!gameStarted.value) return;
   // Check for paddle collisions
-  if (
-    ballPositionX.value <= paddleWidth + wallPaddleGap + 1 &&
-    ballPositionY.value + ballHeight >= player1Position.value &&
-    ballPositionY.value <= player1Position.value + paddleHeight
-  ) {
-    // Calculate the relative position of the ball within the paddle
-    const relativeBallPosition = ballPositionY.value - player1Position.value;
+  const collision = calculateCollisionAndDeflection(1);
+  if (collision) return;
+  calculateCollisionAndDeflection(2);
+}
 
-    // Adjust the ball's Y speed based on the paddle's movement
-    if (keysPressed.value.has(player1UpKey.value)) {
-      ballSpeedY.value = -Math.abs(ballSpeedY.value) * (1 - relativeBallPosition / paddleHeight);
-    } else if (keysPressed.value.has(player1DownKey.value)) {
-      ballSpeedY.value = Math.abs(ballSpeedY.value) * (1 - relativeBallPosition / paddleHeight);
+function calculateCollisionAndDeflection(player: number) {
+  const isPlayer1 = player === 1;
+  const playerTopPosition = isPlayer1 ? player1Position.value : player2Position.value;
+  const playerBottomPosition = playerTopPosition + paddleHeight;
+  const playerUpKey = isPlayer1 ? player1UpKey.value : player2UpKey.value;
+  const playerDownKey = isPlayer1 ? player1DownKey.value : player2DownKey.value;
+
+  const ballTopPosition = ballPositionY.value;
+  const ballBottomPosition = ballTopPosition + ballHeight;
+  const ballIsNearPlayer = isPlayer1 ? (ballPositionX.value <= paddleWidth + wallPaddleGap + 1) : (ballPositionX.value >= fieldWidth - paddleWidth - wallPaddleGap - 1);
+  const playerIsHittingBall = ballBottomPosition >= playerTopPosition && ballTopPosition <= playerBottomPosition;
+
+  const ballCollision = ballIsNearPlayer && playerIsHittingBall;
+  if (!ballCollision) return false;
+
+  // Calculate the relative position of the ball within the paddle
+  const relativeBallPosition = ballTopPosition - playerTopPosition;
+  const halfPaddleHeight = paddleHeight / 2;
+
+  // Adjust the ball's Y speed based on the paddle's movement
+  if (keysPressed.value.has(playerUpKey)) {
+    // If the ball is closer to the top of the paddle, increase its upward speed
+    if (relativeBallPosition < halfPaddleHeight) {
+      ballSpeedY.value = -Math.abs(ballSpeedY.value) * (1.5 - relativeBallPosition / halfPaddleHeight);
+    } else {
+      // If the ball is closer to the middle or bottom of the paddle, decrease its upward speed
+      ballSpeedY.value = -Math.abs(ballSpeedY.value) * (0.5 - (relativeBallPosition - halfPaddleHeight) / halfPaddleHeight);
     }
-    if (Math.sqrt(Math.pow(ballSpeedX.value, 2) + Math.pow(ballSpeedY.value, 2)) > ballMaxVelocity)
-      ballSpeedY.value *= Math.sqrt(Math.pow(ballMaxVelocity, 2) - Math.pow(ballSpeedX.value, 2))
-
-    ballSpeedX.value *= -1;
-    ballPositionX.value = paddleWidth + wallPaddleGap + 2;
-    hits.value++;
-    return;
-  }
-
-  if (
-    ballPositionX.value >= fieldWidth - paddleWidth - wallPaddleGap - 1 &&
-    ballPositionY.value + ballHeight >= player2Position.value &&
-    ballPositionY.value <= player2Position.value + paddleHeight
-  ) {
-    // Calculate the relative position of the ball within the paddle
-    const relativeBallPosition = ballPositionY.value - player1Position.value;
-
-    // Adjust the ball's Y speed based on the paddle's movement
-    if (keysPressed.value.has(player2UpKey.value)) {
-      ballSpeedY.value = -Math.abs(ballSpeedY.value) * (1 - relativeBallPosition / paddleHeight);
-    } else if (keysPressed.value.has(player2DownKey.value)) {
-      ballSpeedY.value = Math.abs(ballSpeedY.value) * (1 - relativeBallPosition / paddleHeight);
+  } else if (keysPressed.value.has(playerDownKey)) {
+    // If the ball is closer to the bottom of the paddle, increase its downward speed
+    if (relativeBallPosition > halfPaddleHeight) {
+      ballSpeedY.value = Math.abs(ballSpeedY.value) * (1.5 - (relativeBallPosition - halfPaddleHeight) / halfPaddleHeight);
+    } else {
+      // If the ball is closer to the middle or top of the paddle, decrease its downward speed
+      ballSpeedY.value = Math.abs(ballSpeedY.value) * (0.5 - relativeBallPosition / (halfPaddleHeight));
     }
-    if (Math.sqrt(Math.pow(ballSpeedX.value, 2) + Math.pow(ballSpeedY.value, 2)) > ballMaxVelocity)
-      ballSpeedY.value *= Math.sqrt(Math.pow(ballMaxVelocity, 2) - Math.pow(ballSpeedX.value, 2))
-
-    ballSpeedX.value *= -1;
-    ballPositionX.value = fieldWidth - paddleWidth - wallPaddleGap - 2;
-    hits.value++;
   }
+  if (Math.sqrt(Math.pow(ballSpeedX.value, 2) + Math.pow(ballSpeedY.value, 2)) > ballMaxVelocity)
+    ballSpeedY.value *= Math.sqrt(Math.pow(ballMaxVelocity, 2) - Math.pow(ballSpeedX.value, 2));
+
+  ballSpeedX.value *= -1;
+  ballPositionX.value = isPlayer1 ? (paddleWidth + wallPaddleGap + 2) : (fieldWidth - paddleWidth - wallPaddleGap - 2);
+  hits.value++;
+  return true;
 }
 
 function handleKeyDown(event: KeyboardEvent) {
@@ -272,7 +294,7 @@ function handleKeyUp(event: KeyboardEvent) {
 function randomizeInitialBallSpeed() {
   const xSpeed = (Math.random() * (ballMaxVelocity - ballMinXSpeed)) + ballMinXSpeed;
   const maxYSpeed = Math.sqrt(Math.pow(ballMaxVelocity, 2) - Math.pow(xSpeed, 2));
-  const ySpeed = Math.random() * maxYSpeed;
+  const ySpeed = (Math.random() * (maxYSpeed - ballMinYSpeed)) + ballMinYSpeed;
   const xDirection = Math.random() < 0.5 ? -1 : 1;
   const yDirection = Math.random() < 0.5 ? -1 : 1;
 
