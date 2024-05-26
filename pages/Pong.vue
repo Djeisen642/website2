@@ -16,6 +16,15 @@
         class="ball"
         :style="ballStyle"
       ></div>
+      <div
+        v-show="pauseTimer"
+        class="on-game-text"
+      >
+        <h2>
+          Game Paused
+        </h2>
+        <h3>{{ pauseTimer }}</h3>
+      </div>
       <div v-show="!gameStarted">
         <v-btn
           color="success"
@@ -28,7 +37,7 @@
           class="on-game-text"
         >
           <div ref="confettiContainer"></div>
-          <h3>Game Over!</h3>
+          <h2>Game Over!</h2>
           <p>{{ gameOver }}</p>
           <p>Hits: {{ hits }}</p>
         </div>
@@ -37,27 +46,36 @@
         </p>
       </div>
     </div>
-    <div :style="{ width: fieldWidth + 'px' }">
+    <div :style="{ width: fieldWidth + 'px', margin: 'auto' }">
       <ScoreDisplay
         :player-1-score="player1Score"
         :player-2-score="player2Score"
       />
     </div>
-
-    <div>
-      <v-btn
-        color="primary"
-        @click="showStats = !showStats"
-      >{{ showStats ? 'Hide Stats' : 'Show Stats' }}</v-btn>
+    <div :style="{ width: fieldWidth + 'px', margin: 'auto' }">
+      <div>
+        <v-btn
+          color="primary"
+          @click="showStats = !showStats"
+        >{{ showStats ? 'Hide Stats' : 'Show Stats' }}</v-btn>
+        <v-btn
+          color="secondary"
+          @click="showInstructionsDialog = true"
+        >Instructions</v-btn>
+      </div>
+      <div v-if="showStats">
+        <p>Player 1: {{ player1Position }}</p>
+        <p>Player 2: {{ player2Position }}</p>
+        <p>Ball: {{ ballPositionX }}, {{ ballPositionY }}</p>
+        <p>Ball Speed: {{ ballSpeedX }}, {{ ballSpeedY }}</p>
+        <p>Ball Velocity: {{ Math.sqrt(Math.pow(ballSpeedX, 2) + Math.pow(ballSpeedY, 2)) }}</p>
+        <p>Ball Max Velocity: {{ ballMaxVelocity }}</p>
+      </div>
     </div>
-    <div v-if="showStats">
-      <p>Player 1: {{ player1Position }}</p>
-      <p>Player 2: {{ player2Position }}</p>
-      <p>Ball: {{ ballPositionX }}, {{ ballPositionY }}</p>
-      <p>Ball Speed: {{ ballSpeedX }}, {{ ballSpeedY }}</p>
-      <p>Ball Velocity: {{ Math.sqrt(Math.pow(ballSpeedX, 2) + Math.pow(ballSpeedY, 2)) }}</p>
-      <p>Ball Max Velocity: {{ ballMaxVelocity }}</p>
-    </div>
+    <InstructionsDialog
+      v-model="showInstructionsDialog"
+      @close="showInstructionsDialog = false"
+    />
   </v-container>
 </template>
 
@@ -67,6 +85,9 @@
 >
 // Created with the assistance of Google Gemini
 import { ref, onMounted, onUnmounted, watch } from 'vue';
+import ScoreDisplay from '@/components/Pong/ScoreDisplay.vue';
+import InstructionsDialog from '@/components/Pong/InstructionsDialog.vue';
+
 
 const fieldWidth = 800;
 const fieldHeight = 600;
@@ -98,7 +119,8 @@ const player2Style = computed(
     height: paddleHeight + 'px',
   })
 )
-const startButtonKey = ref(' ');
+const startButtonKey = ' ';
+const pauseButtonKey = 'p';
 const ballPositionX = ref(fieldWidth);
 const ballPositionY = ref(fieldHeight);
 const ballSpeedX = ref(0);
@@ -119,7 +141,7 @@ const ballStyle = computed(
 const showStats = ref(false);
 const wallPaddleGap = 5;
 const paddleSpeed = 5;
-let interval: NodeJS.Timeout;
+let interval: NodeJS.Timeout | undefined;
 const keysPressed = ref<Set<string>>(new Set());
 const gameStarted = ref(false);
 const gameOver = ref('');
@@ -127,6 +149,8 @@ const confettiContainer = ref<HTMLDivElement | null>(null);
 const hits = ref(0);
 const player1Score = ref(0);
 const player2Score = ref(0);
+const showInstructionsDialog = ref(false);
+const pauseTimer = ref(0);
 
 onMounted(() => {
   document.addEventListener('keydown', handleKeyDown);
@@ -134,10 +158,29 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  clearInterval(interval);
+  stopInterval();
   document.removeEventListener('keydown', handleKeyDown);
   document.removeEventListener('keyup', handleKeyUp);
 });
+
+watch(
+  () => showInstructionsDialog.value,
+  (show) => {
+    if (show) {
+      stopInterval();
+      return;
+    }
+    if (!gameStarted.value) return;
+    const secondsUntilRestart = 3;
+    pauseTimer.value = secondsUntilRestart;
+    const thisInterval = setInterval(() => {
+      pauseTimer.value--;
+      if (pauseTimer.value !== 0) return;
+      startInterval();
+      clearInterval(thisInterval);
+    }, 1000);
+  },
+)
 
 watch(
   () => ballPositionY.value,
@@ -192,16 +235,21 @@ function gameEnded(winningPlayer: number) {
   }
   createConfetti();
   gameStarted.value = false;
-  clearInterval(interval);
+  stopInterval();
 }
 
 
 function startInterval() {
+  if (interval || !gameStarted.value) return;
   interval = setInterval(() => {
     updateBallPosition();
     updatePaddlePosition();
     checkCollisions();
   }, 10);
+}
+function stopInterval() {
+  clearInterval(interval);
+  interval = undefined;
 }
 
 function updateBallPosition() {
@@ -284,7 +332,11 @@ function handleKeyDown(event: KeyboardEvent) {
 }
 
 function handleKeyUp(event: KeyboardEvent) {
-  if (!gameStarted.value && event.key === startButtonKey.value) {
+  if (event.key === pauseButtonKey) {
+    showInstructionsDialog.value = !showInstructionsDialog.value;
+    return;
+  }
+  if (!gameStarted.value && event.key === startButtonKey) {
     startGame();
     return;
   }
@@ -353,6 +405,7 @@ function removeConfetti() {
   background-color: white;
   text-align: center;
   overflow: hidden;
+  margin: auto;
 }
 
 .paddle {
@@ -396,4 +449,4 @@ function removeConfetti() {
     transform: translateY(100vh) rotate(-360deg);
   }
 }
-</style>
+</style>~/components/Pong/InstructionsDialog.vue
