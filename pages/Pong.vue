@@ -1,7 +1,30 @@
 <template>
   <v-container fluid>
+    <VDialog
+      v-model="isMobileDevice"
+      persistent
+    >
+      <v-card>
+        <v-card-title>
+          <h3>Mobile Device Detected</h3>
+        </v-card-title>
+        <v-card-text>
+          <p>This game cannot be played on a mobile device.
+            Please use a device with a keyboard to play.</p>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn
+            color="primary"
+            to="/"
+          >
+            Go Home
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </VDialog>
     <div
-      class="pong"
+      class="
+            pong"
       :style="fieldStyle"
     >
       <div
@@ -68,7 +91,8 @@
         <p>Player 2: {{ player2Position }}</p>
         <p>Ball: {{ ballPositionX }}, {{ ballPositionY }}</p>
         <p>Ball Speed: {{ ballSpeedX }}, {{ ballSpeedY }}</p>
-        <p>Ball Velocity: {{ Math.sqrt(Math.pow(ballSpeedX, 2) + Math.pow(ballSpeedY, 2)) }}</p>
+        <p>Ball Velocity: {{ Math.sqrt(Math.pow(ballSpeedX, 2) + Math.pow(ballSpeedY, 2)) }}
+        </p>
         <p>Ball Max Velocity: {{ ballMaxVelocity }}</p>
       </div>
     </div>
@@ -87,6 +111,8 @@
 import { ref, onMounted, onUnmounted, watch } from 'vue';
 import ScoreDisplay from '@/components/Pong/ScoreDisplay.vue';
 import InstructionsDialog from '@/components/Pong/InstructionsDialog.vue';
+
+const isMobileDevice = computed(() => /Mobi|Android/i.test(navigator.userAgent));
 
 
 const fieldWidth = 800;
