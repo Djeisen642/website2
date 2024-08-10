@@ -14665,6 +14665,7 @@ __metadata:
     eslint-plugin-vuejs-accessibility: "npm:^2.4.1"
     firebase: "npm:^10.12.5"
     firebase-tools: "npm:^13.15.1"
+    globals: "npm:^15.9.0"
     husky: "npm:^9.1.4"
     node-fetch: "npm:^3.3.2"
     nuxt: "npm:^3.12.4"
