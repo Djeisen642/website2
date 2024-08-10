@@ -24,13 +24,26 @@
 
     <!-- Code Editor Actions -->
     <v-card-actions>
-      <v-btn color="primary" variant="flat" @click="runCode">Run</v-btn>
-      <v-btn color="secondary" @click="clearCode">Clear</v-btn>
-      <v-btn color="secondary" @click="resetCode">Reset</v-btn>
+      <v-btn
+        color="primary"
+        variant="flat"
+        @click="runCode"
+      >Run</v-btn>
+      <v-btn
+        color="secondary"
+        @click="clearCode"
+      >Clear</v-btn>
+      <v-btn
+        color="secondary"
+        @click="resetCode"
+      >Reset</v-btn>
     </v-card-actions>
 
     <!-- Code Output -->
-    <v-card v-if="output" class="mt-4">
+    <v-card
+      v-if="output"
+      class="mt-4"
+    >
       <v-card-text>
         <pre>{{ output }}</pre>
       </v-card-text>
@@ -38,10 +51,13 @@
   </v-container>
 </template>
 
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import { format } from 'prettier/standalone';
 import prettierPluginBabel from 'prettier/plugins/babel';
-import prettierPluginEstree from 'prettier/plugins/estree'; // eslint-disable-line import/default
+import prettierPluginEstree from 'prettier/plugins/estree';
 
 const output = ref('');
 const code = ref('function run() { // enter your javascript code here\n} \n\nrun();');
@@ -56,7 +72,7 @@ async function runCode() {
   // Execute the code and capture the output
   try {
     await formatCode();
-    output.value = eval(code.value); // eslint-disable-line no-eval
+    output.value = eval(code.value);
   } catch (error) {
     output.value = error?.toString() || '';
   }

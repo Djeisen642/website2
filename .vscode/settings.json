@@ -15,7 +15,6 @@
     "source.fixAll.stylelint": "explicit"
   },
   "eslint.validate": ["typescript", "vue"],
-  "vue.server.configFilePath": "./volar.config.ts",
   "html.format.wrapLineLength": 100,
   "html.format.wrapAttributes": "force-expand-multiline"
 }

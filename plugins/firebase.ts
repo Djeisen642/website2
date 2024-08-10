@@ -4,7 +4,7 @@ import { initializeApp } from 'firebase/app';
 import { ReCaptchaV3Provider, initializeAppCheck } from 'firebase/app-check';
 import { getAuth } from 'firebase/auth';
 import {
-  CollectionReference,
+  type CollectionReference,
   type DocumentData,
   collection,
   getFirestore,

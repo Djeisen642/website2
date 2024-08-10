@@ -31,7 +31,7 @@
         </ul>
       </v-card-text>
       <v-card-actions>
-        <v-spacer></v-spacer>
+        <v-spacer />
         <v-btn @click="show = false">Close</v-btn>
       </v-card-actions>
     </v-card>

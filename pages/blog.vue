@@ -4,7 +4,10 @@
     <p>Coming some day...</p>
   </v-container>
 </template>
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 useHead({
   title: 'Blog!',
 });

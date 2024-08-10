@@ -62,11 +62,11 @@ export class Cat extends Animal {
     this.position = this._position; // readjust position based on new boundary
   }
 
-  get position() {
+  override get position() {
     return this._position;
   }
 
-  set position(newPosition: Position) {
+  override set position(newPosition: Position) {
     this._position = this.boundary.ensurePositionIsInside(newPosition);
   }
 

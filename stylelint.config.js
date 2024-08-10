@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import('stylelint').Config} */
+export default {
   extends: ['stylelint-config-standard-scss', 'stylelint-config-recommended-vue/scss'],
   rules: {
     'color-function-notation': null, // variables in vuetify come with commas making the new rgb syntax difficult to work with

@@ -1,6 +1,9 @@
 <template>
   <v-app :theme="mainStore.theme">
-    <v-app-bar color="primary" prominent>
+    <v-app-bar
+      color="primary"
+      prominent
+    >
       <v-app-bar-nav-icon
         aria-label="Open navigation drawer"
         color="secondary"
@@ -11,25 +14,37 @@
       </v-app-bar-title>
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" temporary>
+    <v-navigation-drawer
+      v-model="drawer"
+      temporary
+      role="navigation"
+    >
       <v-list aria-label="Pages to navigate to">
-        <v-list-item v-for="page in pages" :key="page.title" :to="page.to" role="option">
+        <v-list-item
+          v-for="page in pages"
+          :key="page.title"
+          :to="page.to"
+          role="option"
+        >
           <v-list-item-title>{{ page.title }}</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
-    <v-main>
+    <v-main role="main">
       <slot />
     </v-main>
     <default-footer />
-    <error-snackbar :snackbar="mainStore.snackbar.snackbar" :text="mainStore.snackbar.text" />
-    <dev-only>
-      <vue-axe />
-    </dev-only>
+    <error-snackbar
+      :snackbar="mainStore.snackbar.snackbar"
+      :text="mainStore.snackbar.text"
+    />
   </v-app>
 </template>
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import { ref, useRoute } from '#imports';
 
 import DefaultFooter from '~/components/DefaultFooter.vue';

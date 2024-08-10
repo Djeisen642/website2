@@ -1,5 +1,9 @@
 <template>
-  <v-container fluid class="full-height no-cursor" @mousemove="onMouseMove">
+  <v-container
+    fluid
+    class="full-height no-cursor"
+    @mousemove="onMouseMove"
+  >
     <p style="position: absolute">
       Very much a work in progress
       <br />
@@ -8,31 +12,63 @@
       Cat x: {{ cat.getPixelPosition().x }} y: {{ cat.getPixelPosition().y }} speed:
       {{ `${cat.speed.toString()}px/${catRefreshInterval}ms` }}
     </p>
-    <v-dialog v-model="paused" width="auto" persistent>
+    <v-dialog
+      v-model="paused"
+      width="auto"
+      persistent
+    >
       <v-card>
         <v-card-title>Cat And Mouse Game</v-card-title>
-        <v-card-subtitle v-if="score > 0" class="mx-auto">
-          <v-icon icon="$skull" aria-label="Game Over" />
+        <v-card-subtitle
+          v-if="score > 0"
+          class="mx-auto"
+        >
+          <v-icon
+            icon="$skull"
+            aria-label="Game Over"
+          />
         </v-card-subtitle>
-        <v-card-text v-if="score > 0" class="mx-auto">
+        <v-card-text
+          v-if="score > 0"
+          class="mx-auto"
+        >
           <p>Score: {{ score }}</p>
         </v-card-text>
         <v-card-actions>
-          <v-btn color="primary" variant="flat" class="mx-auto" @click="startRunning">Start</v-btn>
+          <v-btn
+            color="primary"
+            variant="flat"
+            class="mx-auto"
+            @click="startRunning"
+          >Start</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
 
     <div class="mouse">
-      <v-icon :icon="mouseIcon" class="mouse-icon" aria-label="The mouse" />
+      <v-icon
+        :icon="mouseIcon"
+        class="mouse-icon"
+        aria-label="The mouse"
+      />
     </div>
     <div class="cat">
-      <v-icon icon="$cat" class="cat-icon" aria-label="The cat" />
+      <v-icon
+        icon="$cat"
+        class="cat-icon"
+        aria-label="The cat"
+      />
     </div>
-    <div ref="container" class="cat-border"></div>
+    <div
+      ref="container"
+      class="cat-border"
+    ></div>
   </v-container>
 </template>
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import { useResizeObserver, useWindowFocus } from '@vueuse/core';
 
 import { Boundary, Position } from '@/objects/abstract';
@@ -96,7 +132,10 @@ function onMouseMove(event: MouseEvent) {
   mouse.position = new Position(event.x, event.y);
 }
 </script>
-<style lang="scss" scoped>
+<style
+  lang="scss"
+  scoped
+>
 $icon-size: 50px;
 
 .full-height {

@@ -36,18 +36,26 @@
           v-model="newLink.link"
           aria-label="link url"
           label="URL"
-          :rules="[required, (input:string) => isValidUrl(input) || 'Not valid url']"
+          :rules="[required, (input: string) => isValidUrl(input) || 'Not valid url']"
         />
       </v-form>
     </v-card-text>
     <v-card-actions>
-      <v-btn color="primary" variant="elevated" :disabled="addingLink" @click="addLink">
+      <v-btn
+        color="primary"
+        variant="elevated"
+        :disabled="addingLink"
+        @click="addLink"
+      >
         Add Link!
       </v-btn>
     </v-card-actions>
   </v-card>
 </template>
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import type { VForm } from 'vuetify/lib/components/index.mjs';
 
 import { useLinkStore } from '~/store/linkStore';

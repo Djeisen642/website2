@@ -1,8 +1,14 @@
 <template>
-  <v-footer class="px-md-10 footer">
+  <v-footer
+    class="px-md-10 footer"
+    role="contentinfo"
+  >
     <p>
       {{ new Date().getFullYear() }} - Jason Suttles
-      <span v-if="authStore.user">(<a href="#" @click="auth.logout">logged in</a>)</span>
+      <span v-if="authStore.user">(<a
+          href="#"
+          @click="auth.logout"
+        >logged in</a>)</span>
     </p>
     <v-spacer />
     <v-btn
@@ -35,7 +41,10 @@
     />
   </v-footer>
 </template>
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import { FirebaseError } from 'firebase/app';
 
 import { useNuxtApp } from '#app';
@@ -76,7 +85,10 @@ function toggleTheme() {
   mainStore.setTheme(mainStore.theme === Theme.LIGHT, true);
 }
 </script>
-<style scoped lang="scss">
+<style
+  scoped
+  lang="scss"
+>
 .footer {
   max-height: 80px;
 }

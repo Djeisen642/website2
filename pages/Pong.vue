@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <VDialog
-      v-model="isMobileDevice"
+      v-model="isMobile"
       persistent
     >
       <v-card>
@@ -112,8 +112,7 @@ import { ref, onMounted, onUnmounted, watch } from 'vue';
 import ScoreDisplay from '@/components/Pong/ScoreDisplay.vue';
 import InstructionsDialog from '@/components/Pong/InstructionsDialog.vue';
 
-const isMobileDevice = computed(() => /Mobi|Android/i.test(navigator.userAgent));
-
+const { isMobile } = useDevice();
 
 const fieldWidth = 800;
 const fieldHeight = 600;
@@ -123,9 +122,14 @@ const fieldStyle = {
 };
 const paddleWidth = 10;
 const paddleHeight = 100;
+enum Player {
+  ONE = 1,
+  TWO = 2,
+}
 const player1Position = ref(fieldHeight / 2 - 50);
 const player1UpKey = ref('w');
 const player1DownKey = ref('s');
+const player1Score = ref(0);
 const player1Style = computed(
   () => ({
     top: player1Position.value + 'px',
@@ -134,6 +138,7 @@ const player1Style = computed(
     height: paddleHeight + 'px',
   }),
 );
+const player2Score = ref(0);
 const player2Position = ref(fieldHeight / 2 - 50);
 const player2UpKey = ref('ArrowUp');
 const player2DownKey = ref('ArrowDown');
@@ -173,8 +178,6 @@ const gameStarted = ref(false);
 const gameOver = ref('');
 const confettiContainer = ref<HTMLDivElement | null>(null);
 const hits = ref(0);
-const player1Score = ref(0);
-const player2Score = ref(0);
 const showInstructionsDialog = ref(false);
 const pauseTimer = ref(0);
 
@@ -238,6 +241,7 @@ watch(
 function startGame() {
   stopConfetti();
   gameStarted.value = true;
+  hits.value = 0;
   ballPositionX.value = fieldWidth / 2;
   ballPositionY.value = fieldHeight / 2;
   increaseMaxVelocity();
@@ -301,9 +305,9 @@ function updatePaddlePosition() {
 function checkCollisions() {
   if (!gameStarted.value) return;
   // Check for paddle collisions
-  const collision = calculateCollisionAndDeflection(1);
+  const collision = calculateCollisionAndDeflection(Player.ONE);
   if (collision) return;
-  calculateCollisionAndDeflection(2);
+  calculateCollisionAndDeflection(Player.TWO);
 }
 
 function calculateCollisionAndDeflection(player: number) {
@@ -321,12 +325,21 @@ function calculateCollisionAndDeflection(player: number) {
   const ballCollision = ballIsNearPlayer && playerIsHittingBall;
   if (!ballCollision) return false;
 
+  ballSpeedX.value *= -1;
+  ballPositionX.value = isPlayer1 ? (paddleWidth + wallPaddleGap + 2) : (fieldWidth - paddleWidth - wallPaddleGap - 2);
+  calculateYDeflection(keysPressed.value.has(playerUpKey), keysPressed.value.has(playerDownKey), ballTopPosition, playerTopPosition);
+  hits.value++;
+  return true;
+}
+
+function calculateYDeflection(upKeyPressed: boolean, downKeyPressed: boolean, ballTopPosition: number, playerTopPosition: number) {
   // Calculate the relative position of the ball within the paddle
   const relativeBallPosition = ballTopPosition - playerTopPosition;
   const halfPaddleHeight = paddleHeight / 2;
 
+  const originalYValue = ballSpeedY.value;
   // Adjust the ball's Y speed based on the paddle's movement
-  if (keysPressed.value.has(playerUpKey)) {
+  if (upKeyPressed) {
     // If the ball is closer to the top of the paddle, increase its upward speed
     if (relativeBallPosition < halfPaddleHeight) {
       ballSpeedY.value = -Math.abs(ballSpeedY.value) * (1.5 - relativeBallPosition / halfPaddleHeight);
@@ -334,7 +347,7 @@ function calculateCollisionAndDeflection(player: number) {
       // If the ball is closer to the middle or bottom of the paddle, decrease its upward speed
       ballSpeedY.value = -Math.abs(ballSpeedY.value) * (0.5 - (relativeBallPosition - halfPaddleHeight) / halfPaddleHeight);
     }
-  } else if (keysPressed.value.has(playerDownKey)) {
+  } else if (downKeyPressed) {
     // If the ball is closer to the bottom of the paddle, increase its downward speed
     if (relativeBallPosition > halfPaddleHeight) {
       ballSpeedY.value = Math.abs(ballSpeedY.value) * (1.5 - (relativeBallPosition - halfPaddleHeight) / halfPaddleHeight);
@@ -343,13 +356,13 @@ function calculateCollisionAndDeflection(player: number) {
       ballSpeedY.value = Math.abs(ballSpeedY.value) * (0.5 - relativeBallPosition / (halfPaddleHeight));
     }
   }
+
+  console.log('Diff before correction', Math.abs(originalYValue - ballSpeedY.value));
+
   if (Math.sqrt(Math.pow(ballSpeedX.value, 2) + Math.pow(ballSpeedY.value, 2)) > ballMaxVelocity)
     ballSpeedY.value *= Math.sqrt(Math.pow(ballMaxVelocity, 2) - Math.pow(ballSpeedX.value, 2));
 
-  ballSpeedX.value *= -1;
-  ballPositionX.value = isPlayer1 ? (paddleWidth + wallPaddleGap + 2) : (fieldWidth - paddleWidth - wallPaddleGap - 2);
-  hits.value++;
-  return true;
+  console.log('Diff after correction', Math.abs(originalYValue - ballSpeedY.value));
 }
 
 function handleKeyDown(event: KeyboardEvent) {

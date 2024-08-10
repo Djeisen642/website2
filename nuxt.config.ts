@@ -35,9 +35,6 @@ const envVars = isProduction
       url: 'http://localhost:3000',
     };
 
-const plugins = [];
-if (!isProduction) plugins.push('~/plugins/dev/axe.ts');
-
 const authDomain = envVars.domain;
 const projectId = envVars.projectId;
 const storageBucket = envVars.bucket;
@@ -47,11 +44,6 @@ export default defineNuxtConfig({
   debug: !isProduction,
   typescript: {
     strict: true,
-  },
-  vite: {
-    optimizeDeps: {
-      include: ['axe-core'],
-    },
   },
   hooks: {
     async ready(nuxt) {
@@ -63,7 +55,7 @@ export default defineNuxtConfig({
       config.plugins?.push(vuetify());
     },
   },
-  modules: ['@vueuse/nuxt', '@pinia/nuxt', '@nuxtjs/robots', '@nuxtjs/device'],
+  modules: ['@vueuse/nuxt', '@pinia/nuxt', '@nuxtjs/robots', '@nuxtjs/device', '@nuxt/eslint'],
   runtimeConfig: {
     public: {
       IS_PRODUCTION: isProduction,
@@ -78,7 +70,6 @@ export default defineNuxtConfig({
       siteUrl: envVars.url,
     },
   },
-  plugins,
   ssr: false,
   telemetry: false,
   app: {
@@ -101,7 +92,12 @@ export default defineNuxtConfig({
           name: 'description',
           content: "Jason Suttles' website describing himself and showing some stuff",
         },
+        {
+          name: 'revised',
+          content: new Date().toISOString().slice(0, 10),
+        },
       ],
     },
   },
+  compatibilityDate: '2024-08-10',
 });

@@ -4,7 +4,11 @@
   <v-container fluid>
     <h2>These are links that I have found interesting over the years</h2>
     <p class="d-md-none font-italic">Click on row for more details.</p>
-    <v-sheet v-if="!linkStore.loaded" class="d-flex justify-center align-center" height="300">
+    <v-sheet
+      v-if="!linkStore.loaded"
+      class="d-flex justify-center align-center"
+      height="300"
+    >
       <v-progress-circular
         indeterminate
         size="100"
@@ -14,8 +18,15 @@
         aria-label="Loading links..."
       />
     </v-sheet>
-    <v-list lines="three" role="list">
-      <div v-for="(link, index) in linkStore.links" :key="link.title" role="listitem">
+    <v-list
+      lines="three"
+      role="list"
+    >
+      <div
+        v-for="(link, index) in linkStore.links"
+        :key="link.title"
+        role="listitem"
+      >
         <v-list-item class="display-large-link-list-item">
           <template #prepend>
             <v-avatar color="primary">
@@ -25,29 +36,51 @@
                 :src="getFavicon(link.link)"
                 aria-hidden="true"
               />
-              <span v-else class="text-h5">{{ link.title.substring(0, 1).toUpperCase() }}</span>
+              <span
+                v-else
+                class="text-h5"
+              >{{ link.title.substring(0, 1).toUpperCase() }}</span>
             </v-avatar>
           </template>
           <v-list-item-title>
             {{ link.title }}
-            <a v-if="authStore.user" href="#" @click="deleteLink(link)"> Delete me </a>
+            <a
+              v-if="authStore.user"
+              href="#"
+              @click="deleteLink(link)"
+            > Delete me </a>
           </v-list-item-title>
           <v-list-item-subtitle>
             <span v-html="link.description"></span>
           </v-list-item-subtitle>
           <template #append>
             <v-list-item-action>
-              <v-btn :href="link.link" target="_blank" :aria-label="`Go to ${link.title}`">
+              <v-btn
+                :href="link.link"
+                target="_blank"
+                :aria-label="`Go to ${link.title}`"
+              >
                 Go see it!
               </v-btn>
             </v-list-item-action>
           </template>
         </v-list-item>
-        <v-list-item class="d-md-none" role="listitem" @click="onLinkClick(link)">
+        <v-list-item
+          class="d-md-none"
+          role="listitem"
+          @click="onLinkClick(link)"
+        >
           <template #prepend>
             <v-avatar color="primary">
-              <v-img v-if="link.imageExists" cover :src="getFavicon(link.link)" />
-              <span v-else class="text-h5">{{ link.title.substring(0, 1).toUpperCase() }}</span>
+              <v-img
+                v-if="link.imageExists"
+                cover
+                :src="getFavicon(link.link)"
+              />
+              <span
+                v-else
+                class="text-h5"
+              >{{ link.title.substring(0, 1).toUpperCase() }}</span>
             </v-avatar>
           </template>
           <v-list-item-title>{{ link.title }}</v-list-item-title>
@@ -58,7 +91,10 @@
           inset
           class="display-large-link-list-item"
         />
-        <v-divider v-if="index !== linkStore.links.length - 1" class="d-md-none" />
+        <v-divider
+          v-if="index !== linkStore.links.length - 1"
+          class="d-md-none"
+        />
       </div>
     </v-list>
     <add-link-section v-if="authStore.user" />
@@ -72,8 +108,17 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer />
-          <v-btn color="secondary" variant="elevated" @click="dialog = false">Close Dialog</v-btn>
-          <v-btn color="primary" :href="selectedLink.link" target="_blank" variant="elevated">
+          <v-btn
+            color="secondary"
+            variant="elevated"
+            @click="dialog = false"
+          >Close Dialog</v-btn>
+          <v-btn
+            color="primary"
+            :href="selectedLink.link"
+            target="_blank"
+            variant="elevated"
+          >
             Go see it!
           </v-btn>
         </v-card-actions>
@@ -81,7 +126,10 @@
     </v-dialog>
   </v-container>
 </template>
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import { useAuthStore } from '~/store/authStore';
 import { useLinkStore } from '~/store/linkStore';
 import { useStore } from '~/store/mainStore';
@@ -125,7 +173,10 @@ useHead({
   title: 'Interesting links!',
 });
 </script>
-<style scoped lang="scss">
+<style
+  scoped
+  lang="scss"
+>
 // wanted to use grid breakpoints... but it isn't easy
 $md-max-width: 960px;
 

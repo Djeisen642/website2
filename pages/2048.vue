@@ -1,6 +1,14 @@
 <template>
-  <v-container ref="container" fluid>
-    <v-row v-for="(cols, rowIndex) in rows" :key="rowIndex" class="row-2048" align-content="center">
+  <v-container
+    ref="container"
+    fluid
+  >
+    <v-row
+      v-for="(cols, rowIndex) in rows"
+      :key="rowIndex"
+      class="row-2048"
+      align-content="center"
+    >
       <v-spacer />
       <p
         v-for="(colValue, colIndex) in cols"
@@ -21,7 +29,10 @@
     </v-row>
   </v-container>
 </template>
-<script lang="ts" setup>
+<script
+  lang="ts"
+  setup
+>
 import { useTheme } from 'vuetify';
 
 import {
@@ -134,7 +145,7 @@ function setRandomEmptySquare() {
   let pickEmpty = Math.floor(Math.random() * numEmpty);
   const pickANumber =
     NUMS_THAT_CAN_BE_ADDED_AT_RANDOM[
-      Math.floor(Math.random() * NUMS_THAT_CAN_BE_ADDED_AT_RANDOM.length)
+    Math.floor(Math.random() * NUMS_THAT_CAN_BE_ADDED_AT_RANDOM.length)
     ];
   for (let index = 0; index < allValues.value.length; index++) {
     if (allValues.value[index]) continue;
@@ -296,7 +307,10 @@ useSwipe(container, {
   },
 });
 </script>
-<style lang="scss" scoped>
+<style
+  lang="scss"
+  scoped
+>
 $square-side: 100px;
 $max-square-side: min(24vh, 24vw);
 
