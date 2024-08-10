@@ -23,8 +23,7 @@
       </v-card>
     </VDialog>
     <div
-      class="
-            pong"
+      class="pong"
       :style="fieldStyle"
     >
       <div
@@ -214,13 +213,13 @@ watch(
 watch(
   () => ballPositionY.value,
   newY => {
-    if (newY <= 0 || newY >= fieldHeight - ballHeight) {
-      ballSpeedY.value *= -1;
-    }
+    if (newY <= 0 || newY >= fieldHeight - ballHeight)
+      ballSpeedY.value *= -1; // bounce it off the wall
+
     if (newY <= 0) {
-      ballPositionY.value = 1;
+      ballPositionY.value = 1; // adjust it so that it's not off the field
     } else if (newY >= fieldHeight - ballHeight) {
-      ballPositionY.value = fieldHeight - ballHeight - 1;
+      ballPositionY.value = fieldHeight - ballHeight - 1; // adjust it so that it's not off the field
     }
   },
 );
@@ -229,11 +228,11 @@ watch(
   () => ballPositionX.value,
   newX => {
     if (newX <= 0) {
-      gameEnded(2);
-      ballPositionX.value = 1;
+      gameEnded(Player.TWO);
+      ballPositionX.value = 1; // adjust it so that it's not off the field
     } else if (newX >= fieldWidth - ballWidth) {
-      gameEnded(1);
-      ballPositionX.value = fieldWidth - ballWidth - 1;
+      gameEnded(Player.ONE);
+      ballPositionX.value = fieldWidth - ballWidth - 1; // adjust it so that it's not off the field
     }
   },
 );
@@ -258,7 +257,7 @@ function increaseMaxVelocity() {
 
 function gameEnded(winningPlayer: number) {
   gameOver.value = `Player ${winningPlayer} wins!`;
-  if (winningPlayer === 1) {
+  if (winningPlayer === Player.ONE) {
     player1Score.value++;
   } else {
     player2Score.value++;
@@ -277,6 +276,7 @@ function startInterval() {
     checkCollisions();
   }, 10);
 }
+
 function stopInterval() {
   clearInterval(interval);
   interval = undefined;
@@ -311,7 +311,7 @@ function checkCollisions() {
 }
 
 function calculateCollisionAndDeflection(player: number) {
-  const isPlayer1 = player === 1;
+  const isPlayer1 = player === Player.ONE;
   const playerTopPosition = isPlayer1 ? player1Position.value : player2Position.value;
   const playerBottomPosition = playerTopPosition + paddleHeight;
   const playerUpKey = isPlayer1 ? player1UpKey.value : player2UpKey.value;
@@ -337,32 +337,29 @@ function calculateYDeflection(upKeyPressed: boolean, downKeyPressed: boolean, ba
   const relativeBallPosition = ballTopPosition - playerTopPosition;
   const halfPaddleHeight = paddleHeight / 2;
 
-  const originalYValue = ballSpeedY.value;
   // Adjust the ball's Y speed based on the paddle's movement
   if (upKeyPressed) {
     // If the ball is closer to the top of the paddle, increase its upward speed
     if (relativeBallPosition < halfPaddleHeight) {
-      ballSpeedY.value = -Math.abs(ballSpeedY.value) * (1.5 - relativeBallPosition / halfPaddleHeight);
+      ballSpeedY.value = -Math.abs(ballSpeedY.value) * (1 + (relativeBallPosition / halfPaddleHeight));
     } else {
       // If the ball is closer to the middle or bottom of the paddle, decrease its upward speed
-      ballSpeedY.value = -Math.abs(ballSpeedY.value) * (0.5 - (relativeBallPosition - halfPaddleHeight) / halfPaddleHeight);
+      ballSpeedY.value = -Math.abs(ballSpeedY.value) * (1 - ((relativeBallPosition - halfPaddleHeight) / halfPaddleHeight));
     }
   } else if (downKeyPressed) {
     // If the ball is closer to the bottom of the paddle, increase its downward speed
     if (relativeBallPosition > halfPaddleHeight) {
-      ballSpeedY.value = Math.abs(ballSpeedY.value) * (1.5 - (relativeBallPosition - halfPaddleHeight) / halfPaddleHeight);
+      ballSpeedY.value = Math.abs(ballSpeedY.value) * (1 + ((relativeBallPosition - halfPaddleHeight) / halfPaddleHeight));
     } else {
       // If the ball is closer to the middle or top of the paddle, decrease its downward speed
-      ballSpeedY.value = Math.abs(ballSpeedY.value) * (0.5 - relativeBallPosition / (halfPaddleHeight));
+      ballSpeedY.value = Math.abs(ballSpeedY.value) * (1 - (relativeBallPosition / halfPaddleHeight));
     }
   }
 
-  console.log('Diff before correction', Math.abs(originalYValue - ballSpeedY.value));
-
-  if (Math.sqrt(Math.pow(ballSpeedX.value, 2) + Math.pow(ballSpeedY.value, 2)) > ballMaxVelocity)
-    ballSpeedY.value *= Math.sqrt(Math.pow(ballMaxVelocity, 2) - Math.pow(ballSpeedX.value, 2));
-
-  console.log('Diff after correction', Math.abs(originalYValue - ballSpeedY.value));
+  // Ensure the ball's speed doesn't exceed the maximum velocity
+  const currentVelocity = Math.sqrt(Math.pow(ballSpeedX.value, 2) + Math.pow(ballSpeedY.value, 2));
+  if (currentVelocity > ballMaxVelocity)
+    ballSpeedY.value *= ballMaxVelocity / currentVelocity;
 }
 
 function handleKeyDown(event: KeyboardEvent) {
