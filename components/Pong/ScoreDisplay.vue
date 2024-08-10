@@ -1,7 +1,7 @@
 <template>
   <div class="score-display">
-    <p>Player 1: {{ player1Score }}</p>
-    <p>Player 2: {{ player2Score }}</p>
+    <p>Player 1: {{ playerOneScore }}</p>
+    <p>Player 2: {{ playerTwoScore }}</p>
   </div>
 </template>
 
@@ -10,8 +10,8 @@
   lang="ts"
 >
 defineProps<{
-  player1Score: number;
-  player2Score: number;
+  playerOneScore: number;
+  playerTwoScore: number;
 }>();
 </script>
 

@@ -28,11 +28,11 @@
     >
       <div
         class="paddle"
-        :style="player1Style"
+        :style="playerOneStyle"
       ></div>
       <div
         class="paddle"
-        :style="player2Style"
+        :style="playerTwoStyle"
       ></div>
       <div
         class="ball"
@@ -70,8 +70,8 @@
     </div>
     <div :style="{ width: fieldWidth + 'px', margin: 'auto' }">
       <ScoreDisplay
-        :player-1-score="player1Score"
-        :player-2-score="player2Score"
+        :player-one-score="playerOneScore"
+        :player-two-score="playerTwoScore"
       />
     </div>
     <div :style="{ width: fieldWidth + 'px', margin: 'auto' }">
@@ -86,8 +86,8 @@
         >Instructions</v-btn>
       </div>
       <div v-if="showStats">
-        <p>Player 1: {{ player1Position }}</p>
-        <p>Player 2: {{ player2Position }}</p>
+        <p>Player 1: {{ playerOnePosition }}</p>
+        <p>Player 2: {{ playerTwoPosition }}</p>
         <p>Ball: {{ ballPositionX }}, {{ ballPositionY }}</p>
         <p>Ball Speed: {{ ballSpeedX }}, {{ ballSpeedY }}</p>
         <p>Ball Velocity: {{ Math.sqrt(Math.pow(ballSpeedX, 2) + Math.pow(ballSpeedY, 2)) }}
@@ -125,31 +125,31 @@ enum Player {
   ONE = 1,
   TWO = 2,
 }
-const player1Position = ref(fieldHeight / 2 - 50);
-const player1UpKey = ref('w');
-const player1DownKey = ref('s');
-const player1Score = ref(0);
-const player1Style = computed(
+const playerOnePosition = ref(fieldHeight / 2 - 50);
+const playerOneUpKey = ref('w');
+const playerOneDownKey = ref('s');
+const playerOneScore = ref(0);
+const playerOneStyle = computed(
   () => ({
-    top: player1Position.value + 'px',
+    top: playerOnePosition.value + 'px',
     left: wallPaddleGap + 'px',
     width: paddleWidth + 'px',
     height: paddleHeight + 'px',
   }),
 );
-const player2Score = ref(0);
-const player2Position = ref(fieldHeight / 2 - 50);
-const player2UpKey = ref('ArrowUp');
-const player2DownKey = ref('ArrowDown');
-const player2Style = computed(
+const playerTwoScore = ref(0);
+const playerTwoPosition = ref(fieldHeight / 2 - 50);
+const playerTwoUpKey = ref('ArrowUp');
+const playerTwoDownKey = ref('ArrowDown');
+const playerTwoStyle = computed(
   () => ({
-    top: player2Position.value + 'px',
+    top: playerTwoPosition.value + 'px',
     left: fieldWidth - wallPaddleGap - paddleWidth + 'px',
     width: paddleWidth + 'px',
     height: paddleHeight + 'px',
   })
 )
-const startButtonKey = ' ';
+const startButtonKey = ' '; // this is a space
 const pauseButtonKey = 'p';
 const ballPositionX = ref(fieldWidth);
 const ballPositionY = ref(fieldHeight);
@@ -258,9 +258,9 @@ function increaseMaxVelocity() {
 function gameEnded(winningPlayer: number) {
   gameOver.value = `Player ${winningPlayer} wins!`;
   if (winningPlayer === Player.ONE) {
-    player1Score.value++;
+    playerOneScore.value++;
   } else {
-    player2Score.value++;
+    playerTwoScore.value++;
   }
   createConfetti();
   gameStarted.value = false;
@@ -290,15 +290,15 @@ function updateBallPosition() {
 
 function updatePaddlePosition() {
   if (!gameStarted.value) return;
-  if (keysPressed.value.has(player1UpKey.value) && player1Position.value > 0) {
-    player1Position.value -= paddleSpeed;
-  } else if (keysPressed.value.has(player1DownKey.value) && player1Position.value < fieldHeight - paddleHeight) {
-    player1Position.value += paddleSpeed;
+  if (keysPressed.value.has(playerOneUpKey.value) && playerOnePosition.value > 0) {
+    playerOnePosition.value -= paddleSpeed;
+  } else if (keysPressed.value.has(playerOneDownKey.value) && playerOnePosition.value < fieldHeight - paddleHeight) {
+    playerOnePosition.value += paddleSpeed;
   }
-  if (keysPressed.value.has(player2UpKey.value) && player2Position.value > 0) {
-    player2Position.value -= paddleSpeed;
-  } else if (keysPressed.value.has(player2DownKey.value) && player2Position.value < fieldHeight - paddleHeight) {
-    player2Position.value += paddleSpeed;
+  if (keysPressed.value.has(playerTwoUpKey.value) && playerTwoPosition.value > 0) {
+    playerTwoPosition.value -= paddleSpeed;
+  } else if (keysPressed.value.has(playerTwoDownKey.value) && playerTwoPosition.value < fieldHeight - paddleHeight) {
+    playerTwoPosition.value += paddleSpeed;
   }
 }
 
@@ -311,22 +311,24 @@ function checkCollisions() {
 }
 
 function calculateCollisionAndDeflection(player: number) {
-  const isPlayer1 = player === Player.ONE;
-  const playerTopPosition = isPlayer1 ? player1Position.value : player2Position.value;
+  const isCheckingPlayerOne = player === Player.ONE;
+  const playerTopPosition = isCheckingPlayerOne ? playerOnePosition.value : playerTwoPosition.value;
   const playerBottomPosition = playerTopPosition + paddleHeight;
-  const playerUpKey = isPlayer1 ? player1UpKey.value : player2UpKey.value;
-  const playerDownKey = isPlayer1 ? player1DownKey.value : player2DownKey.value;
+  const playerUpKey = isCheckingPlayerOne ? playerOneUpKey.value : playerTwoUpKey.value;
+  const playerDownKey = isCheckingPlayerOne ? playerOneDownKey.value : playerTwoDownKey.value;
 
   const ballTopPosition = ballPositionY.value;
   const ballBottomPosition = ballTopPosition + ballHeight;
-  const ballIsNearPlayer = isPlayer1 ? (ballPositionX.value <= paddleWidth + wallPaddleGap + 1) : (ballPositionX.value >= fieldWidth - paddleWidth - wallPaddleGap - 1);
+  const ballIsNearPlayer = isCheckingPlayerOne ?
+    (ballPositionX.value <= paddleWidth + wallPaddleGap + 1) :
+    (ballPositionX.value >= fieldWidth - paddleWidth - wallPaddleGap - 1);
   const playerIsHittingBall = ballBottomPosition >= playerTopPosition && ballTopPosition <= playerBottomPosition;
 
   const ballCollision = ballIsNearPlayer && playerIsHittingBall;
   if (!ballCollision) return false;
 
   ballSpeedX.value *= -1;
-  ballPositionX.value = isPlayer1 ? (paddleWidth + wallPaddleGap + 2) : (fieldWidth - paddleWidth - wallPaddleGap - 2);
+  ballPositionX.value = isCheckingPlayerOne ? (paddleWidth + wallPaddleGap + 2) : (fieldWidth - paddleWidth - wallPaddleGap - 2);
   calculateYDeflection(keysPressed.value.has(playerUpKey), keysPressed.value.has(playerDownKey), ballTopPosition, playerTopPosition);
   hits.value++;
   return true;
@@ -363,7 +365,7 @@ function calculateYDeflection(upKeyPressed: boolean, downKeyPressed: boolean, ba
 }
 
 function handleKeyDown(event: KeyboardEvent) {
-  if (![player1UpKey.value, player1DownKey.value, player2UpKey.value, player2DownKey.value].includes(event.key)) return;
+  if (![playerOneUpKey.value, playerOneDownKey.value, playerTwoUpKey.value, playerTwoDownKey.value].includes(event.key)) return;
   keysPressed.value.add(event.key);
 }
 
