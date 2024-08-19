@@ -53,7 +53,7 @@
   },
   "dependencies": {
     "@mdi/js": "^7.4.47",
-    "@nuxtjs/robots": "^4.0.2",
+    "@nuxtjs/robots": "^4.1.0",
     "@pinia/nuxt": "^0.5.3",
     "@vueuse/core": "^10.11.1",
     "@vueuse/nuxt": "^10.11.1",
