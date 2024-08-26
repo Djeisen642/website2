@@ -7332,9 +7332,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase-tools@npm:^13.15.1":
-  version: 13.15.1
-  resolution: "firebase-tools@npm:13.15.1"
+"firebase-tools@npm:^13.15.4":
+  version: 13.15.4
+  resolution: "firebase-tools@npm:13.15.4"
   dependencies:
     "@google-cloud/cloud-sql-connector": "npm:^1.3.3"
     "@google-cloud/pubsub": "npm:^4.5.0"
@@ -7400,11 +7400,11 @@ __metadata:
     uuid: "npm:^8.3.2"
     winston: "npm:^3.0.0"
     winston-transport: "npm:^4.4.0"
-    ws: "npm:^7.2.3"
+    ws: "npm:^7.5.10"
     yaml: "npm:^2.4.1"
   bin:
     firebase: lib/bin/firebase.js
-  checksum: 10/b914684321bf17077f4085e0d7da1de439bc2cead57a5f9127a2d03958730cef75770843f9c6e7f8f835a6c12bc045b91a5f48110dd9151e2d8d4f5020e3b9f9
+  checksum: 10/9fd527692bd9703a80a975b76e4572fb2857452170f162bc1db246c5b04bde9ebdca16ba196c4dc27c8947804132b5503e04e52019646327734be35b8e588798
   languageName: node
   linkType: hard
 
@@ -14641,7 +14641,7 @@ __metadata:
     eslint: "npm:^9.9.0"
     eslint-plugin-vuejs-accessibility: "npm:^2.4.1"
     firebase: "npm:^10.12.5"
-    firebase-tools: "npm:^13.15.1"
+    firebase-tools: "npm:^13.15.4"
     globals: "npm:^15.9.0"
     husky: "npm:^9.1.4"
     node-fetch: "npm:^3.3.2"
@@ -14848,7 +14848,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:^7.2.3":
+"ws@npm:^7.5.10":
   version: 7.5.10
   resolution: "ws@npm:7.5.10"
   peerDependencies:
