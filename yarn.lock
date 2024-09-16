@@ -7444,9 +7444,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase-tools@npm:^13.16.0":
-  version: 13.16.0
-  resolution: "firebase-tools@npm:13.16.0"
+"firebase-tools@npm:^13.17.0":
+  version: 13.17.0
+  resolution: "firebase-tools@npm:13.17.0"
   dependencies:
     "@google-cloud/cloud-sql-connector": "npm:^1.3.3"
     "@google-cloud/pubsub": "npm:^4.5.0"
@@ -7516,7 +7516,7 @@ __metadata:
     yaml: "npm:^2.4.1"
   bin:
     firebase: lib/bin/firebase.js
-  checksum: 10/fa1b2ce604c780cb4bec7dbd68a75e4845931d628aca311c5b34d262a177f10b4323eccba98a429f18a5d7ab1d8db93bb97f63c592517b226491b848379e00ee
+  checksum: 10/4f5e101ace3198ae5a812c2d0ef6976494d42c177cacd729b5ca72f2a18dda45047742cc987e93b669e02540171fddbbc9e1ad127d10ebed1f5c7a10572cd99a
   languageName: node
   linkType: hard
 
@@ -14870,7 +14870,7 @@ __metadata:
     eslint: "npm:^9.9.0"
     eslint-plugin-vuejs-accessibility: "npm:^2.4.1"
     firebase: "npm:^10.12.5"
-    firebase-tools: "npm:^13.16.0"
+    firebase-tools: "npm:^13.17.0"
     globals: "npm:^15.9.0"
     husky: "npm:^9.1.4"
     node-fetch: "npm:^3.3.2"
