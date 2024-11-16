@@ -1375,11 +1375,11 @@ __metadata:
   linkType: hard
 
 "@eslint/plugin-kit@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "@eslint/plugin-kit@npm:0.2.0"
+  version: 0.2.3
+  resolution: "@eslint/plugin-kit@npm:0.2.3"
   dependencies:
     levn: "npm:^0.4.1"
-  checksum: 10/ebb363174397341dea47dc35fc206e24328083e4f0fa1c539687dbb7f94bef77e43faa12867d032e6eea5ac980ea8fbb6b1d844186e422d327c04088041b99f3
+  checksum: 10/0d0653ef840823fd5c0354ef8f1937e7763dbe830173eb6d2d55a19374bf04a06dff0e5214330c10a9425cf38655f632bb0d7d0666249b366e506ae291d82f7e
   languageName: node
   linkType: hard
 
@@ -4440,9 +4440,11 @@ __metadata:
   linkType: hard
 
 "basic-auth-connect@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "basic-auth-connect@npm:1.0.0"
-  checksum: 10/f62e7fd17c9fce3915956707878a2bed9670a0f179ca82cc413882d24acd4d7f42eb6a17ccc3b863c401ab0ba06ffe9f8dd24c295374494fd616e0acaa69f669
+  version: 1.1.0
+  resolution: "basic-auth-connect@npm:1.1.0"
+  dependencies:
+    tsscmp: "npm:^1.0.6"
+  checksum: 10/29eff1dd06a32885e480b715f978a9ee38eb38e22155bd69196a536ee4f9295edad61d39485a178aa82673302d33c1e343c75c73c6b8642a9f132c2f35028dbd
   languageName: node
   linkType: hard
 
@@ -13942,6 +13944,13 @@ __metadata:
   version: 2.6.3
   resolution: "tslib@npm:2.6.3"
   checksum: 10/52109bb681f8133a2e58142f11a50e05476de4f075ca906d13b596ae5f7f12d30c482feb0bff167ae01cfc84c5803e575a307d47938999246f5a49d174fc558c
+  languageName: node
+  linkType: hard
+
+"tsscmp@npm:^1.0.6":
+  version: 1.0.6
+  resolution: "tsscmp@npm:1.0.6"
+  checksum: 10/850405080ea3ecb158e9e01bc4e87c9edb94a829d8ad8747f30ba103fcc41a287d7949ab84d7b27c36294036a2c9878f050db15b73a1a1961abfb7688b82ac53
   languageName: node
   linkType: hard
 
