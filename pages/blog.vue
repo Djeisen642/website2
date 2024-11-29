@@ -2,31 +2,60 @@
   <v-container fluid>
     <h1>Blog!</h1>
     <p>Coming some day using this wysiwig...</p>
-    <Editor
-      v-model="blogText"
-      icons="material"
-      :init="{
-        license_key: 'gpl',
-        plugins: 'lists link wordcount',
-        toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link'
-      }"
-    />
+    <QuillEditor v-model="blogText" />
+    <!-- eslint-disable-next-line vue/no-v-html -->
+    <div v-html="displayBlogText" />
   </v-container>
 </template>
 <script setup lang="ts">
-import 'tinymce/tinymce';
-import 'tinymce/models/dom/model'
-import 'tinymce/themes/silver';
-import 'tinymce/icons/default';
-import 'tinymce/skins/ui/oxide/skin';
-import 'tinymce/plugins/lists';
-import 'tinymce/plugins/link';
-import 'tinymce/plugins/wordcount';
-import Editor from '@tinymce/tinymce-vue'
-
+import hljs from '@/utils/highlightjs';
 useHead({
   title: 'Blog!',
 });
 const blogText = ref('');
 
+const displayBlogText = computed(() => {
+  const text = blogText.value;
+  if (!blogText.value.includes('</pre>')) return text;
+  const el = document.createElement('div');
+  el.innerHTML = blogText.value;
+  el.querySelectorAll('pre').forEach(pre => {
+    const language = pre.getAttribute('data-language');
+    if (!language) return;
+    const code = hljs.highlight(pre.innerText, { language });
+    pre.innerHTML = code.value;
+  });
+
+  return el.innerHTML;
+});
 </script>
+<style lang="scss">
+:where(main ol, main ul) {
+  margin-inline-start: 0;
+  padding-inline-start: 40px;
+}
+
+:where(main ul) > li {
+  list-style-type: disc;
+}
+
+:where(main ul ul) > li {
+  list-style-type: circle;
+}
+
+:where(main ul ul ul) > li {
+  list-style-type: square;
+}
+
+:where(main ol) > li {
+  list-style-type: decimal;
+}
+
+:where(main ol ol) > li {
+  list-style-type: lower-alpha;
+}
+
+:where(main ol ol ol) > li {
+  list-style-type: lower-roman;
+}
+</style>

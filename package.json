@@ -56,12 +56,12 @@
     "@mdi/js": "^7.4.47",
     "@nuxtjs/robots": "^5.0.0",
     "@pinia/nuxt": "^0.8.0",
-    "@tinymce/tinymce-vue": "6.1.0",
     "@vueuse/core": "^12.0.0",
     "@vueuse/nuxt": "^12.0.0",
     "firebase": "^11.0.2",
+    "highlight.js": "^11.10.0",
     "prettier": "^3.4.1",
-    "tinymce": "^7.5.1",
+    "quill": "^2.0.2",
     "uuid": "^11.0.3",
     "vue": "^3.5.13",
     "vuetify": "3.7.4",
@@ -69,10 +69,10 @@
   },
   "engines": {
     "npm": "please-use-yarn",
-    "node": "lts/zod"
+    "node": "lts/iron"
   },
   "volta": {
-    "node": "22.11.0",
+    "node": "20.18.1",
     "yarn": "4.5.3"
   }
 }
