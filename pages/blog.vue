@@ -3,6 +3,7 @@
     <h1>Blog!</h1>
     <p>Coming some day using this wysiwig...</p>
     <QuillEditor v-model="blogText" />
+    <!-- eslint-disable-next-line vue/no-v-html -->
     <div v-html="displayBlogText" />
   </v-container>
 </template>
@@ -37,9 +38,11 @@ const displayBlogText = computed(() => {
 :where(main ul) > li {
   list-style-type: disc;
 }
+
 :where(main ul ul) > li {
   list-style-type: circle;
 }
+
 :where(main ul ul ul) > li {
   list-style-type: square;
 }
@@ -47,9 +50,11 @@ const displayBlogText = computed(() => {
 :where(main ol) > li {
   list-style-type: decimal;
 }
+
 :where(main ol ol) > li {
   list-style-type: lower-alpha;
 }
+
 :where(main ol ol ol) > li {
   list-style-type: lower-roman;
 }
