@@ -2,7 +2,7 @@
   "arrowParens": "avoid",
   "printWidth": 100,
   "singleQuote": true,
-  "semi": false,
+  "semi": true,
   "trailingComma": "all",
   "tabWidth": 2,
   "importOrder": ["<THIRD_PARTY_MODULES>", "^#", "^(../|./|@/)"],
