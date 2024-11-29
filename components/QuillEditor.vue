@@ -34,7 +34,7 @@ const reinit = () => {
         ],
       },
       toolbar: [
-        ['bold', 'italic', 'underline', 'strike', 'blockquote', 'code-block'],
+        ['bold', 'italic', 'underline', 'strike', 'code-block'],
         [{ list: 'ordered' }, { list: 'bullet' }],
         [{ script: 'sub' }, { script: 'super' }],
         [{ size: ['small', false, 'large', 'huge'] }],

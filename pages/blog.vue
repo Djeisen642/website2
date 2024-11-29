@@ -30,6 +30,18 @@ const displayBlogText = computed(() => {
 });
 </script>
 <style lang="scss">
+.ql-size-small {
+  font-size: 0.8rem;
+}
+
+.ql-size-large {
+  font-size: 1.2rem;
+}
+
+.ql-size-huge {
+  font-size: 1.8rem;
+}
+
 :where(main ol, main ul) {
   margin-inline-start: 0;
   padding-inline-start: 40px;
