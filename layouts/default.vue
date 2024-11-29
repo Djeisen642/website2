@@ -1,5 +1,5 @@
 <template>
-  <v-app :theme="mainStore.theme">
+  <v-app :theme="mainStore.theme" class="default-layout">
     <v-app-bar
       color="primary"
       prominent
@@ -93,7 +93,16 @@ const pageId = route.params.id;
 </script>
 
 <style lang="scss">
-a {
-  color: rgb(var(--v-theme-secondary-lighten-3));
+.default-layout {
+  // stylelint-disable-next-line selector-class-pattern
+  &.v-theme--dark {
+    a {
+      color: rgb(var(--v-theme-secondary-lighten-3));
+    }
+    
+    a:visited {
+      color: rgb(var(--v-theme-secondary-lighten-2));
+    }
+  }
 }
 </style>
