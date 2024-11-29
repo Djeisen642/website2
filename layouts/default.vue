@@ -94,10 +94,12 @@ const pageId = route.params.id;
 
 <style lang="scss">
 .default-layout {
+  // stylelint-disable-next-line selector-class-pattern
   &.v-theme--dark {
     a {
       color: rgb(var(--v-theme-secondary-lighten-3));
     }
+    
     a:visited {
       color: rgb(var(--v-theme-secondary-lighten-2));
     }
