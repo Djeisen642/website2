@@ -10,7 +10,7 @@
         @click.stop="drawer = !drawer"
       />
       <v-app-bar-title>
-        <h1 class="text-h4">jason's website - {{ route.name }}</h1>
+        <h1 class="text-h4">jason's website - {{ route.name }} {{ pageId }}</h1>
       </v-app-bar-title>
     </v-app-bar>
 
@@ -89,6 +89,7 @@ const pages = ref([
 ]);
 
 const route = useRoute();
+const pageId = route.params.id;
 </script>
 
 <style lang="scss">
