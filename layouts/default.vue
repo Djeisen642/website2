@@ -96,12 +96,12 @@ const pageId = route.params.id;
 .default-layout {
   // stylelint-disable-next-line selector-class-pattern
   &.v-theme--dark {
-    a {
+    a:not(.v-list-item) {
       color: rgb(var(--v-theme-secondary-lighten-3));
-    }
-    
-    a:visited {
-      color: rgb(var(--v-theme-secondary-lighten-2));
+
+      &:visited {
+        color: rgb(var(--v-theme-secondary-lighten-2));
+      }
     }
   }
 }

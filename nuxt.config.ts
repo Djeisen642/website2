@@ -23,7 +23,7 @@ async function getFontStyles(): Promise<string[]> {
 const isProduction = process.env.NODE_ENV === 'production';
 const envVars = isProduction
   ? {
-      domain: 'jasonsuttles-website.firebaseapp.com',
+      domain: 'jasonsuttles.dev',
       projectId: 'jasonsuttles-website',
       bucket: 'jasonsuttles-website.appspot.com',
       url: 'https://jasonsuttles.dev',
