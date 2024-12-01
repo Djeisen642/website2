@@ -13,7 +13,7 @@
         @click.stop="drawer = !drawer"
       />
       <v-app-bar-title>
-        <h1 class="text-h4">jason's website - {{ route.name }} {{ pageId }}</h1>
+        <h1 class="text-h4">jason's website - {{ routeName }}</h1>
       </v-app-bar-title>
     </v-app-bar>
 
@@ -24,12 +24,18 @@
     >
       <v-list aria-label="Pages to navigate to">
         <v-list-item
-          v-for="page in pages"
+          v-for="page in pagesList"
           :key="page.title"
           :to="page.to"
           role="option"
         >
-          <v-list-item-title>{{ page.title }}</v-list-item-title>
+          <v-list-item-title :class="{ 'ml-4': page.isChild }">{{ page.title }}</v-list-item-title>
+          <v-list-item-subtitle
+            v-if="page.subtitle"
+            :class="{ 'ml-4': page.isChild }"
+          >
+            {{ page.subtitle }}
+          </v-list-item-subtitle>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -46,8 +52,19 @@ import { ref, useRoute } from '#imports';
 
 import DefaultFooter from '~/components/DefaultFooter.vue';
 import { useStore } from '~/store/mainStore.js';
+import { usePostStore } from '~/store/postStore.js';
+import { NUM_POSTS_TO_DISPLAY } from '~/utils/constants';
 
 const mainStore = useStore();
+const postStore = usePostStore();
+
+const props = defineProps({
+  error: {
+    type: Object,
+    default: null,
+    required: false
+  }
+})
 
 const drawer = ref(false);
 const pages = ref([
@@ -85,8 +102,38 @@ const pages = ref([
   },
 ]);
 
+// I want to maintain a nested structure for data structure, but the navigation drawer doesn't support that
+// so, we flatten it
+const pagesList = computed(() => {
+  const pagesList = [];
+  for (const page of pages.value) {
+    pagesList.push(page);
+    if (page.children) {
+      for (const child of page.children)
+        pagesList.push({
+          ...child,
+          isChild: true,
+        });
+    }
+  }
+  return pagesList;
+});
+
+onMounted(async () => {
+  await postStore.init();
+  const newestPosts = postStore.posts
+    .filter((post: BlogPost) => post.status === 'published')
+    .sort((a: BlogPost, b: BlogPost) => b.createdAt.toMillis() - a.createdAt.toMillis())
+    .slice(0, NUM_POSTS_TO_DISPLAY);
+  pages.value.find(page => page.title === 'Blog').children = newestPosts.map((post: BlogPost) => ({
+    title: post.title,
+    subtitle: postTimestamps(post, true),
+    to: `/blog/${post.title.replace(/\s/g, '+').toLowerCase()}`,
+  }));
+});
+
 const route = useRoute();
-const pageId = route.params.id;
+const routeName = computed(() => props.error?.statusCode || route.name);
 </script>
 
 <style lang="scss">

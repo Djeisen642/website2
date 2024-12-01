@@ -8,10 +8,20 @@
         v-for="post in postStore.posts"
         :key="post.id"
         :title="post.title"
-        :subtitle="postSubtitle(post)"
+        :subtitle="postTimestamps(post)"
       >
         <template #append>
           <div class="d-flex align-center">
+            <v-btn
+              v-if="post.status === 'published'"
+              :href="`/blog/${post.title.replace(/\s/g, '+').toLowerCase()}`"
+              target="_blank"
+              color="primary"
+              variant="text"
+              class="mr-2"
+            >
+              View
+            </v-btn>
             <template v-if="authStore.user">
               <v-btn
                 v-if="post.status === 'draft'"
@@ -31,6 +41,15 @@
                 @click="editPost(post)"
               >
                 Edit
+              </v-btn>
+              <v-btn
+                color="primary"
+                variant="text"
+                class="mr-2"
+                :disabled="publishingId === post.id"
+                @click="deletePost(post)"
+              >
+                Delete
               </v-btn>
             </template>
             <v-chip
@@ -52,10 +71,17 @@
     <v-text-field
       v-model="blogTitle"
       label="Blog Title"
-      class="mb-4"
+      class="mb-2"
       :loading="loading"
       :disabled="loading"
     />
+    <p class="mb-4">
+      (I'm using Quill to write these blog posts. You can find it here:
+      <a
+        href="https://quilljs.com/"
+        target="_blank"
+      >Quill</a>)
+    </p>
     <QuillEditor
       v-model="blogText"
       :disabled="loading"
@@ -81,17 +107,15 @@
     </div>
     <template v-if="editingPost || blogTitle || !isEmptyText">
       <v-divider class="my-4" />
-      <h2>
-        {{ blogTitle || 'No title' }}
-      </h2>
-      <p>
-        {{
-          postSubtitle(editingPost || getTimestamps())
-        }}
-      </p>
-      <v-divider class="mb-4 mt-2" />
+      <h2>{{ blogTitle || 'No title' }}</h2>
+      <div class="mb-2">
+        <p>By {{ authStore.user?.displayName || 'Anonymous' }}</p>
+        <p>{{
+          postTimestamps(editingPost || getTimestamps()) }}</p>
+      </div>
+      <v-divider />
       <!-- eslint-disable-next-line vue/no-v-html -->
-      <div v-html="displayBlogText" />
+      <div v-html="displayBlogText"></div>
     </template>
   </v-container>
 </template>
@@ -100,11 +124,11 @@ import hljs from '@/utils/highlightjs';
 import { useAuthStore } from '~/store/authStore';
 import { usePostStore } from '~/store/postStore';
 import { useStore } from '~/store/mainStore';
-import { Timestamp } from 'firebase/firestore';
 import type { BlogPost } from '~/utils/types';
+import { getTimestamps, postTimestamps } from '@/utils/helpers_posts';
 
 useHead({
-  title: 'Blog!',
+  title: 'Blog index',
 });
 
 const mainStore = useStore();
@@ -121,27 +145,18 @@ const emptyBlogText = '<p></p>'
 const editingPost = ref<BlogPost | null>(null);
 const isEmptyText = computed(() => !blogText.value || blogText.value === emptyBlogText);
 
-function postSubtitle(post: BlogPost) {
-  const writtenOrPostedOn = post.postedAt ? `posted on ${post.postedAt.toDate().toLocaleString()}` : `written on ${post.createdAt.toDate().toLocaleString()}`;
-  if (!post.updatedAt || (post.postedAt || post.createdAt).toMillis() === post.updatedAt.toMillis())
-    return writtenOrPostedOn;
-  return `${writtenOrPostedOn}, updated on ${post.updatedAt.toDate().toLocaleString()}`;
-}
-
 async function editPost(post: BlogPost) {
   editingPost.value = post;
   blogTitle.value = post.title;
   blogText.value = post.content;
 }
-
-function getTimestamps() {
-  const nowInS = Math.floor(Date.now() / 1000);
-  const milliseconds = Math.floor(Date.now() % 1000);
-  return {
-    postedAt: new Timestamp(nowInS, milliseconds),
-    createdAt: new Timestamp(nowInS, milliseconds),
-    updatedAt: new Timestamp(nowInS, milliseconds),
-  };
+async function deletePost(post: BlogPost) {
+  try {
+    await postStore.deletePost(post);
+  } catch (error) {
+    const handledError = error instanceof Error ? error : new Error('Unexpected error');
+    mainStore.setSnackbar(handledError.message);
+  }
 }
 
 async function savePost() {
@@ -166,7 +181,7 @@ async function savePost() {
       await postStore.addPost({
         title: blogTitle.value,
         content: blogText.value,
-      });
+      }, authStore.user);
     }
     // Clear form after successful save
     blogTitle.value = '';

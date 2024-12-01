@@ -26,6 +26,7 @@ export type BlogPost = {
   updatedAt: Timestamp;
   postedAt?: Timestamp;
   status: 'draft' | 'published';
+  author: string;
   id?: string;
 };
 

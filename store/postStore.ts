@@ -6,6 +6,7 @@ import { v5 as uuidV5 } from 'uuid';
 import { useNuxtApp } from '#app';
 
 import { UUID_NAMESPACE } from '~/utils/constants';
+import type { User } from 'firebase/auth';
 
 export type PostStoreState = {
   posts: Array<BlogPost>;
@@ -29,19 +30,27 @@ export const usePostStore = defineStore('posts', {
       this.loaded = true;
     },
 
-    init() {
+    async init() {
+      if (this.loaded) return;
+      const { promise, resolve } = Promise.withResolvers<boolean>();
       const nuxtApp = useNuxtApp();
       onSnapshot(query(nuxtApp.$collections.posts), querySnapshot => {
         this._handleSnapshot(querySnapshot);
+        resolve(true);
       });
+
+      await promise;
     },
 
-    async addPost(newPost: Omit<BlogPost, 'createdAt' | 'updatedAt' | 'id'>) {
+    async addPost(newPost: Omit<BlogPost, 'createdAt' | 'updatedAt' | 'id'>, user: User) {
       const nuxtApp = useNuxtApp();
+      if (!user) throw new Error('User is not authenticated');
+      if (!user.displayName) throw new Error('User display name is not set');
       try {
         const postId = uuidV5(newPost.title, UUID_NAMESPACE);
         await setDoc(doc(nuxtApp.$collections.posts, postId), {
           ...newPost,
+          author: user.displayName,
           createdAt: serverTimestamp(),
           updatedAt: serverTimestamp(),
           status: 'draft',
