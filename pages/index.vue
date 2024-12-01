@@ -49,7 +49,13 @@
       <p class="text-h5 mb-4"><a
           href="/games"
           target="_blank"
-        >I mentioned games, right?</a></p>
+        >I mentioned games, right?</a>
+      </p>
+      <p class="text-h5 mb-4"><a
+          href="/blog"
+          target="_blank"
+        >I have a blog now!</a>
+      </p>
       <p class="text-body mb-4">
         Oh... Introductions? Umm... Hi! My name is Jason Suttles. I currently work at Medicom
         Technologies building healthcare software transferring medical images and facilitating
@@ -81,10 +87,7 @@
   </div>
 </template>
 
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 const img = ref('/images/reflection.webp');
 const device = useDevice();
 if (device.isMobile) {
@@ -97,10 +100,7 @@ useHead({
   title: 'Home',
 });
 </script>
-<style
-  lang="scss"
-  scoped
->
+<style lang="scss" scoped>
 .bg-transparent-card {
   background-color: rgba(var(--v-theme-primary-lighten-3), 0.4);
 }

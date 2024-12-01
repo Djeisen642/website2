@@ -77,7 +77,19 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'en',
       },
-      style: [],
+      style: [
+        {
+          // @ts-expect-error - this is correct
+          type: 'text/css',
+          children: `
+            @media (prefers-color-scheme: dark) {
+              body {
+                background-color: #121212; /* Deep dark background */
+              }
+            }
+          `,
+        },
+      ],
       link: [
         {
           rel: 'preconnect',

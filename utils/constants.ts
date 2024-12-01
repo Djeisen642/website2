@@ -7,3 +7,6 @@ export const URL_REGEX =
   '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // validate port and path
   '(\\?[;&a-z\\d%_.~+=-]*)?' + // validate query string
   '(\\#[-a-z\\d_]*)?$';
+
+
+export const NUM_POSTS_TO_DISPLAY = 5;
