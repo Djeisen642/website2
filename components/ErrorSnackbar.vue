@@ -8,10 +8,7 @@
   </v-snackbar>
 </template>
 
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import { useStore } from '~/store/mainStore.js';
 
 const mainStore = useStore();

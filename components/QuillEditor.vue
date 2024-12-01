@@ -6,10 +6,16 @@
 import 'quill/dist/quill.snow.css';
 
 import Quill from 'quill';
+import { watch } from 'vue';
 import hljs from '@/utils/highlightjs';
 
 const model = defineModel<string>({ required: true });
 let quill: Quill | null = null;
+
+watch(() => model.value, (newValue) => {
+  if (!quill || quill.getSemanticHTML() === newValue) return;
+  quill.clipboard.dangerouslyPasteHTML(newValue);
+}, { immediate: true });
 
 const reinit = () => {
   if (quill)

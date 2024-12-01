@@ -8,8 +8,6 @@ import { useNuxtApp } from '#app';
 import { UUID_NAMESPACE } from '~/utils/constants';
 import type { GameDetails } from '~/utils/types';
 
-const nuxtApp = useNuxtApp();
-
 export type GameStoreState = {
   games: Array<GameDetails>;
   loaded: boolean;
@@ -32,12 +30,14 @@ export const useGameStore = defineStore('games', {
     },
 
     init() {
+      const nuxtApp = useNuxtApp();
       onSnapshot(query(nuxtApp.$collections.games), querySnapshot => {
         this._handleSnapshot(querySnapshot);
       });
     },
 
     async addGame(newGame: GameDetails) {
+      const nuxtApp = useNuxtApp();
       try {
         await setDoc(
           doc(nuxtApp.$collections.games, uuidV5(newGame.name, UUID_NAMESPACE)),
@@ -51,6 +51,7 @@ export const useGameStore = defineStore('games', {
     },
 
     async deleteGame(game: GameDetails) {
+      const nuxtApp = useNuxtApp();
       try {
         await deleteDoc(doc(nuxtApp.$collections.games, uuidV5(game.name, UUID_NAMESPACE)));
       } catch (error) {

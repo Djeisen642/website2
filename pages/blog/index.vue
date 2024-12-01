@@ -1,18 +1,203 @@
 <template>
   <v-container fluid>
-    <h1>Blog!</h1>
-    <p>Coming some day using this wysiwig...</p>
-    <QuillEditor v-model="blogText" />
-    <!-- eslint-disable-next-line vue/no-v-html -->
-    <div v-html="displayBlogText" />
+    <v-list v-if="postStore.loaded">
+      <v-list-subheader v-if="!postStore.posts.length">
+        No blog posts yet. Start writing one below!
+      </v-list-subheader>
+      <v-list-item
+        v-for="post in postStore.posts"
+        :key="post.id"
+        :title="post.title"
+        :subtitle="postSubtitle(post)"
+      >
+        <template #append>
+          <div class="d-flex align-center">
+            <template v-if="authStore.user">
+              <v-btn
+                v-if="post.status === 'draft'"
+                color="primary"
+                variant="text"
+                class="mr-2"
+                :loading="publishingId === post.id"
+                @click="publishPost(post)"
+              >
+                Publish
+              </v-btn>
+              <v-btn
+                color="primary"
+                variant="text"
+                class="mr-2"
+                :disabled="publishingId === post.id"
+                @click="editPost(post)"
+              >
+                Edit
+              </v-btn>
+            </template>
+            <v-chip
+              :color="post.status === 'published' ? 'success' : 'warning'"
+              size="small"
+            >
+              {{ post.status }}
+            </v-chip>
+          </div>
+        </template>
+      </v-list-item>
+    </v-list>
+    <v-progress-circular
+      v-else
+      indeterminate
+      class="ma-4"
+    />
+    <v-divider class="my-4" />
+    <v-text-field
+      v-model="blogTitle"
+      label="Blog Title"
+      class="mb-4"
+      :loading="loading"
+      :disabled="loading"
+    />
+    <QuillEditor
+      v-model="blogText"
+      :disabled="loading"
+    />
+    <div class="d-flex mt-4">
+      <v-btn
+        v-if="authStore.user"
+        color="primary"
+        :loading="loading"
+        @click="savePost"
+      >
+        Save Post
+      </v-btn>
+      <v-btn
+        v-if="editingPost"
+        class="ml-2"
+        color="secondary"
+        :disabled="loading"
+        @click="cancelEdit"
+      >
+        Cancel
+      </v-btn>
+    </div>
+    <template v-if="editingPost || blogTitle || !isEmptyText">
+      <v-divider class="my-4" />
+      <h2>
+        {{ blogTitle || 'No title' }}
+      </h2>
+      <p>
+        {{
+          postSubtitle(editingPost || getTimestamps())
+        }}
+      </p>
+      <v-divider class="mb-4 mt-2" />
+      <!-- eslint-disable-next-line vue/no-v-html -->
+      <div v-html="displayBlogText" />
+    </template>
   </v-container>
 </template>
 <script setup lang="ts">
 import hljs from '@/utils/highlightjs';
+import { useAuthStore } from '~/store/authStore';
+import { usePostStore } from '~/store/postStore';
+import { useStore } from '~/store/mainStore';
+import { Timestamp } from 'firebase/firestore';
+import type { BlogPost } from '~/utils/types';
+
 useHead({
   title: 'Blog!',
 });
+
+const mainStore = useStore();
+const authStore = useAuthStore();
+const postStore = usePostStore();
+const publishingId = ref<string | null>(null);
+
+postStore.init();
+
+const loading = ref(false);
+const blogTitle = ref('');
 const blogText = ref('');
+const emptyBlogText = '<p></p>'
+const editingPost = ref<BlogPost | null>(null);
+const isEmptyText = computed(() => !blogText.value || blogText.value === emptyBlogText);
+
+function postSubtitle(post: BlogPost) {
+  const writtenOrPostedOn = post.postedAt ? `posted on ${post.postedAt.toDate().toLocaleString()}` : `written on ${post.createdAt.toDate().toLocaleString()}`;
+  if (!post.updatedAt || (post.postedAt || post.createdAt).toMillis() === post.updatedAt.toMillis())
+    return writtenOrPostedOn;
+  return `${writtenOrPostedOn}, updated on ${post.updatedAt.toDate().toLocaleString()}`;
+}
+
+async function editPost(post: BlogPost) {
+  editingPost.value = post;
+  blogTitle.value = post.title;
+  blogText.value = post.content;
+}
+
+function getTimestamps() {
+  const nowInS = Math.floor(Date.now() / 1000);
+  const milliseconds = Math.floor(Date.now() % 1000);
+  return {
+    postedAt: new Timestamp(nowInS, milliseconds),
+    createdAt: new Timestamp(nowInS, milliseconds),
+    updatedAt: new Timestamp(nowInS, milliseconds),
+  };
+}
+
+async function savePost() {
+  loading.value = true;
+  try {
+    if (blogTitle.value === '') {
+      mainStore.setSnackbar('Blog title cannot be empty');
+      return;
+    }
+    if (isEmptyText.value) {
+      mainStore.setSnackbar('Blog post cannot be empty');
+      return;
+    }
+    if (editingPost.value) {
+      await postStore.updatePost({
+        ...editingPost.value,
+        title: blogTitle.value,
+        content: blogText.value,
+      });
+      editingPost.value = null;
+    } else {
+      await postStore.addPost({
+        title: blogTitle.value,
+        content: blogText.value,
+      });
+    }
+    // Clear form after successful save
+    blogTitle.value = '';
+    blogText.value = '';
+  } catch (error) {
+    const handledError = error instanceof Error ? error : new Error('Unexpected error');
+    mainStore.setSnackbar(handledError.message);
+  } finally {
+    loading.value = false;
+  }
+}
+
+function cancelEdit() {
+  editingPost.value = null;
+  blogTitle.value = '';
+  blogText.value = '';
+}
+
+async function publishPost(post: BlogPost) {
+  if (!post.id) return;
+
+  publishingId.value = post.id;
+  try {
+    await postStore.publishPost(post.id);
+  } catch (error) {
+    const handledError = error instanceof Error ? error : new Error('Unexpected error');
+    mainStore.setSnackbar(handledError.message);
+  } finally {
+    publishingId.value = null;
+  }
+}
 
 const displayBlogText = computed(() => {
   const text = blogText.value;
@@ -47,27 +232,27 @@ const displayBlogText = computed(() => {
   padding-inline-start: 40px;
 }
 
-:where(main ul) > li {
+:where(main ul)>li {
   list-style-type: disc;
 }
 
-:where(main ul ul) > li {
+:where(main ul ul)>li {
   list-style-type: circle;
 }
 
-:where(main ul ul ul) > li {
+:where(main ul ul ul)>li {
   list-style-type: square;
 }
 
-:where(main ol) > li {
+:where(main ol)>li {
   list-style-type: decimal;
 }
 
-:where(main ol ol) > li {
+:where(main ol ol)>li {
   list-style-type: lower-alpha;
 }
 
-:where(main ol ol ol) > li {
+:where(main ol ol ol)>li {
   list-style-type: lower-roman;
 }
 </style>
