@@ -1,3 +1,5 @@
+import type { Timestamp } from 'firebase/firestore';
+
 export type LinkDetails = {
   title: string;
   description: string;
@@ -15,6 +17,16 @@ export type GameDetails = {
   imageSrcSet?: string;
   link: string;
   year: number;
+};
+
+export type BlogPost = {
+  title: string;
+  content: string;
+  createdAt: Timestamp;
+  updatedAt: Timestamp;
+  postedAt?: Timestamp;
+  status: 'draft' | 'published';
+  id?: string;
 };
 
 export type RGBObject = {

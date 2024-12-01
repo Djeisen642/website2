@@ -95,6 +95,7 @@ export default defineNuxtPlugin({
         auth: getAuth(app),
         db: firestore,
         collections: {
+          posts: createCollection<BlogPost>('posts'),
           games: createCollection<GameDetails>('games'),
           links: createCollection<LinkDetails>('links'),
         },

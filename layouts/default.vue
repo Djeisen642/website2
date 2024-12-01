@@ -1,5 +1,8 @@
 <template>
-  <v-app :theme="mainStore.theme" class="default-layout">
+  <v-app
+    :theme="mainStore.theme"
+    class="default-layout"
+  >
     <v-app-bar
       color="primary"
       prominent
@@ -35,16 +38,10 @@
       <slot />
     </v-main>
     <default-footer />
-    <error-snackbar
-      :snackbar="mainStore.snackbar.snackbar"
-      :text="mainStore.snackbar.text"
-    />
+    <error-snackbar :snackbar="mainStore.snackbar.snackbar" />
   </v-app>
 </template>
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import { ref, useRoute } from '#imports';
 
 import DefaultFooter from '~/components/DefaultFooter.vue';
@@ -94,6 +91,7 @@ const pageId = route.params.id;
 
 <style lang="scss">
 .default-layout {
+
   // stylelint-disable-next-line selector-class-pattern
   &.v-theme--dark {
     a:not(.v-list-item) {
