@@ -2183,6 +2183,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nuxt/devtools-kit@npm:^1.6.4":
+  version: 1.6.4
+  resolution: "@nuxt/devtools-kit@npm:1.6.4"
+  dependencies:
+    "@nuxt/kit": "npm:^3.14.1592"
+    "@nuxt/schema": "npm:^3.14.1592"
+    execa: "npm:^7.2.0"
+  peerDependencies:
+    vite: "*"
+  checksum: 10/7d3ec9d4aecd41d1ed3d25f1cb828a7d4a16ad1d150daa7af36d2ec285181e032e61ebf146f820fe28f232942b726df1ffdacfe8339533e9c5f5d272d0afca2c
+  languageName: node
+  linkType: hard
+
 "@nuxt/devtools-wizard@npm:1.6.1":
   version: 1.6.1
   resolution: "@nuxt/devtools-wizard@npm:1.6.1"
@@ -2356,7 +2369,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/schema@npm:3.14.1592, @nuxt/schema@npm:^3.13.2":
+"@nuxt/schema@npm:3.14.1592, @nuxt/schema@npm:^3.13.2, @nuxt/schema@npm:^3.14.1592":
   version: 3.14.1592
   resolution: "@nuxt/schema@npm:3.14.1592"
   dependencies:
@@ -2458,21 +2471,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxtjs/robots@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "@nuxtjs/robots@npm:5.0.0"
+"@nuxtjs/robots@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "@nuxtjs/robots@npm:5.1.0"
   dependencies:
-    "@nuxt/devtools-kit": "npm:^1.6.1"
+    "@nuxt/devtools-kit": "npm:^1.6.4"
     "@nuxt/kit": "npm:^3.14.1592"
-    consola: "npm:^3.2.3"
+    consola: "npm:^3.3.0"
     defu: "npm:^6.1.4"
-    nuxt-site-config: "npm:^3.0.2"
+    nuxt-site-config: "npm:^3.0.6"
     pathe: "npm:^1.1.2"
     pkg-types: "npm:^1.2.1"
     sirv: "npm:^3.0.0"
     std-env: "npm:^3.8.0"
     ufo: "npm:^1.5.4"
-  checksum: 10/482aa519084d36731736c9e965fef433a5f97eb18e72d12e7ccd7ade6e7105c4881c14cf86b0b367fca82bea70cd5c9e3e79c1b262932cedf39a0668738dff9b
+  checksum: 10/a64390da7fcfff4b3db5f211682e84dbb3ba7a596d171e203935eb23d73c5a2846ba0e4a612d22c42be6a8eb62b4c57fbde1f571d1ff5d80b858f743b0f4ab3e
   languageName: node
   linkType: hard
 
@@ -5188,6 +5201,13 @@ __metadata:
   version: 3.2.3
   resolution: "consola@npm:3.2.3"
   checksum: 10/02972dcb048c337357a3628438e5976b8e45bcec22fdcfbe9cd17622992953c4d695d5152f141464a02deac769b1d23028e8ac87f56483838df7a6bbf8e0f5a2
+  languageName: node
+  linkType: hard
+
+"consola@npm:^3.3.0":
+  version: 3.3.1
+  resolution: "consola@npm:3.3.1"
+  checksum: 10/59a9470e07c591c407fb072500fd05b6851334b7685db73fdcbe93b8b18b0c5737f1f1340f9e0c1b8d10f077bd9d1f0f9769fbbe0bdc40feb1f75ce1da92c591
   languageName: node
   linkType: hard
 
@@ -10425,34 +10445,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nuxt-site-config-kit@npm:3.0.4":
-  version: 3.0.4
-  resolution: "nuxt-site-config-kit@npm:3.0.4"
+"nuxt-site-config-kit@npm:3.0.6":
+  version: 3.0.6
+  resolution: "nuxt-site-config-kit@npm:3.0.6"
   dependencies:
     "@nuxt/kit": "npm:^3.13.2"
     "@nuxt/schema": "npm:^3.13.2"
     pkg-types: "npm:^1.2.1"
-    site-config-stack: "npm:3.0.4"
+    site-config-stack: "npm:3.0.6"
     std-env: "npm:^3.7.0"
     ufo: "npm:^1.5.4"
-  checksum: 10/be17dc56c089ba03519a04a56f8d41754836d8bd102f4d93318be4477046915109ee754d937e66f8217281cad12e1fbcc6d499daf8c8c0709467fb4059863fb4
+  checksum: 10/0a368225f1c0a98bf2b951b02f861174d88cbf324be4016bd71b7a5922f8ae9e36c6eb3de0880a176d90e94455d905d369ff5181bf15778da8f7c3d383870e41
   languageName: node
   linkType: hard
 
-"nuxt-site-config@npm:^3.0.2":
-  version: 3.0.4
-  resolution: "nuxt-site-config@npm:3.0.4"
+"nuxt-site-config@npm:^3.0.6":
+  version: 3.0.6
+  resolution: "nuxt-site-config@npm:3.0.6"
   dependencies:
     "@nuxt/devtools-kit": "npm:^1.6.0"
     "@nuxt/kit": "npm:^3.13.2"
     "@nuxt/schema": "npm:^3.13.2"
-    nuxt-site-config-kit: "npm:3.0.4"
+    nuxt-site-config-kit: "npm:3.0.6"
     pathe: "npm:^1.1.2"
     pkg-types: "npm:^1.2.1"
     sirv: "npm:^3.0.0"
-    site-config-stack: "npm:3.0.4"
+    site-config-stack: "npm:3.0.6"
     ufo: "npm:^1.5.4"
-  checksum: 10/2ecb05cd2f3c4d3d503bad8e95c68f0902ccb6c1f65f34d884c87a3a474038caad0568624ebc7c7a2e7786fc08274faadf0ad5a8e85ef57e14471da8459f626b
+  checksum: 10/82fbc21e387399684e9bcf85002a59ed0452d36855d6e67910db99e302c32d40c4b0d4b2251b45d0b0691d272a8003b5925280b69f7a9de221fa96b17b51a805
   languageName: node
   linkType: hard
 
@@ -12928,14 +12948,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"site-config-stack@npm:3.0.4":
-  version: 3.0.4
-  resolution: "site-config-stack@npm:3.0.4"
+"site-config-stack@npm:3.0.6":
+  version: 3.0.6
+  resolution: "site-config-stack@npm:3.0.6"
   dependencies:
     ufo: "npm:^1.5.4"
   peerDependencies:
     vue: ^3
-  checksum: 10/0742e44e0aa1b18c4d1d11eae6db935ac92c20074e77f66194cfdea769f6a04b1bcea6419a485ace1a49485b65a3487ed9ed4c113b6b5e3781691615da9f562e
+  checksum: 10/d41f59c28d5cf3a17446335109f26b2f5fe65f48064c9ef27d779e2bcf5d056ff0b39bedd7b349c307b2145d44fab7bab5e6dba47c565ab814f8ed72b3faab2d
   languageName: node
   linkType: hard
 
@@ -14889,7 +14909,7 @@ __metadata:
     "@mdi/js": "npm:^7.4.47"
     "@nuxt/eslint": "npm:^0.7.2"
     "@nuxtjs/device": "npm:^3.2.4"
-    "@nuxtjs/robots": "npm:^5.0.0"
+    "@nuxtjs/robots": "npm:^5.1.0"
     "@pinia/nuxt": "npm:^0.8.0"
     "@trivago/prettier-plugin-sort-imports": "npm:^4.3.0"
     "@types/eslint": "npm:^9.6.1"
