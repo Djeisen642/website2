@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "@mdi/js": "^7.4.47",
-    "@nuxtjs/robots": "^5.0.0",
+    "@nuxtjs/robots": "^5.2.2",
     "@pinia/nuxt": "^0.8.0",
     "@vueuse/core": "^12.0.0",
     "@vueuse/nuxt": "^12.0.0",
