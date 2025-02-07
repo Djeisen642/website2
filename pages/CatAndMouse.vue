@@ -65,10 +65,7 @@
     ></div>
   </v-container>
 </template>
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import { useResizeObserver, useWindowFocus } from '@vueuse/core';
 
 import { Boundary, Position } from '@/objects/abstract';
@@ -132,10 +129,7 @@ function onMouseMove(event: MouseEvent) {
   mouse.position = new Position(event.x, event.y);
 }
 </script>
-<style
-  lang="scss"
-  scoped
->
+<style lang="scss" scoped>
 $icon-size: 50px;
 
 .full-height {
@@ -167,8 +161,10 @@ $icon-size: 50px;
     width: $icon-size;
     position: absolute;
     left: 50%;
+    // stylelint-disable-next-line declaration-property-value-no-unknown
     margin-left: calc(-1 * $icon-size / 2);
     top: 50%;
+    // stylelint-disable-next-line declaration-property-value-no-unknown 
     margin-top: calc(-1 * $icon-size / 2);
   }
 }
@@ -179,12 +175,14 @@ $icon-size: 50px;
   top: v-bind('cat.getPixelPosition().y');
 
   .cat-icon {
+    // stylelint-disable-next-line declaration-property-value-no-unknown  
     height: calc($icon-size * 1.2);
+    // stylelint-disable-next-line declaration-property-value-no-unknown 
     width: calc($icon-size * 1.2);
     position: absolute;
-    left: 50%;
+    left: 50%; // stylelint-disable-next-line declaration-property-value-no-unknown 
     margin-left: calc(-1 * $icon-size / 2);
-    top: 50%;
+    top: 50%; // stylelint-disable-next-line declaration-property-value-no-unknown 
     margin-top: calc(-1 * $icon-size / 2);
   }
 }
