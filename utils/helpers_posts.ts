@@ -29,7 +29,10 @@ export function getTimestamps(): Pick<BlogPost, 'postedAt' | 'updatedAt' | 'crea
 }
 
 export const convertBlogText = (blogText: string) => {
-  const text = blogText.replace(/&nbsp;/g, ' ').replace(/<p><\/p>/g, '<p><br></p>');
+  const text = blogText
+    .replace(/&nbsp;/g, ' ')
+    .replace(/<p><\/p>/g, '<p><br></p>')
+    .replace(/\t/g, '&emsp;');
   if (!text.includes('</pre>')) return text;
   const el = document.createElement('div');
   el.innerHTML = text;
