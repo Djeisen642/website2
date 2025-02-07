@@ -42,7 +42,10 @@ export const usePostStore = defineStore('posts', {
       await promise;
     },
 
-    async addPost(newPost: Omit<BlogPost, 'createdAt' | 'updatedAt' | 'id'>, user: User) {
+    async addPost(
+      newPost: Omit<BlogPost, 'createdAt' | 'updatedAt' | 'id' | 'status' | 'author'>,
+      user: User,
+    ) {
       const nuxtApp = useNuxtApp();
       if (!user) throw new Error('User is not authenticated');
       if (!user.displayName) throw new Error('User display name is not set');

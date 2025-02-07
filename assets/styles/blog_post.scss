@@ -1,0 +1,32 @@
+:where(main ol, main ul) {
+  margin-inline-start: 0;
+  padding-inline-start: 40px;
+}
+
+:where(main ul)>li {
+  list-style-type: disc;
+}
+
+:where(main ul ul)>li {
+  list-style-type: circle;
+}
+
+:where(main ul ul ul)>li {
+  list-style-type: square;
+}
+
+:where(main ol)>li {
+  list-style-type: decimal;
+}
+
+:where(main ol ol)>li {
+  list-style-type: lower-alpha;
+}
+
+:where(main ol ol ol)>li {
+  list-style-type: lower-roman;
+}
+
+.post-content {
+  max-width: 100vw;
+}

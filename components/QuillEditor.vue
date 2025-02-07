@@ -40,7 +40,7 @@ const reinit = () => {
         ],
       },
       toolbar: [
-        ['bold', 'italic', 'underline', 'strike', 'code-block'],
+        ['bold', 'italic', 'underline', 'strike', 'code-block', 'link'],
         [{ list: 'ordered' }, { list: 'bullet' }],
         [{ script: 'sub' }, { script: 'super' }],
         [{ size: ['small', false, 'large', 'huge'] }],
@@ -63,3 +63,17 @@ onUpdated(() => {
   reinit();
 });
 </script>
+<style lang="scss">
+// stylelint-disable-next-line selector-class-pattern
+.v-theme--dark {
+  .ql-editing input {
+    color: black;
+  }
+
+  .ql-action,
+  .ql-preview,
+  .ql-remove {
+    color: blue !important;
+  }
+}
+</style>

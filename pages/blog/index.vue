@@ -115,17 +115,19 @@
       </div>
       <v-divider />
       <!-- eslint-disable-next-line vue/no-v-html -->
-      <div v-html="displayBlogText"></div>
+      <div
+        class="post-content"
+        v-html="displayBlogText"
+      ></div>
     </template>
   </v-container>
 </template>
 <script setup lang="ts">
-import hljs from '@/utils/highlightjs';
 import { useAuthStore } from '~/store/authStore';
 import { usePostStore } from '~/store/postStore';
 import { useStore } from '~/store/mainStore';
 import type { BlogPost } from '~/utils/types';
-import { getTimestamps, postTimestamps } from '@/utils/helpers_posts';
+import { getTimestamps, postTimestamps, convertBlogText } from '@/utils/helpers_posts';
 
 useHead({
   title: 'Blog index',
@@ -162,6 +164,10 @@ async function deletePost(post: BlogPost) {
 async function savePost() {
   loading.value = true;
   try {
+    if (!authStore.user) {
+      mainStore.setSnackbar('You must be logged in to save a blog post');
+      return;
+    }
     if (blogTitle.value === '') {
       mainStore.setSnackbar('Blog title cannot be empty');
       return;
@@ -215,21 +221,12 @@ async function publishPost(post: BlogPost) {
 }
 
 const displayBlogText = computed(() => {
-  const text = blogText.value;
-  if (!blogText.value.includes('</pre>')) return text;
-  const el = document.createElement('div');
-  el.innerHTML = blogText.value;
-  el.querySelectorAll('pre').forEach(pre => {
-    const language = pre.getAttribute('data-language');
-    if (!language) return;
-    const code = hljs.highlight(pre.innerText, { language });
-    pre.innerHTML = code.value;
-  });
-
-  return el.innerHTML;
+  return convertBlogText(blogText.value);
 });
 </script>
 <style lang="scss">
+@import url('../../assets/styles/blog_post.scss');
+
 .ql-size-small {
   font-size: 0.8rem;
 }
@@ -240,34 +237,5 @@ const displayBlogText = computed(() => {
 
 .ql-size-huge {
   font-size: 1.8rem;
-}
-
-:where(main ol, main ul) {
-  margin-inline-start: 0;
-  padding-inline-start: 40px;
-}
-
-:where(main ul)>li {
-  list-style-type: disc;
-}
-
-:where(main ul ul)>li {
-  list-style-type: circle;
-}
-
-:where(main ul ul ul)>li {
-  list-style-type: square;
-}
-
-:where(main ol)>li {
-  list-style-type: decimal;
-}
-
-:where(main ol ol)>li {
-  list-style-type: lower-alpha;
-}
-
-:where(main ol ol ol)>li {
-  list-style-type: lower-roman;
 }
 </style>
