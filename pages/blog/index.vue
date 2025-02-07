@@ -127,7 +127,7 @@ import { useAuthStore } from '~/store/authStore';
 import { usePostStore } from '~/store/postStore';
 import { useStore } from '~/store/mainStore';
 import type { BlogPost } from '~/utils/types';
-import { getTimestamps, postTimestamps, convertBlogText } from '@/utils/helpers_posts';
+import { getTimestamps, postTimestamps, convertBlogText, hashString } from '@/utils/helpers_posts';
 
 useHead({
   title: 'Blog index',
@@ -146,11 +146,21 @@ const blogText = ref('');
 const emptyBlogText = '<p></p>'
 const editingPost = ref<BlogPost | null>(null);
 const isEmptyText = computed(() => !blogText.value || blogText.value === emptyBlogText);
+let originalHash = '';
+setTimeout(() => {
+  originalHash = hashString(blogTitle.value + blogText.value);
+}, 300);
 
 async function editPost(post: BlogPost) {
+  if (!isEmptyText.value && blogTitle.value && originalHash !== hashString(blogTitle.value + blogText.value)) {
+    // TODO maybe make this a dialog
+    const confirm = window.confirm('You have unsaved changes. Are you sure you want to edit this post?');
+    if (!confirm) return;
+  }
   editingPost.value = post;
   blogTitle.value = post.title;
   blogText.value = post.content;
+  originalHash = hashString(post.title + post.content);
 }
 async function deletePost(post: BlogPost) {
   try {

@@ -1,6 +1,7 @@
 import { Timestamp } from 'firebase/firestore';
 import type { BlogPost } from './types';
 import hljs from '@/utils/highlightjs';
+import { v5 as uuidV5 } from 'uuid';
 
 export function postTimestamps(
   post: Pick<BlogPost, 'postedAt' | 'updatedAt' | 'createdAt'>,
@@ -45,3 +46,7 @@ export const convertBlogText = (blogText: string) => {
 
   return el.innerHTML;
 };
+
+export function hashString(str: string) {
+  return uuidV5(str, UUID_NAMESPACE);
+}
