@@ -49,7 +49,7 @@ export default defineNuxtConfig({
     async ready(nuxt) {
       const styles = await getFontStyles();
       if (!Array.isArray(nuxt.options.app.head.style)) throw new Error('What happened here?');
-      nuxt.options.app.head.style.push(...styles);
+      nuxt.options.app.head.style.push(...styles.map(style => ({ children: style })));
     },
     'vite:extendConfig': config => {
       config.plugins?.push(vuetify());
