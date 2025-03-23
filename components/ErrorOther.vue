@@ -43,6 +43,7 @@
 <script lang="ts" setup>
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
+import type { NuxtError } from '#app'
 
 const showErrorDetails = ref(false);
 
