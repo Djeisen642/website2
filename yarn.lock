@@ -14615,14 +14615,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vuetify@npm:3.7.18":
-  version: 3.7.18
-  resolution: "vuetify@npm:3.7.18"
+"vuetify@npm:3.8.1":
+  version: 3.8.1
+  resolution: "vuetify@npm:3.8.1"
   peerDependencies:
     typescript: ">=4.7"
-    vite-plugin-vuetify: ">=1.0.0"
-    vue: ^3.3.0
-    webpack-plugin-vuetify: ">=2.0.0"
+    vite-plugin-vuetify: ">=2.1.0"
+    vue: ^3.5.0
+    webpack-plugin-vuetify: ">=3.1.0"
   peerDependenciesMeta:
     typescript:
       optional: true
@@ -14630,7 +14630,7 @@ __metadata:
       optional: true
     webpack-plugin-vuetify:
       optional: true
-  checksum: 10/4fd0fe52acb16d0b75a79fec0b364b1ad6bb36e6f38ebf2d428cc917e415f342b84ccdd5c1fcffc1c8d013ece1df962ea53f22fe0822ba95a928f130f3b501bf
+  checksum: 10/b76f7ddbc70228ea901b0e7c5d251849d9beb66617d3181903c2555bf827c07c15f151f14b60c72066905616d0f026848da1b6df02b736d140ac139b350b9a97
   languageName: node
   linkType: hard
 
@@ -14714,7 +14714,7 @@ __metadata:
     vite: "npm:^6.2.6"
     vite-plugin-vuetify: "npm:^2.1.0"
     vue: "npm:^3.5.13"
-    vuetify: "npm:3.7.18"
+    vuetify: "npm:3.8.1"
     web-vitals: "npm:^4.2.4"
   languageName: unknown
   linkType: soft
