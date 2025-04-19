@@ -4,26 +4,17 @@
   <v-container fluid>
     <h2>These are links that I have found interesting over the years</h2>
     <p class="d-md-none font-italic">Click on row for more details.</p>
-    <v-sheet
-      v-if="!linkStore.loaded"
-      class="d-flex justify-center align-center"
-      height="300"
-    >
-      <v-progress-circular
-        indeterminate
-        size="100"
-        width="10"
-        color="primary"
-        bg-color="secondary"
-        aria-label="Loading links..."
-      />
-    </v-sheet>
     <v-list
       lines="three"
       role="list"
     >
+      <v-skeleton-loader
+        v-if="!linkStore.loaded"
+        :type="skeletonLoaderType"
+      />
       <div
         v-for="(link, index) in linkStore.links"
+        v-else
         :key="link.title"
         role="listitem"
       >
@@ -126,19 +117,17 @@
     </v-dialog>
   </v-container>
 </template>
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import { useAuthStore } from '~/store/authStore';
 import { useLinkStore } from '~/store/linkStore';
 import { useStore } from '~/store/mainStore';
-import { getFavicon } from '~/utils/helpers';
+import { getFavicon, getRandomArbitrary } from '~/utils/helpers';
 import type { LinkDetails } from '~/utils/types';
 
 const mainStore = useStore();
 const linkStore = useLinkStore();
 const authStore = useAuthStore();
+const skeletonLoaderType = new Array(getRandomArbitrary(3, 6, true)).fill('list-item-avatar-three-line').join(', ');
 
 function getNewLink(): LinkDetails {
   return {
@@ -173,10 +162,7 @@ useHead({
   title: 'Interesting links!',
 });
 </script>
-<style
-  scoped
-  lang="scss"
->
+<style scoped lang="scss">
 // wanted to use grid breakpoints... but it isn't easy
 $md-max-width: 960px;
 

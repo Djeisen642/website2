@@ -27,3 +27,9 @@ export function checkIfImageExists(url: string): Promise<boolean> {
 export function getFavicon(url: string): string {
   return `${new URL(url).origin}/favicon.ico`;
 }
+
+export function getRandomArbitrary(min: number, max: number, round = false): number {
+  const randomNumber = Math.random() * (max - min) + min;
+  if (!round) return randomNumber;
+  return Math.floor(randomNumber);
+}

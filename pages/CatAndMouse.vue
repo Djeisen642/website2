@@ -9,8 +9,15 @@
       <br />
       Mouse x: {{ mouse.getPixelPosition().x }} y: {{ mouse.getPixelPosition().y }}
       <br />
-      Cat x: {{ cat.getPixelPosition().x }} y: {{ cat.getPixelPosition().y }} speed:
-      {{ `${cat.speed.toString()}px/${catRefreshInterval}ms` }}
+      <template
+        v-for="(cat, index) in cats"
+        :key="index"
+      >
+        <span>Cat {{ index }} x: {{ cat.getPixelPosition().x }} y: {{ cat.getPixelPosition().y }}
+          speed:
+          {{ `${cat.speed.toString()}px/${catRefreshInterval}ms` }}</span>
+        <br />
+      </template>
     </p>
     <v-dialog
       v-model="paused"
@@ -45,18 +52,27 @@
       </v-card>
     </v-dialog>
 
-    <div class="mouse">
+    <div
+      class="mouse"
+      :style="mouse.getStyle()"
+    >
       <v-icon
         :icon="mouseIcon"
         class="mouse-icon"
         aria-label="The mouse"
       />
     </div>
-    <div class="cat">
+    <div
+      v-for="(cat, index) in cats"
+      :key="index"
+      class="cat"
+      :style="cat.getStyle()"
+    >
       <v-icon
         icon="$cat"
         class="cat-icon"
-        aria-label="The cat"
+        :color="cat.color === 'black' && mainStore.theme === Theme.DARK ? 'white' : cat.color"
+        :aria-label="`cat ${index + 1}`"
       />
     </div>
     <div
@@ -70,29 +86,35 @@ import { useResizeObserver, useWindowFocus } from '@vueuse/core';
 
 import { Boundary, Position } from '@/objects/abstract';
 import { Cat, Mouse } from '@/objects/animals';
+import type { ICat } from '@/objects/animals';
+import { Theme, useStore } from '~/store/mainStore';
 
 const windowFocused = useWindowFocus();
+const mainStore = useStore();
 
 const count = ref(0);
 const mouse = reactive(new Mouse(new Position(0, 0), 20));
-const container = ref<HTMLDivElement>();
+const container = useTemplateRef<HTMLElement>('container');
 const iconSize = 50;
 const catMargins = 60;
 const catRefreshInterval = ref(50);
 const catBorderMargins = ref(`${catMargins}px`);
-const cat = reactive(new Cat(new Position(0, 0), new Boundary(0, 0, 0, 0), 10));
+const cats = reactive<ICat[]>([]);
 const iconMargin = iconSize / 2 - 1;
 const paused = ref(true);
 const score = computed(() => Math.floor(count.value));
-const mouseIcon = ref('$mouse');
+const mouseIcon = ref<'$mouse' | '$skull'>('$mouse');
+const maxCats = 10;
 
 const { pause: pauseGameInterval, resume: resumeGameInterval } = useIntervalFn(() => {
-  cat.updateVelocity(mouse.position);
-  if (mouse.caughtBy(cat.position)) {
-    paused.value = true;
-    mouseIcon.value = '$skull';
-    pauseGameInterval();
-    return;
+  for (const cat of cats) {
+    cat.updateVelocity(mouse.position, cats.filter(otherCat => otherCat !== cat));;
+    if (mouse.caughtBy(cat.position)) {
+      paused.value = true;
+      mouseIcon.value = '$skull';
+      pauseGameInterval();
+      return;
+    }
   }
   count.value += catRefreshInterval.value / 500;
 }, catRefreshInterval);
@@ -111,18 +133,34 @@ watch(windowFocused, isFocused => {
 
 useResizeObserver(container, () => resetCatBoundaries());
 
+function addMoreCats() {
+  if (!container.value) return;
+  const rect = container.value.getBoundingClientRect();
+  let numCats = getRandomArbitrary(1, 5, true);
+  if (cats.length + numCats > maxCats) {
+    numCats = Math.min(maxCats - cats.length, numCats);
+    if (numCats <= 0) return;
+  }
+  for (let i = 0; i < numCats; i++)
+    cats.unshift(new Cat(new Position(0, 0), Boundary.createBoundary(rect, iconMargin), 10));
+}
+
 function startRunning(event: MouseEvent) {
   paused.value = false;
   count.value = 0;
   mouseIcon.value = '$mouse';
-  cat.randomizePosition();
+  addMoreCats();
+  for (const cat of cats)
+    cat.randomizePosition([...cats, mouse]);
+  resetCatBoundaries();
   onMouseMove(event);
   resumeGameInterval();
 }
 function resetCatBoundaries() {
   if (!container.value) return;
   const rect = container.value.getBoundingClientRect();
-  cat.boundary = Boundary.createBoundary(rect, iconMargin);
+  for (const cat of cats)
+    cat.boundary = Boundary.createBoundary(rect, iconMargin);
 }
 function onMouseMove(event: MouseEvent) {
   if (paused.value || !windowFocused) return;
@@ -153,17 +191,13 @@ $icon-size: 50px;
 
 .mouse {
   position: absolute;
-  left: v-bind('mouse.getPixelPosition().x');
-  top: v-bind('mouse.getPixelPosition().y');
 
   .mouse-icon {
     height: $icon-size;
     width: $icon-size;
     position: absolute;
-    left: 50%;
     // stylelint-disable-next-line declaration-property-value-no-unknown
     margin-left: calc(-1 * $icon-size / 2);
-    top: 50%;
     // stylelint-disable-next-line declaration-property-value-no-unknown 
     margin-top: calc(-1 * $icon-size / 2);
   }
@@ -171,8 +205,6 @@ $icon-size: 50px;
 
 .cat {
   position: absolute;
-  left: v-bind('cat.getPixelPosition().x');
-  top: v-bind('cat.getPixelPosition().y');
 
   .cat-icon {
     // stylelint-disable-next-line declaration-property-value-no-unknown  

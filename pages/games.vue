@@ -4,27 +4,18 @@
   <v-container fluid>
     <h2>These games were built for various game jams over the years.</h2>
     <p class="d-md-none font-italic">Click on row for more details.</p>
-    <v-sheet
-      v-if="!gameStore.loaded"
-      class="d-flex justify-center align-center"
-      height="300"
-    >
-      <v-progress-circular
-        indeterminate
-        size="100"
-        width="10"
-        color="primary"
-        bg-color="secondary"
-        aria-label="Loading games..."
-      />
-    </v-sheet>
 
     <v-list
       lines="three"
       role="list"
     >
+      <v-skeleton-loader
+        v-if="!gameStore.loaded"
+        :type="skeletonLoaderType"
+      />
       <div
         v-for="(game, index) in gameStore.games"
+        v-else
         :key="game.name"
         role="listitem"
       >
@@ -117,18 +108,17 @@
     </v-dialog>
   </v-container>
 </template>
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import { useAuthStore } from '~/store/authStore';
 import { useGameStore } from '~/store/gameStore';
 import { useStore } from '~/store/mainStore.js';
 import type { GameDetails } from '~/utils/types';
+import { getRandomArbitrary } from '~/utils/helpers';
 
 const mainStore = useStore();
 const authStore = useAuthStore();
 const gameStore = useGameStore();
+const skeletonLoaderType = new Array(getRandomArbitrary(3, 6, true)).fill('list-item-avatar-three-line').join(', ');
 
 function getNewGame(): GameDetails {
   return {
@@ -164,10 +154,7 @@ useHead({
   title: 'Games!',
 });
 </script>
-<style
-  scoped
-  lang="scss"
->
+<style scoped lang="scss">
 // wanted to use grid breakpoints... but it isn't easy
 $md-max-width: 960px;
 

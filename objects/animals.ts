@@ -1,10 +1,13 @@
 import { type Boundary, Position, Velocity } from './abstract';
+import { getRandomArbitrary } from '~/utils/helpers';
 
-function getRandomArbitrary(min: number, max: number) {
-  return Math.random() * (max - min) + min;
+export interface IAnimal {
+  position: Position;
+  getPixelPosition(): { x: string; y: string };
+  getStyle(): { left: string; top: string };
 }
 
-export class Animal {
+export class Animal implements IAnimal {
   protected _position: Position;
 
   constructor(startingPosition: Position) {
@@ -21,6 +24,14 @@ export class Animal {
 
   getPixelPosition() {
     return this._position.getPixelStrings();
+  }
+
+  getStyle() {
+    const position = this.getPixelPosition();
+    return {
+      left: position.x,
+      top: position.y,
+    };
   }
 }
 
@@ -39,14 +50,32 @@ export class Mouse extends Animal {
   }
 }
 
+export interface ICat extends IAnimal {
+  speed: number;
+  boundary: Boundary;
+  color: string;
+  randomizePosition(others: IAnimal[]): void;
+  updateVelocity(newDestination: Position, otherCats: ICat[]): void;
+}
+
+const CAT_COLORS = ['black', 'orange', 'grey', 'brown'];
+
 export class Cat extends Animal {
   private _boundary: Boundary;
   private _speed: number;
+  private readonly _color: string;
 
   constructor(startingPosition: Position, boundary: Boundary, speed: number) {
     super(startingPosition);
     this._boundary = boundary;
     this._speed = speed;
+    const randomColor = getRandomArbitrary(0, CAT_COLORS.length, true);
+    console.log(`Random color index: ${randomColor}`);
+    this._color = CAT_COLORS[randomColor];
+  }
+
+  get color() {
+    return this._color;
   }
 
   get speed() {
@@ -70,15 +99,45 @@ export class Cat extends Animal {
     this._position = this.boundary.ensurePositionIsInside(newPosition);
   }
 
-  randomizePosition() {
-    this.position = new Position(
-      getRandomArbitrary(this._boundary.left, this._boundary.right),
-      getRandomArbitrary(this._boundary.top, this._boundary.bottom),
-    );
+  private isOverlapping(otherAnimal: IAnimal, newPosition: Position): boolean {
+    const distance = newPosition.subtract(otherAnimal.position).getMagnitude();
+    const safeDistance = otherAnimal instanceof Mouse ? 200 : 50;
+    return distance < safeDistance;
   }
 
-  updateVelocity(newDestination: Position) {
+  randomizePosition(others: IAnimal[]) {
+    let newPosition: Position;
+    let attempts = 0;
+    const maxAttempts = 100;
+    do {
+      newPosition = new Position(
+        getRandomArbitrary(this._boundary.left, this._boundary.right),
+        getRandomArbitrary(this._boundary.top, this._boundary.bottom),
+      );
+      attempts++;
+    } while (
+      attempts < maxAttempts &&
+      others.some(animal => this.isOverlapping(animal, newPosition))
+    );
+    this.position = newPosition;
+  }
+
+  updateVelocity(newDestination: Position, otherCats: ICat[]) {
     const velocity = Velocity.changeDirection(this._position, newDestination, this._speed);
-    this.position = velocity.getNewPosition(this._position);
+    let newPosition = velocity.getNewPosition(this._position);
+
+    // Attempt to adjust the position if it overlaps with other cats
+    let attempts = 0;
+    const maxAttempts = 10;
+    while (attempts < maxAttempts && otherCats.some(cat => this.isOverlapping(cat, newPosition))) {
+      // Slightly adjust the position to avoid overlap
+      newPosition = new Position(
+        newPosition.x + getRandomArbitrary(-10, 10),
+        newPosition.y + getRandomArbitrary(-10, 10),
+      );
+      attempts++;
+    }
+
+    this.position = newPosition;
   }
 }
