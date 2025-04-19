@@ -85,8 +85,9 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
   text-align: center;
+  background: #0a0a0a;
   color: white;
   position: relative;
   overflow: hidden;
