@@ -21,7 +21,8 @@
       Return to Safety
     </v-btn>
     <div>
-      (Thanks to <a href="https://codeium.com/windsurf">windsurf</a> for building this page from scratch)
+      (Thanks to <a href="https://codeium.com/windsurf">windsurf</a> for building this page from
+      scratch)
     </div>
   </div>
 </template>
