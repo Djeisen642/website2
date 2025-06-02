@@ -66,10 +66,10 @@ onMounted(() => {
   inset: 0;
   background:
     radial-gradient(circle at calc(var(--mouse-x) * 100%) calc(var(--mouse-y) * 100%),
-      rgba(0, 255, 150, 10%) 0%,
+      rgb(0, 255, 150, 10%) 0%,
       transparent 50%),
     repeating-linear-gradient(transparent 0%,
-      rgba(0, 255, 150, 5%) 50%,
+      rgb(0, 255, 150, 5%) 50%,
       transparent 100%);
   background-size: 100% 100%, 100% 3px;
   pointer-events: none;
@@ -80,9 +80,9 @@ onMounted(() => {
   font-size: 8rem;
   font-weight: bold;
   position: relative;
-  text-shadow: 0.05em 0 0 rgba(255, 0, 0, 75%),
-    -0.025em -0.05em 0 rgba(0, 255, 0, 75%),
-    0.025em 0.05em 0 rgba(0, 0, 255, 75%);
+  text-shadow: 0.05em 0 0 rgb(255, 0, 0, 75%),
+    -0.025em -0.05em 0 rgb(0, 255, 0, 75%),
+    0.025em 0.05em 0 rgb(0, 0, 255, 75%);
   animation: glitch 500ms infinite;
   z-index: 2;
 }
@@ -113,9 +113,9 @@ onMounted(() => {
   font-size: 2rem;
   margin-top: 1rem;
   position: relative;
-  text-shadow: 0.05em 0 0 rgba(255, 0, 0, 75%),
-    -0.025em -0.05em 0 rgba(0, 255, 0, 75%),
-    0.025em 0.05em 0 rgba(0, 0, 255, 75%);
+  text-shadow: 0.05em 0 0 rgb(255, 0, 0, 75%),
+    -0.025em -0.05em 0 rgb(0, 255, 0, 75%),
+    0.025em 0.05em 0 rgb(0, 0, 255, 75%);
   animation: glitch 1s infinite;
   z-index: 2;
 }
@@ -125,7 +125,7 @@ onMounted(() => {
   font-size: 1.2rem;
   text-align: center;
   max-width: 80%;
-  color: rgba(255, 255, 255, 80%);
+  color: rgb(255, 255, 255, 80%);
   z-index: 2;
   position: relative;
 }
@@ -140,45 +140,45 @@ onMounted(() => {
 
 @keyframes glitch {
   0% {
-    text-shadow: 0.05em 0 0 rgba(255, 0, 0, 75%),
-      -0.05em -0.025em 0 rgba(0, 255, 0, 75%),
-      -0.025em 0.05em 0 rgba(0, 0, 255, 75%);
+    text-shadow: 0.05em 0 0 rgb(255, 0, 0, 75%),
+      -0.05em -0.025em 0 rgb(0, 255, 0, 75%),
+      -0.025em 0.05em 0 rgb(0, 0, 255, 75%);
   }
 
   14% {
-    text-shadow: 0.05em 0 0 rgba(255, 0, 0, 75%),
-      -0.05em -0.025em 0 rgba(0, 255, 0, 75%),
-      -0.025em 0.05em 0 rgba(0, 0, 255, 75%);
+    text-shadow: 0.05em 0 0 rgb(255, 0, 0, 75%),
+      -0.05em -0.025em 0 rgb(0, 255, 0, 75%),
+      -0.025em 0.05em 0 rgb(0, 0, 255, 75%);
   }
 
   15% {
-    text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 75%),
-      0.025em 0.025em 0 rgba(0, 255, 0, 75%),
-      -0.05em -0.05em 0 rgba(0, 0, 255, 75%);
+    text-shadow: -0.05em -0.025em 0 rgb(255, 0, 0, 75%),
+      0.025em 0.025em 0 rgb(0, 255, 0, 75%),
+      -0.05em -0.05em 0 rgb(0, 0, 255, 75%);
   }
 
   49% {
-    text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 75%),
-      0.025em 0.025em 0 rgba(0, 255, 0, 75%),
-      -0.05em -0.05em 0 rgba(0, 0, 255, 75%);
+    text-shadow: -0.05em -0.025em 0 rgb(255, 0, 0, 75%),
+      0.025em 0.025em 0 rgb(0, 255, 0, 75%),
+      -0.05em -0.05em 0 rgb(0, 0, 255, 75%);
   }
 
   50% {
-    text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 75%),
-      0.05em 0 0 rgba(0, 255, 0, 75%),
-      0 -0.05em 0 rgba(0, 0, 255, 75%);
+    text-shadow: 0.025em 0.05em 0 rgb(255, 0, 0, 75%),
+      0.05em 0 0 rgb(0, 255, 0, 75%),
+      0 -0.05em 0 rgb(0, 0, 255, 75%);
   }
 
   99% {
-    text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 75%),
-      0.05em 0 0 rgba(0, 255, 0, 75%),
-      0 -0.05em 0 rgba(0, 0, 255, 75%);
+    text-shadow: 0.025em 0.05em 0 rgb(255, 0, 0, 75%),
+      0.05em 0 0 rgb(0, 255, 0, 75%),
+      0 -0.05em 0 rgb(0, 0, 255, 75%);
   }
 
   100% {
-    text-shadow: -0.025em 0 0 rgba(255, 0, 0, 75%),
-      -0.025em -0.025em 0 rgba(0, 255, 0, 75%),
-      -0.025em -0.05em 0 rgba(0, 0, 255, 75%);
+    text-shadow: -0.025em 0 0 rgb(255, 0, 0, 75%),
+      -0.025em -0.025em 0 rgb(0, 255, 0, 75%),
+      -0.025em -0.05em 0 rgb(0, 0, 255, 75%);
   }
 }
 

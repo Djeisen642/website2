@@ -6,6 +6,7 @@
     <v-app-bar
       color="primary"
       prominent
+      class="app-bar-on-top"
     >
       <v-app-bar-nav-icon
         aria-label="Open navigation drawer"
@@ -20,7 +21,8 @@
     <v-navigation-drawer
       v-model="drawer"
       temporary
-      role="navigation"
+      :mobile="device.isMobile"
+      class="nav-bar-near-top"
     >
       <v-list aria-label="Pages to navigate to">
         <v-list-item
@@ -57,6 +59,7 @@ import { NUM_POSTS_TO_DISPLAY } from '~/utils/constants';
 
 const mainStore = useStore();
 const postStore = usePostStore();
+const device = useDevice();
 
 const props = defineProps({
   error: {
@@ -138,6 +141,13 @@ const routeName = computed(() => props.error?.statusCode || route.name);
 
 <style lang="scss">
 .default-layout {
+  .app-bar-on-top {
+    z-index: 5000 !important;
+  }
+
+  .nav-bar-near-top {
+    z-index: 4000 !important;
+  }
 
   // stylelint-disable-next-line selector-class-pattern
   &.v-theme--dark {

@@ -185,7 +185,7 @@ $icon-size: 50px;
 
 .cat-border {
   margin: v-bind('catBorderMargins');
-  border: 2px solid rgba(var(--v-border-color), var(--v-border-opacity));
+  border: 2px solid rgb(var(--v-border-color), var(--v-border-opacity));
   height: calc(100% - (v-bind('catBorderMargins') * 2));
 }
 

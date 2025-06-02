@@ -4,6 +4,8 @@ on: ['push']
 jobs:
   lint_and_build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     environment: development
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
