@@ -102,6 +102,6 @@ useHead({
 </script>
 <style lang="scss" scoped>
 .bg-transparent-card {
-  background-color: rgba(var(--v-theme-primary-lighten-3), 0.4);
+  background-color: rgb(var(--v-theme-primary-lighten-3), 0.4);
 }
 </style>
