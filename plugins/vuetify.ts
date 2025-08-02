@@ -1,10 +1,13 @@
 import {
   mdiBrightness4,
   mdiCat,
+  mdiGamepadVariant,
   mdiGithub,
+  mdiLinkVariant,
   mdiLinkedin,
   mdiLogin,
   mdiMouseVariant,
+  mdiPost,
   mdiSkull,
   mdiWrench,
 } from '@mdi/js';
@@ -47,13 +50,16 @@ export default defineNuxtPlugin({
           mouse: mdiMouseVariant,
           cat: mdiCat,
           skull: mdiSkull,
+          'gamepad-variant': mdiGamepadVariant,
+          'link-variant': mdiLinkVariant,
+          post: mdiPost,
         },
         sets: {
           mdi,
         },
       },
       theme: {
-        defaultTheme: 'light',
+        defaultTheme: 'dark',
         variations: {
           colors: ['primary', 'secondary'],
           lighten: 3,

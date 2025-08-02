@@ -4,85 +4,123 @@
       :src="img"
       height="100vh"
       lazy-src="/images/reflection_small.webp"
-      alt="Background image of clouds, mountains, and reflection"
+      alt="A serene landscape with mountains reflected in still water, with clouds above"
+      aria-label="Hero section background"
     >
       <div class="d-flex flex-column fill-height justify-center">
         <v-sheet
-          color="transparent-card pa-4"
+          class="transparent-card pa-4"
           flat
           theme="dark"
         >
           <v-card-title>
-            <p class="text-h2 mb-4">Hello there!</p>
-            <p class="text-h3 mb-4 text-wrap">Welcome to my website</p>
+            <h1>
+              <span class="personal-heading text-h2 mb-4 d-block">Hello there!</span>
+              <span class="personal-heading text-h3 mb-4 text-wrap d-block">Welcome to my
+                website</span>
+            </h1>
           </v-card-title>
           <v-card-text>
-            <v-btn to="/games">Check out my games!</v-btn>
+            <v-btn
+              to="/games"
+              class="text-h6 personal-text"
+              variant="flat"
+              prepend-icon="$gamepad-variant"
+            >Explore my games!</v-btn>
           </v-card-text>
         </v-sheet>
       </div>
     </v-parallax>
     <v-container class="mb-10">
-      <h1 class="text-h3 my-8">My name is Jason Suttles.</h1>
-      <!--      <p class="text-h5 mb-4">Umm... Here's my resumé.</p>-->
-      <p class="text-h5 mb-4">
-        <a
+      <h2 class="personal-heading text-h3 my-8">My name is Jason Suttles.</h2>
+      <nav
+        class="d-flex flex-wrap justify-center my-8"
+        aria-label="Main navigation"
+      >
+        <v-btn
           href="https://www.linkedin.com/in/jssuttles/"
           target="_blank"
+          variant="flat"
+          class="personal-text ma-2"
+          min-width="140"
+          prepend-icon="$linkedin"
+          aria-label="LinkedIn profile (opens in new window)"
         >
-          Umm... Here's my LinkedIn
-        </a>
-      </p>
-      <p class="text-h5 mb-4">
-        <a
+          LinkedIn
+        </v-btn>
+        <v-btn
           href="https://github.com/Djeisen642"
           target="_blank"
-        >My Github account...</a>
-      </p>
-      <!--      <p class="text-h5 mb-4">The projects I've been working on...</p>-->
-      <p class="text-h5 mb-4">
-        <a
-          href="/links"
-          target="_blank"
-        >Some things I find interesting...</a>
-      </p>
-      <p class="text-h5 mb-4"><a
-          href="/games"
-          target="_blank"
-        >I mentioned games, right?</a>
-      </p>
-      <p class="text-h5 mb-4"><a
-          href="/blog"
-          target="_blank"
-        >I have a blog now!</a>
-      </p>
-      <p class="text-body mb-4">
-        Oh... Introductions? Umm... Hi! My name is Jason Suttles. I currently work at Medicom
-        Technologies building healthcare software transferring medical images and facilitating
-        automated solutions. I work on frontend work and backend work. We do some cool things with
-        websockets and AWS cloud infrastructure. Microservices. CDK. CI/CD pipelines. (I've touched
-        it all.) Mostly, I'm a JavaScript/TypeScript developer. I'd say I've got a very good handle
-        on what is possible in the JavaScript world. &lt;Awkward silence&gt; What's that? You don't
-        like how this website looks? Hmm... well, I can't say that I've got a good eye for how to
-        make things look nice.
-        <em>But, if you can design it, I can build it.</em> Take a look at the games. I didn't
-        design them, but I definitely developed them.
-      </p>
-      <p class="text-body mb-4">
-        In my free time, I enjoy travelling, hiking, doing new things, eating new foods, playing
-        sports casually, playing video games casually, and playing board games viciously. If I had
-        an infinite budget, I'd spend my time working on modern, interesting, and worthwhile
-        software projects with knowledgeable and fun people, peppering my time with family, friends,
-        and travel. I like being useful and competent.
-      </p>
-      <p class="text-body mb-4">
-        Did I mention I have a philosophy degree along with my comp. sci. degree and math minor?
-      </p>
-      <p class="text-body">
-        Well... that's enough about me. Feel free to browse around and/or get back to whatever you
-        were doing before. I do recommend coming back every once in a while, though. This website
-        might surprise you with something useful.
-      </p>
+          variant="flat"
+          class="personal-text ma-2"
+          min-width="140"
+          prepend-icon="$github"
+          aria-label="GitHub profile (opens in new window)"
+        >
+          GitHub
+        </v-btn>
+        <v-btn
+          to="/links"
+          variant="flat"
+          class="personal-text ma-2"
+          min-width="140"
+          prepend-icon="$link-variant"
+        >
+          Interesting Links
+        </v-btn>
+        <v-btn
+          to="/games"
+          variant="flat"
+          class="personal-text ma-2"
+          min-width="140"
+          prepend-icon="$gamepad-variant"
+        >
+          Games
+        </v-btn>
+        <v-btn
+          to="/blog"
+          variant="flat"
+          class="personal-text ma-2"
+          min-width="140"
+          prepend-icon="$post"
+        >
+          Blog
+        </v-btn>
+      </nav>
+      <article class="mt-12 pos-relative">
+        <div class="personal-text">
+          <p class="mb-6">
+            Hey there! I'm Jason, and I'm currently crafting healthcare solutions at Medicom
+            Technologies. My work involves building software that handles medical image transfers
+            and creates automated solutions. I get to work across the full stack, doing some pretty
+            cool stuff with websockets, AWS infrastructure, microservices, CDK, and CI/CD pipelines.
+            You
+            name it in modern web development, I've probably tinkered with it!
+          </p>
+          <p class="mb-6">
+            I'm primarily a JavaScript/TypeScript developer, with a pretty solid grasp of what's
+            possible in the JavaScript ecosystem. And about this website's design... *nervous laugh*
+            While I might not be winning any design awards, here's my superpower:
+            <em class="font-weight-bold">If you can design it, I can very likely build it.</em>
+          </p>
+          <p class="mb-6">
+            When I'm not coding, you'll find me exploring new trails, trying out different cuisines,
+            playing sports (casually), gaming (also casually), and absolutely dominating at board
+            games (not so casually). My dream scenario? Working on innovative, meaningful software
+            projects with brilliant, fun people, while having plenty of time for family, friends,
+            and adventures. I thrive on being both useful and competent.
+          </p>
+          <p class="mb-6">
+            Fun fact: I've got an interesting mix of degrees - Computer Science and Philosophy,
+            plus a minor in Mathematics.
+          </p>
+          <p class="mb-6">
+            That's my story in a nutshell! Feel free to explore the site - there's plenty to
+            discover here. And maybe bookmark it? I'm always adding new surprises that you might
+            find helpful. Who knows what'll pop up next?
+          </p>
+        </div>
+      </article>
     </v-container>
   </div>
 </template>
@@ -101,7 +139,27 @@ useHead({
 });
 </script>
 <style lang="scss" scoped>
-.bg-transparent-card {
-  background-color: rgb(var(--v-theme-primary-lighten-3), 0.4);
+.personal-heading {
+  font-family: 'Permanent Marker', Roboto, sans-serif;
+  margin-bottom: 1.5rem;
+}
+
+.personal-text {
+  font-family: 'Patrick Hand', Roboto, sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+}
+
+.transparent-card {
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgb(0, 0, 0, 10%);
+  background: rgb(0, 0, 0, 30%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .personal-text {
+    color: rgb(255, 255, 255, 87%);
+  }
 }
 </style>

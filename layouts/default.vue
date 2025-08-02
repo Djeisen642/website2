@@ -10,11 +10,10 @@
     >
       <v-app-bar-nav-icon
         aria-label="Open navigation drawer"
-        color="secondary"
         @click.stop="drawer = !drawer"
       />
       <v-app-bar-title>
-        <h1 class="text-h4">jason's website - {{ routeName }}</h1>
+        <h1 class="text-h4 personal-heading">jason's website - {{ routeName }}</h1>
       </v-app-bar-title>
     </v-app-bar>
 
@@ -70,7 +69,14 @@ const props = defineProps({
 })
 
 const drawer = ref(false);
-const pages = ref([
+type Page = {
+  title: string;
+  to: string;
+  subtitle?: string;
+  children?: Page[];
+  isChild?: boolean;
+};
+const pages = ref<Page[]>([
   {
     title: 'Home',
     to: '/',
@@ -128,7 +134,10 @@ onMounted(async () => {
     .filter((post: BlogPost) => post.status === 'published')
     .sort((a: BlogPost, b: BlogPost) => b.createdAt.toMillis() - a.createdAt.toMillis())
     .slice(0, NUM_POSTS_TO_DISPLAY);
-  pages.value.find(page => page.title === 'Blog').children = newestPosts.map((post: BlogPost) => ({
+  const blogPage = pages.value.find(page => page.title === 'Blog');
+  if (!blogPage)
+    return;
+  blogPage.children = newestPosts.map((post: BlogPost) => ({
     title: post.title,
     subtitle: postTimestamps(post, true),
     to: `/blog/${post.title.replace(/\s/g, '+').toLowerCase()}`,
@@ -149,15 +158,9 @@ const routeName = computed(() => props.error?.statusCode || route.name);
     z-index: 4000 !important;
   }
 
-  // stylelint-disable-next-line selector-class-pattern
-  &.v-theme--dark {
-    a:not(.v-list-item) {
-      color: rgb(var(--v-theme-secondary-lighten-3));
-
-      &:visited {
-        color: rgb(var(--v-theme-secondary-lighten-2));
-      }
-    }
+  .personal-heading {
+    font-family: 'Permanent Marker', cursive;
+    opacity: 0.87;
   }
 }
 </style>

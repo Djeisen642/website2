@@ -16,36 +16,36 @@
               v-if="post.status === 'published'"
               :href="`/blog/${post.title.replace(/\s/g, '+').toLowerCase()}`"
               target="_blank"
-              color="primary"
+              color="secondary"
               variant="text"
-              class="mr-2"
+              class="mr-2 font-weight-bold"
             >
               View
             </v-btn>
             <template v-if="authStore.user">
               <v-btn
                 v-if="post.status === 'draft'"
-                color="primary"
+                color="secondary"
                 variant="text"
-                class="mr-2"
+                class="mr-2 font-weight-bold"
                 :loading="publishingId === post.id"
                 @click="publishPost(post)"
               >
                 Publish
               </v-btn>
               <v-btn
-                color="primary"
+                color="secondary"
                 variant="text"
-                class="mr-2"
+                class="mr-2 font-weight-bold"
                 :disabled="publishingId === post.id"
                 @click="editPost(post)"
               >
                 Edit
               </v-btn>
               <v-btn
-                color="primary"
+                color="secondary"
                 variant="text"
-                class="mr-2"
+                class="mr-2 font-weight-bold"
                 :disabled="publishingId === post.id"
                 @click="deletePost(post)"
               >
@@ -89,7 +89,7 @@
     <div class="d-flex mt-4">
       <v-btn
         v-if="authStore.user"
-        color="primary"
+        color="secondary"
         :loading="loading"
         @click="savePost"
       >

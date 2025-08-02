@@ -33,24 +33,21 @@
       target="_blank"
       href="https://www.linkedin.com/in/jssuttles/"
     />
-    <v-btn
+    <!-- <v-btn
       aria-label="Toggle theme light/dark mode"
       icon="$brightness"
       class="ml-2"
       @click="toggleTheme"
-    />
+    /> -->
   </v-footer>
 </template>
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import { FirebaseError } from 'firebase/app';
 
 import { useNuxtApp } from '#app';
 
 import { useAuthStore } from '~/store/authStore';
-import { Theme, useStore } from '~/store/mainStore.js';
+import { useStore } from '~/store/mainStore.js';
 import * as auth from '~/utils/auth';
 
 const { $logError } = useNuxtApp();
@@ -81,14 +78,11 @@ async function login() {
   }
 }
 
-function toggleTheme() {
-  mainStore.setTheme(mainStore.theme === Theme.LIGHT, true);
-}
+// function toggleTheme() {
+//   mainStore.setTheme(mainStore.theme === Theme.LIGHT, true);
+// }
 </script>
-<style
-  scoped
-  lang="scss"
->
+<style scoped lang="scss">
 .footer {
   max-height: 80px;
 }
