@@ -70,8 +70,7 @@ export class Cat extends Animal {
     this._boundary = boundary;
     this._speed = speed;
     const randomColor = getRandomArbitrary(0, CAT_COLORS.length, true);
-    console.log(`Random color index: ${randomColor}`);
-    this._color = CAT_COLORS[randomColor];
+    this._color = CAT_COLORS[randomColor] as string; // randomColor is guaranteed to be a valid index
   }
 
   get color() {
