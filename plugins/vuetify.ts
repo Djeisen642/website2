@@ -59,7 +59,7 @@ export default defineNuxtPlugin({
         },
       },
       theme: {
-        defaultTheme: 'light',
+        defaultTheme: 'dark',
         variations: {
           colors: ['primary', 'secondary'],
           lighten: 3,

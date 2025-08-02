@@ -6,6 +6,8 @@ async function getFontStyles(): Promise<string[]> {
   const fontUrls = [
     'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap',
     'https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500&display=swap',
+    'https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap',
+    'https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap',
   ];
   const userAgentsResponse = await fetch('https://jnrbsn.github.io/user-agents/user-agents.json');
   const userAgentsJson = await userAgentsResponse.json();
@@ -49,7 +51,7 @@ export default defineNuxtConfig({
     async ready(nuxt) {
       const styles = await getFontStyles();
       if (!Array.isArray(nuxt.options.app.head.style)) throw new Error('What happened here?');
-      nuxt.options.app.head.style.push(...styles.map(style => ({ children: style })));
+      nuxt.options.app.head.style.push(...styles.map(style => ({ textContent: style })));
     },
     'vite:extendConfig': config => {
       config.plugins?.push(vuetify());
@@ -81,20 +83,13 @@ export default defineNuxtConfig({
         {
           // @ts-expect-error - this is correct
           type: 'text/css',
-          children: `
+          textContent: `
             @media (prefers-color-scheme: dark) {
               body {
                 background-color: #121212; /* Deep dark background */
               }
             }
           `,
-        },
-      ],
-      link: [
-        {
-          rel: 'preconnect',
-          href: 'https://fonts.gstatic.com',
-          crossorigin: '',
         },
       ],
       title: 'Home',

@@ -93,14 +93,15 @@
             Hey there! I'm Jason, and I'm currently crafting healthcare solutions at Medicom
             Technologies. My work involves building software that handles medical image transfers
             and creates automated solutions. I get to work across the full stack, doing some pretty
-            cool stuff with websockets, AWS infrastructure, microservices, CDK, and CI/CD pipelines. You
+            cool stuff with websockets, AWS infrastructure, microservices, CDK, and CI/CD pipelines.
+            You
             name it in modern web development, I've probably tinkered with it!
           </p>
           <p class="mb-6">
             I'm primarily a JavaScript/TypeScript developer, with a pretty solid grasp of what's
             possible in the JavaScript ecosystem. And about this website's design... *nervous laugh*
             While I might not be winning any design awards, here's my superpower:
-            <em class="font-weight-bold">If you can design it, I can definitely build it.</em>
+            <em class="font-weight-bold">If you can design it, I can very likely build it.</em>
           </p>
           <p class="mb-6">
             When I'm not coding, you'll find me exploring new trails, trying out different cuisines,
@@ -138,16 +139,13 @@ useHead({
 });
 </script>
 <style lang="scss" scoped>
-// Import Google Fonts
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&display=swap');
-
 .personal-heading {
-  font-family: 'Permanent Marker', cursive;
+  font-family: 'Permanent Marker', Roboto, sans-serif;
   margin-bottom: 1.5rem;
 }
 
 .personal-text {
-  font-family: 'Patrick Hand', cursive;
+  font-family: 'Patrick Hand', Roboto, sans-serif;
   font-size: 1.25rem;
   line-height: 1.7;
   letter-spacing: 0.02em;

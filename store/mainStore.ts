@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-import { isDarkSystemPreference } from '#imports';
+// import { isDarkSystemPreference } from '#imports';
 
 import { disableWatchForSystemPreference } from '~/composables/themeSystemPreference';
 
@@ -17,16 +17,16 @@ type State = {
   };
 };
 
-let startingTheme = Theme.DARK;
-if (localStorage.getItem('theme')) {
-  startingTheme = localStorage.getItem('theme') as Theme;
-} else {
-  startingTheme = isDarkSystemPreference() ? Theme.DARK : Theme.LIGHT;
-}
+// let startingTheme = Theme.DARK;
+// if (localStorage.getItem('theme')) {
+//   startingTheme = localStorage.getItem('theme') as Theme;
+// } else {
+//   startingTheme = isDarkSystemPreference() ? Theme.DARK : Theme.LIGHT;
+// }
 
 export const useStore = defineStore('main', {
   state: (): State => ({
-    theme: startingTheme,
+    theme: Theme.DARK,
     snackbar: {
       snackbar: false,
       text: '',
