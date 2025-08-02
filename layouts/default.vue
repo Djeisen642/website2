@@ -70,7 +70,14 @@ const props = defineProps({
 })
 
 const drawer = ref(false);
-const pages = ref([
+type Page = {
+  title: string;
+  to: string;
+  subtitle?: string;
+  children?: Page[];
+  isChild?: boolean;
+};
+const pages = ref<Page[]>([
   {
     title: 'Home',
     to: '/',
@@ -128,7 +135,10 @@ onMounted(async () => {
     .filter((post: BlogPost) => post.status === 'published')
     .sort((a: BlogPost, b: BlogPost) => b.createdAt.toMillis() - a.createdAt.toMillis())
     .slice(0, NUM_POSTS_TO_DISPLAY);
-  pages.value.find(page => page.title === 'Blog').children = newestPosts.map((post: BlogPost) => ({
+  const blogPage = pages.value.find(page => page.title === 'Blog');
+  if (!blogPage)
+    return;
+  blogPage.children = newestPosts.map((post: BlogPost) => ({
     title: post.title,
     subtitle: postTimestamps(post, true),
     to: `/blog/${post.title.replace(/\s/g, '+').toLowerCase()}`,
