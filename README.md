@@ -48,4 +48,3 @@ yarn preview
 ## Reminders:
 
 - Adding the Content-Security-Policy is a non-trivial process
-- eslint 9 needs a lot of work

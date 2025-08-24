@@ -81,7 +81,6 @@ export default defineNuxtConfig({
       },
       style: [
         {
-          // @ts-expect-error - this is correct
           type: 'text/css',
           textContent: `
             @media (prefers-color-scheme: dark) {
