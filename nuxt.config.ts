@@ -57,7 +57,7 @@ export default defineNuxtConfig({
       config.plugins?.push(vuetify());
     },
   },
-  modules: ['@vueuse/nuxt', '@pinia/nuxt', '@nuxtjs/robots', '@nuxtjs/device', '@nuxt/eslint'],
+  modules: ['@vueuse/nuxt', '@pinia/nuxt', '@nuxtjs/device', '@nuxt/eslint'],
   runtimeConfig: {
     public: {
       IS_PRODUCTION: isProduction,
@@ -81,7 +81,6 @@ export default defineNuxtConfig({
       },
       style: [
         {
-          type: 'text/css',
           textContent: `
             @media (prefers-color-scheme: dark) {
               body {

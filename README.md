@@ -44,6 +44,7 @@ yarn preview
 - uses commitlint to ensure commit messages follow a standard
 - uses GitHub Actions to lint, SAST, build, and publish to Google Firebase
 - No tests... 😅
+- @nuxtjs/robots is not working for some reason
 
 ## Reminders:
 

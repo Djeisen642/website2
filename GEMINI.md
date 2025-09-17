@@ -116,7 +116,6 @@ The following pages are available in the project:
 ### Production Dependencies
 
 *   `@mdi/js`: Material Design Icons
-*   `@nuxtjs/robots`: Nuxt module for `robots.txt`
 *   `@pinia/nuxt`: Pinia integration for Nuxt
 *   `@vueuse/core`: Collection of essential Vue Composition Utilities
 *   `firebase`: Firebase SDK
