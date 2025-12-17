@@ -29,10 +29,10 @@
 
 <script setup lang="ts">
 onMounted(() => {
-  const container = document.querySelector('.error-container');
+  const container = document.querySelector('.error-container') as HTMLElement;
   if (!container) return;
 
-  container.addEventListener('mousemove', (e) => {
+  container.addEventListener('mousemove', (e: MouseEvent) => {
     const { clientX, clientY } = e;
     const { left, top, width, height } = container.getBoundingClientRect();
     const x = (clientX - left) / width;
