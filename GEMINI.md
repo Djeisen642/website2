@@ -8,10 +8,10 @@ This document provides an overview of the project, including how to build, run, 
 
 ## Environment Setup
 
-This project specifies the Node.js and yarn versions to be used. It is recommended to use a version manager like `nvm` or `volta` to ensure you are using the correct versions.
+This project specifies the Node.js and Bun versions to be used. It is recommended to use a version manager like `nvm` or `volta` to ensure you are using the correct versions.
 
 *   **Node.js:** `lts/jod` (as specified in `package.json`)
-*   **Yarn:** `4.9.2` (as specified in `package.json`)
+*   **Bun:** `1.3.5` (as specified in `package.json`)
 
 If you are using Volta, it will automatically pick up the correct versions from `package.json`.
 
@@ -22,7 +22,7 @@ If you are using Volta, it will automatically pick up the correct versions from 
 Install dependencies with:
 
 ```bash
-yarn install
+bun install
 ```
 
 ### Development
@@ -30,13 +30,13 @@ yarn install
 To run the development server:
 
 ```bash
-yarn dev
+bun run dev
 ```
 
 or
 
 ```bash
-yarn start
+bun run start
 ```
 
 The development server will be available at http://localhost:3000.
@@ -46,19 +46,19 @@ The development server will be available at http://localhost:3000.
 To build the application for production:
 
 ```bash
-yarn build
+bun run build
 ```
 
 To preview the production build locally:
 
 ```bash
-yarn preview
+bun run preview
 ```
 
 To generate a static site:
 
 ```bash
-yarn generate
+bun run generate
 ```
 
 ### Linting and Type Checking
@@ -66,25 +66,25 @@ yarn generate
 To run all linters and the type checker:
 
 ```bash
-yarn lint
+bun run lint
 ```
 
 To run only the JavaScript/TypeScript linter:
 
 ```bash
-yarn lint:js
+bun run lint:js
 ```
 
 To run only the style linter:
 
 ```bash
-yarn lint:style
+bun run lint:style
 ```
 
 To run only the type checker:
 
 ```bash
-yarn check:types
+bun run check:types
 ```
 
 ## Development Conventions

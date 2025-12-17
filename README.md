@@ -9,7 +9,7 @@ Runs live at https://jasonsuttles.dev
 Make sure to install the dependencies:
 
 ```bash
-yarn install
+bun install
 ```
 
 ## Development Server
@@ -17,9 +17,9 @@ yarn install
 Start the development server at http://localhost:3000
 
 ```bash
-yarn dev
+bun run dev
 # OR
-yarn start
+bun run start
 ```
 
 ## Production
@@ -27,13 +27,13 @@ yarn start
 Build the application for production:
 
 ```bash
-yarn build
+bun run build
 ```
 
 Locally preview production build:
 
 ```bash
-yarn preview
+bun run preview
 ```
 
 ## Notes:
