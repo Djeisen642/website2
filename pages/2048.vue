@@ -29,10 +29,7 @@
     </v-row>
   </v-container>
 </template>
-<script
-  lang="ts"
-  setup
->
+<script lang="ts" setup>
 import { useTheme } from 'vuetify';
 
 import {
@@ -77,7 +74,9 @@ function getArrayOfArrays(direction: Direction) {
       currentArray = [];
       arrayOfArrays.push(currentArray);
     }
-    currentArray.push(arrayToUse[index]);
+    const val = arrayToUse[index];
+    if (val === undefined) throw new Error('Unexpected undefined value');
+    currentArray.push(val);
   }
   return arrayOfArrays;
 }
@@ -90,7 +89,10 @@ function getStripedArrayOfArrays(direction: Direction) {
   const arrayToUse =
     direction === Direction.Down ? allValues.value.slice().reverse() : allValues.value;
   for (let index = 0; index < arrayToUse.length; index++) {
-    arrayOfArrays[index % NUM_SQUARES_PER_SIDE].push(arrayToUse[index]);
+    const row = arrayOfArrays[index % NUM_SQUARES_PER_SIDE];
+    const val = arrayToUse[index];
+    if (!row || val === undefined) throw new Error('Unexpected undefined value');
+    row.push(val);
   }
   return arrayOfArrays;
 }
@@ -131,8 +133,11 @@ function fromStripedArrayOfArrays(direction: Direction, arrayOfArrays: (number |
   const array: (number | null)[] = new Array(NUM_SQUARES_PER_SIDE * NUM_SQUARES_PER_SIDE);
   for (let columnIndex = 0; columnIndex < arrayOfArrays.length; columnIndex++) {
     const column = arrayOfArrays[columnIndex];
+    if (!column) throw new Error('Unexpected undefined column');
     for (let rowIndex = 0; rowIndex < column.length; rowIndex++) {
-      array[columnIndex + rowIndex * NUM_SQUARES_PER_SIDE] = column[rowIndex];
+      const val = column[rowIndex];
+      if (val === undefined) throw new Error('Unexpected undefined value');
+      array[columnIndex + rowIndex * NUM_SQUARES_PER_SIDE] = val;
     }
   }
   return direction === Direction.Down ? array.reverse() : array;
@@ -150,6 +155,7 @@ function setRandomEmptySquare() {
   for (let index = 0; index < allValues.value.length; index++) {
     if (allValues.value[index]) continue;
     if (pickEmpty === 0) {
+      if (pickANumber === undefined) throw new Error('Unexpected undefined value');
       allValues.value[index] = pickANumber;
       return;
     }
@@ -307,10 +313,7 @@ useSwipe(container, {
   },
 });
 </script>
-<style
-  lang="scss"
-  scoped
->
+<style lang="scss" scoped>
 $square-side: 100px;
 $max-square-side: min(24vh, 24vw);
 

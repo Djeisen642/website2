@@ -102,10 +102,7 @@
   </v-container>
 </template>
 
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 // Created with the assistance of Google Gemini
 import { ref, onMounted, onUnmounted, watch } from 'vue';
 import ScoreDisplay from '@/components/Pong/ScoreDisplay.vue';
@@ -418,7 +415,9 @@ function addConfetti() {
   const colors = ['#f00', '#0f0', '#00f']; // Red, green, blue
   const confetti = document.createElement('div');
   confetti.classList.add('confetti');
-  confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+  const color = colors[Math.floor(Math.random() * colors.length)];
+  if (color === undefined) throw new Error('Unexpected undefined color');
+  confetti.style.backgroundColor = color;
   confetti.style.left = `${Math.random() * 100}%`;
   confetti.style.top = `${Math.random() * 95}%`;
   const direction = Math.random() < 0.5 ? 'confetti-fall' : 'confetti-fall-reverse';
@@ -428,8 +427,11 @@ function addConfetti() {
 function removeConfetti() {
   if (!confettiContainer.value) return;
   const confetti = confettiContainer.value.querySelectorAll('.confetti');
-  for (let i = 0; i < 4; i++)
-    confetti[Math.floor(Math.random() * confetti.length)].remove();
+  for (let i = 0; i < 4; i++) {
+    const toRemove = confetti[Math.floor(Math.random() * confetti.length)];
+    if (!toRemove) throw new Error('Unexpected undefined confetti element');
+    toRemove.remove();
+  }
 }
 </script>
 
