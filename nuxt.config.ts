@@ -47,6 +47,9 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
   },
+  nitro: {
+    preset: "bun",
+  },
   hooks: {
     async ready(nuxt) {
       const styles = await getFontStyles();

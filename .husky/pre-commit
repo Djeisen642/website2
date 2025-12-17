@@ -1,1 +1,2 @@
-yarn lint
+export PATH="$HOME/.bun/bin:$PATH"
+bun run lint

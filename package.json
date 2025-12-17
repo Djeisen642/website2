@@ -6,7 +6,6 @@
   "repository": "git@github.com:Djeisen642/website2.git",
   "author": "Jason <jasonssuttles@gmail.com>",
   "license": "MIT",
-  "packageManager": "yarn@4.12.0",
   "type": "module",
   "scripts": {
     "build": "nuxt build",
@@ -14,15 +13,15 @@
     "generate": "nuxt generate",
     "lint:js": "echo \"ESLINT --\" && eslint .",
     "lint:style": "echo \"STYLELINT --\" && stylelint \"**/*.{vue,scss,css}\" --ignore-path .gitignore",
-    "lint": "yarn lint:js && yarn lint:style && yarn check:types && yarn nuxt:types",
+    "lint": "bun run lint:js && bun run lint:style && bun run check:types && bun run nuxt:types",
     "check:types": "echo \"TSC --\" && tsgo --noEmit",
     "nuxt:types": "nuxt typecheck",
     "postinstall": "nuxt prepare && husky install",
     "postpack": "pinst --enable",
     "prepack": "pinst --disable",
     "preview": "nuxt preview",
-    "start": "yarn dev",
-    "up-i": "yarn upgrade-interactive && yarn up -R",
+    "start": "bun run dev",
+    "up-i": "bun update --interactive",
     "prepare": "husky"
   },
   "devDependencies": {
@@ -78,11 +77,6 @@
     "web-vitals": "^5.1.0"
   },
   "engines": {
-    "npm": "please-use-yarn",
-    "node": "lts/jod"
-  },
-  "volta": {
-    "node": "22.21.1",
-    "yarn": "4.9.4"
+    "bun": "^1.3.5"
   }
 }
