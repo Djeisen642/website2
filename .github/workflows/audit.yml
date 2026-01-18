@@ -4,9 +4,6 @@ on:
   schedule:
     # Run daily at midnight UTC
     - cron: '0 0 * * *'
-  pull_request:
-    branches:
-      - main
 
 jobs:
   audit:
