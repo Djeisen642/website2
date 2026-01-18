@@ -1,0 +1,31 @@
+name: Security Audit
+
+on:
+  schedule:
+    # Run daily at midnight UTC
+    - cron: '0 0 * * *'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      
+      - uses: oven-sh/setup-bun@v2
+      
+      - uses: actions/cache@v5
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
+            
+      - name: Install packages
+        run: bun install --frozen-lockfile
+        
+      - name: Run security audit
+        # This will fail the workflow if any vulnerabilities are found
+        run: bun audit
