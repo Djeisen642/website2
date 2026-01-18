@@ -17,15 +17,12 @@ jobs:
       cancel-in-progress: true
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
-        with:
-          node-version-file: 'package.json'
-          cache: 'yarn'
+      - uses: oven-sh/setup-bun@v2
       - name: Install packages
-        run: yarn
+        run: bun install
       - name: Lint
-        run: yarn lint
-      - run: yarn generate
+        run: bun run lint
+      - run: bun run generate
         env:
           GOOGLE_FIREBASE_API_KEY: '${{ secrets.GOOGLE_FIREBASE_API_KEY }}'
           GOOGLE_FIREBASE_APP_ID: '${{ secrets.GOOGLE_FIREBASE_APP_ID }}'
