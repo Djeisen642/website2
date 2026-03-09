@@ -8,10 +8,8 @@
           <p>{{ postTimestamps(post) }}</p>
         </div>
         <v-divider />
-        <div
-          class="post-content"
-          v-html="blogText"
-        ></div>
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <div class="post-content" v-html="blogText"></div>
       </div>
     </template>
     <v-progress-circular
