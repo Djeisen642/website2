@@ -57,6 +57,7 @@ export default defineNuxtConfig({
       nuxt.options.app.head.style.push(...styles.map(style => ({ textContent: style })));
     },
     'vite:extendConfig': config => {
+      // @ts-expect-error Types of property 'hotUpdate' are incompatible.
       config.plugins?.push(vuetify());
     },
   },

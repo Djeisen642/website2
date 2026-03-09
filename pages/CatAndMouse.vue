@@ -4,7 +4,7 @@
     class="full-height no-cursor"
     @mousemove="onMouseMove"
   >
-    <p style="position: absolute">
+    <p class="title-text">
       Very much a work in progress
       <br />
       Mouse x: {{ mouse.getPixelPosition().x }} y: {{ mouse.getPixelPosition().y }}
@@ -173,6 +173,10 @@ $icon-size: 50px;
 .full-height {
   height: 100%;
   padding: 1px;
+}
+
+.title-text {
+  position: absolute;
 }
 
 .no-cursor {
