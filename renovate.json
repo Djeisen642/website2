@@ -1,6 +1,20 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
-  ]
+    "config:best-practices"
+  ],
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "groupName": "security vulnerabilities",
+    "labels": ["security"]
+  },
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "all non-major dependencies",
+      "labels": ["auto-approve"],
+      "automerge": true
+    }
+  ],
+  "rangeStrategy": "update-lockfile"
 }
