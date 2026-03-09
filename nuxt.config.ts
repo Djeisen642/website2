@@ -57,7 +57,8 @@ export default defineNuxtConfig({
       nuxt.options.app.head.style.push(...styles.map(style => ({ textContent: style })));
     },
     'vite:extendConfig': config => {
-      config.plugins?.push(vuetify());
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      config.plugins?.push(vuetify() as any);
     },
   },
   modules: ['@vueuse/nuxt', '@pinia/nuxt', '@nuxtjs/device', '@nuxt/eslint'],

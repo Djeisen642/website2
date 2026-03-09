@@ -115,10 +115,7 @@
       </div>
       <v-divider />
       <!-- eslint-disable-next-line vue/no-v-html -->
-      <div
-        class="post-content"
-        v-html="displayBlogText"
-      ></div>
+      <div class="post-content" v-html="displayBlogText"></div>
     </template>
   </v-container>
 </template>
