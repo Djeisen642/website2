@@ -39,7 +39,7 @@
     "@types/uuid": "11.0.0",
     "@typescript/native-preview": "7.0.0-dev.20260308.1",
     "@vue/test-utils": "2.4.6",
-    "eslint": "10.0.2",
+    "eslint": "10.0.3",
     "eslint-plugin-vuejs-accessibility": "2.5.0",
     "firebase-tools": "15.9.0",
     "globals": "17.4.0",
