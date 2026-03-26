@@ -38,7 +38,7 @@
         "eslint-plugin-vuejs-accessibility": "2.5.0",
         "firebase-tools": "15.11.0",
         "globals": "17.4.0",
-        "happy-dom": "20.8.7",
+        "happy-dom": "20.8.8",
         "husky": "9.1.7",
         "node-fetch": "3.3.2",
         "nuxt": "4.4.2",
@@ -1677,7 +1677,7 @@
 
     "h3-next": ["h3@2.0.1-rc.11", "", { "dependencies": { "rou3": "^0.7.12", "srvx": "^0.10.1" }, "peerDependencies": { "crossws": "^0.4.1" }, "optionalPeers": ["crossws"] }, "sha512-2myzjCqy32c1As9TjZW9fNZXtLqNedjFSrdFy2AjFBQQ3LzrnGoDdFDYfC0tV2e4vcyfJ2Sfo/F6NQhO2Ly/Mw=="],
 
-    "happy-dom": ["happy-dom@20.8.7", "", { "dependencies": { "@types/node": ">=20.0.0", "@types/whatwg-mimetype": "^3.0.2", "@types/ws": "^8.18.1", "entities": "^7.0.1", "whatwg-mimetype": "^3.0.0", "ws": "^8.18.3" } }, "sha512-7wfBi+UqulQlyLcis+9a+hTK0A/fMO4QKP6w6J9HnadXVkRdOvGf/N5G4XVpfgCYfnY7oKazlOSdWmsfatNSLQ=="],
+    "happy-dom": ["happy-dom@20.8.8", "", { "dependencies": { "@types/node": ">=20.0.0", "@types/whatwg-mimetype": "^3.0.2", "@types/ws": "^8.18.1", "entities": "^7.0.1", "whatwg-mimetype": "^3.0.0", "ws": "^8.18.3" } }, "sha512-5/F8wxkNxYtsN0bXfMwIyNLZ9WYsoOYPbmoluqVJqv8KBUbcyKZawJ7uYK4WTX8IHBLYv+VXIwfeNDPy1oKMwQ=="],
 
     "has-flag": ["has-flag@4.0.0", "", {}, "sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ=="],
 
